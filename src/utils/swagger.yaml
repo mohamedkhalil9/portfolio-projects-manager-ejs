@@ -1,0 +1,1001 @@
+openapi: 3.0.0
+info:
+  title: Express API Documentation
+  description: Comprehensive API documentation with authentication and authorization details
+  version: 1.0.0
+  contact:
+    name: API Support
+    email: support@example.com
+
+servers:
+  - url: http://localhost:4000/api/v1
+    description: Development server
+  - url: https://tokens-auth-nodejs.onrender.com/api/v1
+    description: Production server
+
+components:
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: JWT token obtained from login endpoint
+
+  schemas:
+    User:
+      type: object
+      properties:
+        id:
+          type: string
+          example: "64a7b8c9d1e2f3a4b5c6d7e8"
+        email:
+          type: string
+          format: email
+          example: "user@example.com"
+        username:
+          type: string
+          example: "johndoe"
+        firstName:
+          type: string
+          example: "John"
+        lastName:
+          type: string
+          example: "Doe"
+        role:
+          type: string
+          enum: [USER, MANAGER, ADMIN]
+          example: "USER"
+        isEmailVerified:
+          type: boolean
+          example: true
+        profileImage:
+          type: string
+          example: "https://example.com/images/profile.jpg"
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+
+    RegisterRequest:
+      type: object
+      required:
+        - email
+        - password
+        - username
+        - firstName
+        - lastName
+      properties:
+        email:
+          type: string
+          format: email
+          example: "user@example.com"
+        password:
+          type: string
+          minLength: 6
+          example: "SecurePassword123"
+        username:
+          type: string
+          minLength: 3
+          example: "johndoe"
+        firstName:
+          type: string
+          example: "John"
+        lastName:
+          type: string
+          example: "Doe"
+
+    LoginRequest:
+      type: object
+      required:
+        - email
+        - password
+      properties:
+        email:
+          type: string
+          format: email
+          example: "user@example.com"
+        password:
+          type: string
+          example: "SecurePassword123"
+
+    LoginResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+          example: true
+        message:
+          type: string
+          example: "Login successful"
+        data:
+          type: object
+          properties:
+            user:
+              $ref: "#/components/schemas/User"
+            accessToken:
+              type: string
+              example: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..."
+            refreshToken:
+              type: string
+              example: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..."
+
+    UpdateUserRequest:
+      type: object
+      properties:
+        firstName:
+          type: string
+          example: "John"
+        lastName:
+          type: string
+          example: "Doe"
+        username:
+          type: string
+          example: "johndoe"
+
+    UpdatePasswordRequest:
+      type: object
+      required:
+        - currentPassword
+        - newPassword
+      properties:
+        currentPassword:
+          type: string
+          example: "OldPassword123"
+        newPassword:
+          type: string
+          minLength: 6
+          example: "NewPassword123"
+
+    ResetPasswordRequest:
+      type: object
+      required:
+        - email
+        - otp
+        - newPassword
+      properties:
+        email:
+          type: string
+          format: email
+          example: "user@example.com"
+        otp:
+          type: string
+          example: "123456"
+        newPassword:
+          type: string
+          minLength: 6
+          example: "NewPassword123"
+
+    ForgotPasswordRequest:
+      type: object
+      required:
+        - email
+      properties:
+        email:
+          type: string
+          format: email
+          example: "user@example.com"
+
+    VerifyOtpRequest:
+      type: object
+      required:
+        - email
+        - otp
+      properties:
+        email:
+          type: string
+          format: email
+          example: "user@example.com"
+        otp:
+          type: string
+          example: "123456"
+
+    ApiResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+        message:
+          type: string
+        data:
+          type: object
+
+    Error:
+      type: object
+      properties:
+        success:
+          type: boolean
+          example: false
+        message:
+          type: string
+        error:
+          type: object
+
+  responses:
+    UnauthorizedError:
+      description: Authentication required
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/Error"
+          example:
+            success: false
+            message: "Authentication required"
+
+    ForbiddenError:
+      description: Insufficient permissions
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/Error"
+          example:
+            success: false
+            message: "Access denied. Insufficient permissions"
+
+    NotFoundError:
+      description: Resource not found
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/Error"
+          example:
+            success: false
+            message: "Resource not found"
+
+tags:
+  - name: Authentication
+    description: Public authentication endpoints
+  - name: User Profile
+    description: User profile management (requires authentication)
+  - name: User Management
+    description: User management endpoints (requires specific roles)
+  - name: OAuth
+    description: OAuth authentication with third-party providers
+
+paths:
+  # PUBLIC AUTHENTICATION ROUTES
+  /auth/register:
+    post:
+      tags:
+        - Authentication
+      summary: Register a new user
+      description: |
+        **Access:** Public (no authentication required)
+
+        Creates a new user account with email verification.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/RegisterRequest"
+      responses:
+        "201":
+          description: User registered successfully
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ApiResponse"
+        "400":
+          description: Validation error or user already exists
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+  /auth/login:
+    post:
+      tags:
+        - Authentication
+      summary: Login user
+      description: |
+        **Access:** Public (no authentication required)
+
+        Authenticates user and returns JWT tokens.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/LoginRequest"
+      responses:
+        "200":
+          description: Login successful
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/LoginResponse"
+        "401":
+          description: Invalid credentials
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+  /auth/logout:
+    post:
+      tags:
+        - Authentication
+      summary: Logout user
+      description: |
+        **Access:** Public (no authentication required)
+
+        Logs out the user and invalidates tokens.
+      responses:
+        "200":
+          description: Logout successful
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ApiResponse"
+
+  /auth/forgot-password:
+    post:
+      tags:
+        - Authentication
+      summary: Request password reset
+      description: |
+        **Access:** Public (no authentication required)
+
+        Sends OTP to user's email for password reset.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ForgotPasswordRequest"
+      responses:
+        "200":
+          description: OTP sent successfully
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ApiResponse"
+        "404":
+          description: User not found
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+  /auth/verify-otp:
+    post:
+      tags:
+        - Authentication
+      summary: Verify OTP
+      description: |
+        **Access:** Public (no authentication required)
+
+        Verifies OTP sent for password reset.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/VerifyOtpRequest"
+      responses:
+        "200":
+          description: OTP verified successfully
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ApiResponse"
+        "400":
+          description: Invalid or expired OTP
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+  /auth/reset-password:
+    patch:
+      tags:
+        - Authentication
+      summary: Reset password
+      description: |
+        **Access:** Public (no authentication required)
+
+        Resets user password using verified OTP.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ResetPasswordRequest"
+      responses:
+        "200":
+          description: Password reset successful
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ApiResponse"
+        "400":
+          description: Invalid request or expired OTP
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+  /auth/refresh-token:
+    post:
+      tags:
+        - Authentication
+      summary: Refresh access token
+      description: |
+        **Access:** Public (no authentication required)
+
+        Gets new access token using refresh token.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - refreshToken
+              properties:
+                refreshToken:
+                  type: string
+                  example: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..."
+      responses:
+        "200":
+          description: Token refreshed successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    example: true
+                  data:
+                    type: object
+                    properties:
+                      accessToken:
+                        type: string
+                        example: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..."
+        "401":
+          description: Invalid refresh token
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+  # OAUTH ROUTES
+  /auth/google:
+    get:
+      tags:
+        - OAuth
+      summary: Google OAuth login
+      description: |
+        **Access:** Public (no authentication required)
+
+        Initiates Google OAuth authentication flow.
+      responses:
+        "302":
+          description: Redirects to Google OAuth consent page
+
+  /auth/google/callback:
+    get:
+      tags:
+        - OAuth
+      summary: Google OAuth callback
+      description: |
+        **Access:** Public (no authentication required)
+
+        Handles Google OAuth callback and authenticates user.
+      parameters:
+        - name: code
+          in: query
+          required: true
+          schema:
+            type: string
+          description: Authorization code from Google
+      responses:
+        "200":
+          description: Authentication successful
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/LoginResponse"
+        "401":
+          description: Authentication failed
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+  /auth/github:
+    get:
+      tags:
+        - OAuth
+      summary: GitHub OAuth login
+      description: |
+        **Access:** Public (no authentication required)
+
+        Initiates GitHub OAuth authentication flow.
+      responses:
+        "302":
+          description: Redirects to GitHub OAuth consent page
+
+  /auth/github/callback:
+    get:
+      tags:
+        - OAuth
+      summary: GitHub OAuth callback
+      description: |
+        **Access:** Public (no authentication required)
+
+        Handles GitHub OAuth callback and authenticates user.
+      parameters:
+        - name: code
+          in: query
+          required: true
+          schema:
+            type: string
+          description: Authorization code from GitHub
+      responses:
+        "200":
+          description: Authentication successful
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/LoginResponse"
+        "401":
+          description: Authentication failed
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+  # AUTHENTICATED USER PROFILE ROUTES
+  /profile:
+    get:
+      tags:
+        - User Profile
+      summary: Get current user profile
+      description: |
+        **Access:** Authenticated users only
+        **Roles:** Any authenticated user
+
+        Retrieves the current authenticated user's profile information.
+      security:
+        - BearerAuth: []
+      responses:
+        "200":
+          description: Profile retrieved successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    example: true
+                  data:
+                    $ref: "#/components/schemas/User"
+        "401":
+          $ref: "#/components/responses/UnauthorizedError"
+
+    patch:
+      tags:
+        - User Profile
+      summary: Update current user profile
+      description: |
+        **Access:** Authenticated users only
+        **Roles:** Any authenticated user
+
+        Updates the current authenticated user's profile information.
+      security:
+        - BearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/UpdateUserRequest"
+      responses:
+        "200":
+          description: Profile updated successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    example: true
+                  data:
+                    $ref: "#/components/schemas/User"
+        "400":
+          description: Validation error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        "401":
+          $ref: "#/components/responses/UnauthorizedError"
+
+    delete:
+      tags:
+        - User Profile
+      summary: Delete current user account
+      description: |
+        **Access:** Authenticated users only
+        **Roles:** Any authenticated user
+
+        Permanently deletes the current authenticated user's account.
+      security:
+        - BearerAuth: []
+      responses:
+        "200":
+          description: Account deleted successfully
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ApiResponse"
+        "401":
+          $ref: "#/components/responses/UnauthorizedError"
+
+  /profile/verify-email:
+    get:
+      tags:
+        - User Profile
+      summary: Send email verification
+      description: |
+        **Access:** Authenticated users only
+        **Roles:** Any authenticated user
+
+        Sends email verification link to user's email address.
+      security:
+        - BearerAuth: []
+      responses:
+        "200":
+          description: Verification email sent
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ApiResponse"
+        "401":
+          $ref: "#/components/responses/UnauthorizedError"
+
+  /profile/verify-email/{token}:
+    get:
+      tags:
+        - User Profile
+      summary: Verify email address
+      description: |
+        **Access:** Public (no authentication required)
+
+        Verifies user's email address using verification token.
+      parameters:
+        - name: token
+          in: path
+          required: true
+          schema:
+            type: string
+          description: Email verification token
+      responses:
+        "200":
+          description: Email verified successfully
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ApiResponse"
+        "400":
+          description: Invalid or expired token
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+  /profile/update-password:
+    patch:
+      tags:
+        - User Profile
+      summary: Update password
+      description: |
+        **Access:** Authenticated users only
+        **Roles:** Any authenticated user
+
+        Updates the current authenticated user's password.
+      security:
+        - BearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/UpdatePasswordRequest"
+      responses:
+        "200":
+          description: Password updated successfully
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ApiResponse"
+        "400":
+          description: Validation error or incorrect current password
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        "401":
+          $ref: "#/components/responses/UnauthorizedError"
+
+  /profile/upload:
+    post:
+      tags:
+        - User Profile
+      summary: Upload profile image
+      description: |
+        **Access:** Authenticated users only
+        **Roles:** Any authenticated user
+
+        Uploads and sets user's profile image.
+      security:
+        - BearerAuth: []
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                image:
+                  type: string
+                  format: binary
+                  description: Profile image file
+      responses:
+        "200":
+          description: Image uploaded successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    example: true
+                  data:
+                    type: object
+                    properties:
+                      profileImage:
+                        type: string
+                        example: "https://example.com/images/profile.jpg"
+        "400":
+          description: Invalid file or upload error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        "401":
+          $ref: "#/components/responses/UnauthorizedError"
+
+  # USER MANAGEMENT ROUTES (ADMIN/MANAGER ONLY)
+  /users:
+    get:
+      tags:
+        - User Management
+      summary: Get all users
+      description: |
+        **Access:** Authenticated users only
+        **Roles:** MANAGER, ADMIN
+
+        Retrieves list of all users in the system.
+      security:
+        - BearerAuth: []
+      parameters:
+        - name: page
+          in: query
+          schema:
+            type: integer
+            minimum: 1
+            default: 1
+          description: Page number for pagination
+        - name: limit
+          in: query
+          schema:
+            type: integer
+            minimum: 1
+            maximum: 100
+            default: 10
+          description: Number of users per page
+        - name: search
+          in: query
+          schema:
+            type: string
+          description: Search term for filtering users
+        - name: role
+          in: query
+          schema:
+            type: string
+            enum: [USER, MANAGER, ADMIN]
+          description: Filter users by role
+      responses:
+        "200":
+          description: Users retrieved successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    example: true
+                  data:
+                    type: object
+                    properties:
+                      users:
+                        type: array
+                        items:
+                          $ref: "#/components/schemas/User"
+                      pagination:
+                        type: object
+                        properties:
+                          currentPage:
+                            type: integer
+                            example: 1
+                          totalPages:
+                            type: integer
+                            example: 5
+                          totalUsers:
+                            type: integer
+                            example: 50
+                          hasNext:
+                            type: boolean
+                            example: true
+                          hasPrev:
+                            type: boolean
+                            example: false
+        "401":
+          $ref: "#/components/responses/UnauthorizedError"
+        "403":
+          $ref: "#/components/responses/ForbiddenError"
+
+  /users/{id}:
+    get:
+      tags:
+        - User Management
+      summary: Get user by ID
+      description: |
+        **Access:** Authenticated users only
+        **Roles:** MANAGER, ADMIN
+
+        Retrieves specific user information by user ID.
+      security:
+        - BearerAuth: []
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+          description: User ID (MongoDB ObjectId)
+          example: "64a7b8c9d1e2f3a4b5c6d7e8"
+      responses:
+        "200":
+          description: User retrieved successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    example: true
+                  data:
+                    $ref: "#/components/schemas/User"
+        "400":
+          description: Invalid user ID format
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        "401":
+          $ref: "#/components/responses/UnauthorizedError"
+        "403":
+          $ref: "#/components/responses/ForbiddenError"
+        "404":
+          $ref: "#/components/responses/NotFoundError"
+
+    patch:
+      tags:
+        - User Management
+      summary: Update user by ID
+      description: |
+        **Access:** Authenticated users only
+        **Roles:** ADMIN only
+
+        Updates specific user information by user ID.
+      security:
+        - BearerAuth: []
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+          description: User ID (MongoDB ObjectId)
+          example: "64a7b8c9d1e2f3a4b5c6d7e8"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              allOf:
+                - $ref: "#/components/schemas/UpdateUserRequest"
+                - type: object
+                  properties:
+                    role:
+                      type: string
+                      enum: [USER, MANAGER, ADMIN]
+                      example: "MANAGER"
+                    isEmailVerified:
+                      type: boolean
+                      example: true
+      responses:
+        "200":
+          description: User updated successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    example: true
+                  data:
+                    $ref: "#/components/schemas/User"
+        "400":
+          description: Invalid user ID format or validation error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        "401":
+          $ref: "#/components/responses/UnauthorizedError"
+        "403":
+          $ref: "#/components/responses/ForbiddenError"
+        "404":
+          $ref: "#/components/responses/NotFoundError"
+
+    delete:
+      tags:
+        - User Management
+      summary: Delete user by ID
+      description: |
+        **Access:** Authenticated users only
+        **Roles:** ADMIN only
+
+        Permanently deletes a user account by user ID.
+      security:
+        - BearerAuth: []
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+          description: User ID (MongoDB ObjectId)
+          example: "64a7b8c9d1e2f3a4b5c6d7e8"
+      responses:
+        "200":
+          description: User deleted successfully
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ApiResponse"
+        "400":
+          description: Invalid user ID format
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        "401":
+          $ref: "#/components/responses/UnauthorizedError"
+        "403":
+          $ref: "#/components/responses/ForbiddenError"
+        "404":
+          $ref: "#/components/responses/NotFoundError"
