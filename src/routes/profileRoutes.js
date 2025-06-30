@@ -16,10 +16,13 @@ import upload from "../middlewares/multer.js";
 const router = Router();
 
 router.use(authenticate);
+router.get("/edit", (req, res) => {
+  res.render("profile/edit", { user: req.user });
+});
 router
   .route("/")
   .get(getUserProfile)
-  .patch(validateBody(updateUserSchema), updateUserProfile)
+  .post(validateBody(updateUserSchema), updateUserProfile)
   .delete(deleteUserProfile);
 
 router.get("/verify-email", authenticate, sendEmailVerification);

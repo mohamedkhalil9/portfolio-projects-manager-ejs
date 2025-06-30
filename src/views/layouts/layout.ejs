@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Minimal Dark Login</title>
+  <link href="https://cdn.jsdelivr.net/npm/daisyui@4.7.3/dist/full.min.css" rel="stylesheet" type="text/css" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          backdropBlur: {
+            xs: '2px',
+          },
+          animation: {
+            'float': 'float 6s ease-in-out infinite',
+            'fade-in': 'fadeIn 0.5s ease-out forwards',
+            'slide-up': 'slideUp 0.6s ease-out forwards',
+            'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite'
+          },
+          keyframes: {
+            float: {
+              '0%, 100%': {transform: 'translateY(0)'},
+              '50%': {transform: 'translateY(-10px)'},
+            },
+            fadeIn: {
+              '0%': {opacity: '0'},
+              '100%': {opacity: '1'},
+            },
+            slideUp: {
+              '0%': {transform: 'translateY(20px)', opacity: '0'},
+              '100%': {transform: 'translateY(0)', opacity: '1'},
+            }
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap');
+
+    @layer utilities {
+
+      body {
+        font-family: 'Inter', sans-serif;
+        background: linear-gradient(135deg, #0c0c0c 0%, #121212 100%);
+      }
+
+      .glass-effect {
+        background: rgba(255, 255, 255, 0.15);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        border: 1px solid rgba(255, 255, 255, 0.18);
+        box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.15);
+      }
+
+      .glass-dark {
+        background: rgba(15, 15, 15, 0.75);
+      }
+    }
+
+    .glow {
+      box-shadow: 0 0 25px rgba(92, 107, 192, 0.2);
+    }
+
+    .form-container {
+      backdrop-filter: blur(10px);
+      background: rgba(18, 18, 18, 0.8);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .input-field {
+      transition: all 0.3s ease;
+      background: rgba(30, 30, 30, 0.7);
+    }
+
+    .input-field:focus {
+      background: rgba(40, 40, 40, 0.7);
+      border-color: rgba(92, 107, 192, 0.7);
+    }
+
+    .login-btn {
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      background: linear-gradient(45deg, #1a1a2e, #16213e);
+    }
+
+    .login-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 20px rgba(26, 26, 46, 0.3);
+    }
+
+    .divider {
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+    }
+
+    .social-btn {
+      transition: all 0.3s ease;
+      background: rgba(30, 30, 30, 0.7);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .social-btn:hover {
+      background: rgba(40, 40, 40, 0.8);
+      transform: translateY(-2px);
+    }
+  </style>
+</head>
+
+<body class="min-h-screen flex items-center justify-center p-4">
+
+  <%- body %>
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        // Add staggered animation delays
+        const animatedElements = document.querySelectorAll('[class*="animate-"]');
+        animatedElements.forEach((el, index) => {
+          const delay = (index * 150) + 300;
+          el.style.animationDelay = `${delay}ms`;
+          el.style.opacity = '0';
+        });
+
+        // Password visibility toggle
+        const passwordField = document.querySelector('input[type="password"]');
+        const eyeIcon = document.querySelector('.fa-eye-slash');
+
+        if (eyeIcon) {
+          eyeIcon.addEventListener('click', () => {
+            if (passwordField.type === 'password') {
+              passwordField.type = 'text';
+              eyeIcon.classList.replace('fa-eye-slash', 'fa-eye');
+            } else {
+              passwordField.type = 'password';
+              eyeIcon.classList.replace('fa-eye', 'fa-eye-slash');
+            }
+          });
+        }
+      });
+    </script>
+</body>
+
+</html>

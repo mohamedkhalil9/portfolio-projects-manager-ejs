@@ -14,11 +14,20 @@ import { notFound, globalErrorHandler } from "./middlewares/errorHandler.js";
 import swaggerUi from "swagger-ui-express";
 import YAML from "js-yaml";
 import fs from "fs";
+import expressLayouts from "express-ejs-layouts";
 import appRouter from "./routes/index.js";
 
 // dev and prod ENVs
 // automation testing
 const app = express();
+
+app.set("view engine", "ejs");
+app.set("views", "src/views");
+app.use(expressLayouts);
+app.set("layout", "layouts/layout");
+app.set("layout extractScripts", true);
+app.set("layout extractStyles", true);
+app.use(express.static("public"));
 
 app.use(morgan("dev"));
 const apiLimiter = rateLimit({
@@ -27,7 +36,7 @@ const apiLimiter = rateLimit({
 });
 app.use("/api", apiLimiter);
 
-app.use(helmet());
+// app.use(helmet());
 app.use(compression());
 app.use(
   cors({

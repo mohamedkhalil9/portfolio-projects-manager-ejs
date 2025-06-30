@@ -19,8 +19,14 @@ import "../config/passport.js";
 
 const router = express.Router();
 
-router.route("/register").post(validateBody(registerSchema), register);
-router.route("/login").post(validateBody(loginSchema), login);
+router
+  .route("/register")
+  .get((req, res) => res.render("auth/register"))
+  .post(validateBody(registerSchema), register);
+router
+  .route("/login")
+  .get((req, res) => res.render("auth/login"))
+  .post(validateBody(loginSchema), login);
 router.route("/logout").post(logout);
 
 router.get(
@@ -52,9 +58,18 @@ router.get(
   login,
 );
 
-router.post("/forgot-password", forgotPassword);
-router.post("/verify-otp", verifyOtp);
-router.patch("/reset-password", validateBody(resetPassSchema), resetPassword);
+router
+  .route("/forgot-password")
+  .get((req, res) => res.render("auth/forgot-password"))
+  .post(forgotPassword);
+router
+  .route("/verify-otp")
+  .get((req, res) => res.render("auth/verify-otp"))
+  .post(verifyOtp);
+router
+  .route("/reset-password")
+  .get((req, res) => res.render("auth/reset-password"))
+  .patch(validateBody(resetPassSchema), resetPassword);
 
 router.route("/refresh-token").post(newToken);
 
