@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "nodemon src/server.js",
     "start": "node src/server.js",
-    "build:css": "npx tailwindcss -i ./public/css/input.css -o ./public/css/style.css --watch --content \".src/views/**/*.ejs\""
+    "build:css": "npx tailwindcss -i ./public/css/input.css -o ./public/css/style.css --watch --content \".src/views/**/*.ejs\"",
+    "build": "pnpm dev"
   },
   "type": "module",
   "author": "",
