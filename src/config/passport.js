@@ -17,7 +17,7 @@ passport.use(
         if (user) {
           if (!user.googleId) {
             user.googleId = profile.id;
-            // user.verifed = profile.emails[0].verified;
+            // user.verified = profile.emails[0].verified;
             await user.save();
 
             return cb(null, user);
@@ -33,7 +33,7 @@ passport.use(
           provider: "google",
           googleId: profile.id,
           profileImg: profile.photos[0].value,
-          verifed: profile.emails[0].verified,
+          verified: profile.emails[0].verified,
         });
 
         return cb(null, newUser);

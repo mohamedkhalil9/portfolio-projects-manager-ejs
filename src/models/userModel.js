@@ -41,11 +41,11 @@ const userSchema = new mongoose.Schema(
     phone: String,
     country: String,
     address: String,
-    verifed: Boolean,
+    verified: Boolean,
     token: String,
     otp: String,
     otpExpire: Date,
-    otpVerifed: Boolean,
+    otpVerified: Boolean,
     googleId: String,
     githubId: String,
     provider: {

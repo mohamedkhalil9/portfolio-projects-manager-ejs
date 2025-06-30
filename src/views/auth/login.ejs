@@ -1,0 +1,132 @@
+<div class="absolute inset-0 overflow-hidden z-0">
+  <div
+    class="absolute top-1/4 left-1/4 w-64 h-64 bg-indigo-900 rounded-full mix-blend-soft-light filter blur-3xl opacity-30 animate-float"
+  ></div>
+  <div
+    class="absolute top-1/3 right-1/4 w-72 h-72 bg-purple-900 rounded-full mix-blend-soft-light filter blur-3xl opacity-20 animate-float animation-delay-2000"
+  ></div>
+  <div
+    class="absolute bottom-1/4 left-1/3 w-56 h-56 bg-blue-900 rounded-full mix-blend-soft-light filter blur-3xl opacity-25 animate-float animation-delay-3000"
+  ></div>
+</div>
+
+<div
+  class="form-container rounded-2xl w-full max-w-md z-10 p-8 animate-fade-in"
+>
+  <div class="text-center mb-10 animate-slide-up">
+    <div
+      class="w-20 h-20 rounded-full bg-gradient-to-br from-indigo-900 to-purple-900 flex items-center justify-center mx-auto mb-6 glow"
+    >
+      <i class="fas fa-user-lock text-3xl text-white opacity-90"></i>
+    </div>
+    <h1 class="text-3xl font-light text-white mb-2">Welcome Back</h1>
+    <p class="text-gray-400 font-light">Sign in to your account</p>
+  </div>
+
+  <form method="POST" action="/api/v1/auth/login" class="space-y-6">
+    <div class="space-y-4">
+      <div class="animate-slide-up animation-delay-150">
+        <label class="block text-gray-400 text-sm font-light mb-2"
+          >Email Address</label
+        >
+        <div class="relative">
+          <i
+            class="fas fa-envelope absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-500"
+          ></i>
+          <input
+            type="email"
+            name="email"
+            class="input-field w-full pl-12 pr-4 py-3 rounded-xl text-white border border-gray-800 focus:outline-none focus:ring-1 focus:ring-indigo-500/50"
+            placeholder="name@company.com"
+          />
+        </div>
+      </div>
+
+      <div class="animate-slide-up animation-delay-300">
+        <label class="block text-gray-400 text-sm font-light mb-2"
+          >Password</label
+        >
+        <div class="relative">
+          <i
+            class="fas fa-lock absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-500"
+          ></i>
+          <input
+            type="password"
+            name="password"
+            class="input-field w-full pl-12 pr-4 py-3 rounded-xl text-white border border-gray-800 focus:outline-none focus:ring-1 focus:ring-indigo-500/50"
+            placeholder="••••••••"
+          />
+          <i
+            class="fas fa-eye-slash absolute right-4 top-1/2 transform -translate-y-1/2 text-gray-500 cursor-pointer hover:text-gray-300"
+          ></i>
+        </div>
+      </div>
+
+      <div
+        class="flex justify-between items-center animate-slide-up animation-delay-450"
+      >
+        <div class="flex items-center">
+          <input
+            type="checkbox"
+            class="checkbox checkbox-xs bg-gray-800 border-gray-700 rounded"
+            id="remember"
+          />
+          <label for="remember" class="ml-2 text-sm text-gray-400"
+            >Remember me</label
+          >
+        </div>
+        <a
+          href="/api/v1/auth/forgot-password"
+          class="text-sm text-indigo-400 hover:text-indigo-300 transition"
+          >Forgot password?</a
+        >
+      </div>
+    </div>
+
+    <button
+      type="submit"
+      class="login-btn w-full py-3 rounded-xl text-white font-medium text-lg animate-slide-up animation-delay-600"
+    >
+      Sign In
+    </button>
+
+
+    <p
+      class="text-center text-gray-500 text-sm mt-8 animate-slide-up animation-delay-900"
+    >
+      Don't have an account?
+      <a
+        href="/api/v1/auth/register"
+        class="text-indigo-400 hover:text-indigo-300 transition"
+        >Sign up</a
+      >
+    </p>
+  </form>
+    <div class="animate-slide-up animation-delay-750">
+      <div class="divider my-6"></div>
+      <p class="text-center text-gray-500 text-sm mb-4">Or continue with</p>
+      <div
+        class="flex justify-center gap-4 animate-slide-up animation-delay-750"
+      >
+        <!-- Google Login Form -->
+        <form method="GET" action="/api/v1/auth/google" class="inline">
+          <button
+            type="submit"
+            class="social-btn w-12 h-12 rounded-full flex items-center justify-center hover:bg-red-500/20 transition-colors"
+          >
+            <i class="fab fa-google text-gray-300"></i>
+          </button>
+        </form>
+
+        <!-- GitHub Login Form -->
+        <form method="GET" action="/api/v1/auth/github" class="inline">
+          <button
+            type="submit"
+            class="social-btn w-12 h-12 rounded-full flex items-center justify-center hover:bg-gray-700/20 transition-colors"
+          >
+            <i class="fab fa-github text-gray-300"></i>
+          </button>
+        </form>
+      </div>
+    </div>
+</div>

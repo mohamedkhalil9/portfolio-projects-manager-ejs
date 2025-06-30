@@ -78,14 +78,16 @@ export const login = asyncHandler(async (req, res) => {
       // path: "/api/v1/auth/refresh-token",
       maxAge: 1000 * 60 * 60 * 24 * 7,
     })
-    .json({
-      status: "success",
-      data: {
-        accessToken,
-        refreshToken,
-        user: newUser,
-      },
-    });
+    // .json({
+    //   status: "success",
+    //   data: {
+    //     accessToken,
+    //     refreshToken,
+    //     user: newUser,
+    //   },
+    // });
+    // .redirect("/api/v1/profile");
+    .render("profile/home", { user });
 });
 
 export const newToken = asyncHandler(async (req, res) => {
@@ -157,11 +159,12 @@ export const forgotPassword = asyncHandler(async (req, res) => {
       sameSite: "strict",
       maxAge: 1000 * 60 * 5,
     })
-    .json({
-      status: "success",
-      message: "email sent successfully",
-      data: null,
-    });
+    // .json({
+    //   status: "success",
+    //   message: "email sent successfully",
+    //   data: null,
+    // })
+    .redirect("/api/v1/auth/verify-otp");
 });
 
 export const verifyOtp = asyncHandler(async (req, res) => {
@@ -175,10 +178,13 @@ export const verifyOtp = asyncHandler(async (req, res) => {
   if (Date.now() > user.otpExpire || !isMatch)
     throw new AppError("OTP Code is not valid", 409);
 
-  user.otpVerifed = true;
+  user.otpVerified = true;
   await user.save();
 
-  res.status(200).json({ status: "success", data: null });
+  res
+    .status(200)
+    // .json({ status: "success", data: null });
+    .redirect("/api/v1/auth/reset-password");
 });
 
 export const resetPassword = asyncHandler(async (req, res) => {
@@ -188,13 +194,13 @@ export const resetPassword = asyncHandler(async (req, res) => {
   const user = await User.findOne({ email });
   if (!user) throw new AppError("user is not found", 404);
 
-  if (!user.otpVerifed || Date.now() > user.otpExpire)
+  if (!user.otpVerified || Date.now() > user.otpExpire)
     throw new AppError("otp is not verified", 401);
 
   user.password = password;
   user.otp = undefined;
   user.otpExpire = undefined;
-  user.otpVerifed = undefined;
+  user.otpVerified = undefined;
   await user.save();
 
   res
