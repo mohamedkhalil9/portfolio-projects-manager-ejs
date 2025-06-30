@@ -10,7 +10,10 @@ export const getUserProfile = asyncHandler(async (req, res) => {
   const { id } = req.user;
   const user = await User.findById(id).select("-password");
   if (!user) throw new AppError("user not found", 404);
-  res.status(200).json({ status: "success", data: user });
+  res
+    .status(200)
+    // .json({ status: "success", data: user });
+    .render("profile/home", { user });
 });
 
 export const updateUserProfile = asyncHandler(async (req, res) => {
@@ -91,7 +94,7 @@ export const verifyEmail = asyncHandler(async (req, res) => {
   const user = await User.findByIdAndUpdate(
     decoded.id,
     {
-      verifed: true,
+      verified: true,
     },
     { new: true },
   ).select("-password");
