@@ -17,11 +17,32 @@ const userSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
+    githubUrl: String,
+    likedinUrl: String,
     username: String,
     password: {
       type: String,
       // required: true,
     },
+    jobTitle: String,
+    bio: String,
+    skills: [String],
+    education: [
+      {
+        institute: String,
+        from: Date,
+        to: Date,
+      },
+    ],
+    experience: [
+      {
+        corporate: String,
+        workedOn: String,
+        from: Date,
+        to: Date,
+      },
+    ],
+
     profileImg: {
       type: String,
       // defalut: function () {
@@ -30,7 +51,7 @@ const userSchema = new mongoose.Schema(
     },
     role: {
       type: String,
-      enum: ["USER", "MANAGER", "ADMIN"],
+      enum: ["USER", "ADMIN"],
       default: "USER",
     },
     gender: {
@@ -69,7 +90,7 @@ userSchema.methods.isValidPassword = async function (password) {
 
 userSchema.methods.generateAccessToken = (payload) => {
   const token = jwt.sign(payload, process.env.ACCESS_SECRET, {
-    expiresIn: "5m",
+    expiresIn: "1h",
   });
   return token;
 };
