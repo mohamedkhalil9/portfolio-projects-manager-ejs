@@ -67,14 +67,14 @@ export const login = asyncHandler(async (req, res) => {
       httpOnly: true,
       signed: true,
       // secure: true,
-      sameSite: "strict",
-      maxAge: 1000 * 60,
+      // sameSite: "strict",
+      maxAge: 1000 * 60 * 5 * 12,
     })
     .cookie("refresh", refreshToken, {
       httpOnly: true,
       signed: true,
       // secure: true,
-      sameSite: "strict",
+      // sameSite: "strict",
       // path: "/api/v1/auth/refresh-token",
       maxAge: 1000 * 60 * 60 * 24 * 7,
     })
@@ -86,8 +86,7 @@ export const login = asyncHandler(async (req, res) => {
     //     user: newUser,
     //   },
     // });
-    // .redirect("/api/v1/profile");
-    .render("profile/home", { user });
+    .redirect("/api/v1/profile");
 });
 
 export const newToken = asyncHandler(async (req, res) => {
@@ -114,7 +113,7 @@ export const newToken = asyncHandler(async (req, res) => {
 
 export const logout = async (req, res) => {
   const token = req.signedCookies.refresh || req.headers.authorization;
-  if (!token) res.sendStatus(204);
+  if (!token) res.sendStatus(204).redirect("/api/v1/auth/login");
 
   let decoded;
   try {
@@ -133,7 +132,8 @@ export const logout = async (req, res) => {
       httpOnly: true,
       signed: true,
     })
-    .json({ status: "success" });
+    .redirect("/api/v1/auth/login");
+  // .json({ status: "success" });
 };
 
 export const forgotPassword = asyncHandler(async (req, res) => {
