@@ -1,0 +1,374 @@
+<div class="absolute inset-0 overflow-hidden z-0">
+  <div
+    class="absolute top-1/4 left-1/4 w-96 h-96 bg-indigo-900 rounded-full mix-blend-soft-light filter blur-3xl opacity-20 animate-float">
+  </div>
+  <div
+    class="absolute top-1/3 right-1/4 w-80 h-80 bg-purple-900 rounded-full mix-blend-soft-light filter blur-3xl opacity-15 animate-float animation-delay-2000">
+  </div>
+  <div
+    class="absolute bottom-1/4 left-1/3 w-72 h-72 bg-blue-900 rounded-full mix-blend-soft-light filter blur-3xl opacity-20 animate-float animation-delay-3000">
+  </div>
+</div>
+
+<!-- Navigation Header -->
+<div class="container mx-auto px-4 py-12 max-w-4xl relative z-10">
+  <nav class="relative z-20 p-6 animate-fade-in">
+    <div class="max-w-6xl mx-auto flex justify-between items-center">
+      <div class="flex items-center space-x-3">
+        <a href="/api/v1/profile" class="flex items-center space-x-3 text-gray-400 hover:text-white transition">
+          <i class="fas fa-arrow-left"></i>
+          <span>Back to Profile</span>
+        </a>
+      </div>
+
+      <!--   <div class="flex items-center space-x-3"> -->
+      <!--     <div -->
+      <!--       class="w-10 h-10 rounded-full bg-gradient-to-br from-indigo-900 to-purple-900 flex items-center justify-center glow"> -->
+      <!--       <i class="fas fa-edit text-white text-sm"></i> -->
+      <!--     </div> -->
+      <!--     <h1 class="text-2xl font-light text-white">Edit Profile</h1> -->
+      <!--   </div> -->
+      <!---->
+      <!-- Mobile Menu Button -->
+      <!--   <button -->
+      <!--     class="md:hidden p-2 rounded-xl bg-gray-800/50 border border-gray-700 text-gray-400 hover:text-white hover:border-gray-600 transition" -->
+      <!--     id="mobileMenuBtn"> -->
+      <!--     <i class="fas fa-bars"></i> -->
+      <!--   </button> -->
+      <!-- </div> -->
+  </nav>
+
+  <!-- Main Content -->
+  <main class="relative z-10 max-w-4xl mx-auto px-6 pb-12">
+    <!-- Success Message (Hidden by default) -->
+    <div class="mb-6 p-4 rounded-xl success-message hidden" id="successMessage">
+      <div class="flex items-center">
+        <i class="fas fa-check-circle mr-3"></i>
+        <span>Profile updated successfully!</span>
+      </div>
+    </div>
+
+    <!-- Profile Form -->
+    <form method="POST" action="/api/v1/profile" id="profileForm" class="space-y-6">
+      <!-- Profile Photo Section -->
+      <div class="form-container rounded-2xl p-6 animate-slide-up">
+        <h3 class="text-xl font-light text-white mb-6 flex items-center">
+          <i class="fas fa-camera mr-3 text-indigo-400"></i>
+          Profile Photo
+        </h3>
+
+        <div class="flex flex-col md:flex-row items-center space-y-4 md:space-y-0 md:space-x-6">
+          <div class="profile-photo-upload">
+            <!-- <div class="w-32 h-32 rounded-full bg-gradient-to-br from-indigo-500 to-purple-500 flex items-center justify-center text-white text-4xl font-bold glow cursor-pointer"> -->
+            <!--   <%= user.firstName.charAt(0).toUpperCase() %><%= user.lastName.charAt(0).toUpperCase() %> -->
+            <!--   <div class="upload-overlay rounded-full"> -->
+            <!--     <i class="fas fa-camera text-white text-2xl"></i> -->
+            <!--   </div> -->
+            <!-- </div> -->
+
+            <div
+              class="w-32 h-32 rounded-full bg-gradient-to-br from-indigo-900 to-purple-900 flex items-center justify-center overflow-hidden border-2 border-white/10 glow">
+              <% if (user.profileImg) { %>
+                <img src="<%= user.profileImg %>" alt="Profile" class="w-full h-full object-cover" />
+                <% } else { %>
+                  <i class="fas fa-user text-5xl text-white opacity-90"></i>
+                  <% } %>
+            </div>
+            <!-- <input type="file" id="profilePhoto" name="profilePhoto" accept="image/*"> -->
+          </div>
+          <div class="text-center md:text-left">
+            <h4 class="text-white font-medium mb-2">Change Profile Photo</h4>
+            <p class="text-gray-400 text-sm mb-4">JPG, PNG or GIF. Max size 5MB.</p>
+            <button type="button"
+              class="px-4 py-2 bg-indigo-600 hover:bg-indigo-700 text-white rounded-xl transition text-sm"
+              onclick="document.getElementById('profilePhoto').click()">
+              Choose File
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Basic Information -->
+      <div class="form-container rounded-2xl p-6 animate-slide-up animation-delay-150">
+        <h3 class="text-xl font-light text-white mb-6 flex items-center">
+          <i class="fas fa-user mr-3 text-green-400"></i>
+          Basic Information
+        </h3>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div>
+            <label class="block text-gray-400 text-sm mb-2" for="firstName">First Name *</label>
+            <input type="text" id="firstName" name="firstName" class="w-full p-4 rounded-xl form-input"
+              value="<%= user.firstName %>" required>
+          </div>
+          <div>
+            <label class="block text-gray-400 text-sm mb-2" for="lastName">Last Name *</label>
+            <input type="text" id="lastName" name="lastName" class="w-full p-4 rounded-xl form-input"
+              value="<%= user.lastName %>" required>
+          </div>
+          <div>
+            <label class="block text-gray-400 text-sm mb-2" for="email">Email Address *</label>
+            <input type="email" id="email" name="email" class="w-full p-4 rounded-xl form-input"
+              value="<%= user.email %>" required>
+          </div>
+          <div>
+            <label class="block text-gray-400 text-sm mb-2" for="phone">Phone Number</label>
+            <input type="tel" id="phone" name="phone" class="w-full p-4 rounded-xl form-input" value="<%= user.phone %>"
+              placeholder="+1 (555) 123-4567">
+          </div>
+        </div>
+      </div>
+
+      <!-- Personal Details -->
+      <div class="form-container rounded-2xl p-6 animate-slide-up animation-delay-300">
+        <h3 class="text-xl font-light text-white mb-6 flex items-center">
+          <i class="fas fa-id-card mr-3 text-purple-400"></i>
+          Personal Details
+        </h3>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div>
+            <label class="block text-gray-400 text-sm mb-2" for="dateOfBirth">Date of Birth</label>
+            <input type="date" id="dateOfBirth" name="dateOfBirth" class="w-full p-4 rounded-xl form-input"
+              value="<%= user.dateOfBirth ? new Date(user.dateOfBirth).toISOString().split('T')[0] : '' %>">
+          </div>
+          <div>
+            <label class="block text-gray-400 text-sm mb-2" for="gender">Gender</label>
+            <select id="gender" name="gender" class="w-full p-4 rounded-xl form-input">
+              <option value="">Select Gender</option>
+              <option value="Male" <%=user.gender==='Male' ? 'selected' : '' %>>Male</option>
+              <option value="Memale" <%=user.gender==='Female' ? 'selected' : '' %>>Female</option>
+            </select>
+          </div>
+          <div class="md:col-span-2">
+            <label class="block text-gray-400 text-sm mb-2" for="location">Location</label>
+            <input type="text"  id="location" class="w-full p-4 rounded-xl form-input"
+              placeholder="City, Country">
+          </div>
+        </div>
+      </div>
+
+      <!-- Professional Information -->
+      <div class="form-container rounded-2xl p-6 animate-slide-up animation-delay-450">
+        <h3 class="text-xl font-light text-white mb-6 flex items-center">
+          <i class="fas fa-briefcase mr-3 text-yellow-400"></i>
+          Professional Information
+        </h3>
+
+        <div class="space-y-6">
+          <div>
+            <label class="block text-gray-400 text-sm mb-2" for="jobTitle">Job Title</label>
+            <input type="text" id="jobTitle" class="w-full p-4 rounded-xl form-input"
+              placeholder="Full Stack Developer">
+          </div>
+          <div>
+            <label class="block text-gray-400 text-sm mb-2" for="company">Company</label>
+            <input type="text" id="company" class="w-full p-4 rounded-xl form-input" placeholder="Company Name">
+          </div>
+          <div>
+            <label class="block text-gray-400 text-sm mb-2" for="website">Website/Portfolio</label>
+            <input type="url" id="website" class="w-full p-4 rounded-xl form-input"
+              placeholder="https://yourportfolio.com">
+          </div>
+          <div>
+            <label class="block text-gray-400 text-sm mb-2" for="bio">Bio/About</label>
+            <textarea id="bio" class="w-full p-4 rounded-xl form-input form-textarea" name="bio" value="<%= user.bio %>"
+              placeholder="Tell us about yourself, your experience, and what drives you..."></textarea>
+          </div>
+        </div>
+      </div>
+
+      <!-- Social Links -->
+      <div class="form-container rounded-2xl p-6 animate-slide-up animation-delay-600">
+        <h3 class="text-xl font-light text-white mb-6 flex items-center">
+          <i class="fas fa-share-alt mr-3 text-blue-400"></i>
+          Social Links
+        </h3>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div>
+            <label class="block text-gray-400 text-sm mb-2" for="linkedin">
+              <i class="fab fa-linkedin text-blue-400 mr-2"></i>LinkedIn
+            </label>
+            <input type="url" id="linkedin" class="w-full p-4 rounded-xl form-input"
+              placeholder="https://linkedin.com/in/username">
+          </div>
+          <div>
+            <label class="block text-gray-400 text-sm mb-2" for="github">
+              <i class="fab fa-github text-gray-400 mr-2"></i>GitHub
+            </label>
+            <input type="url" id="github" name="githubUrl" class="w-full p-4 rounded-xl form-input"
+              value="<%=user.githubUrl%>" placeholder="https://github.com/username">
+          </div>
+          <div>
+            <label class="block text-gray-400 text-sm mb-2" for="twitter">
+              <i class="fab fa-twitter text-blue-400 mr-2"></i>Twitter
+            </label>
+            <input type="url" id="twitter" class="w-full p-4 rounded-xl form-input"
+              placeholder="https://twitter.com/username">
+          </div>
+          <div>
+            <label class="block text-gray-400 text-sm mb-2" for="instagram">
+              <i class="fab fa-instagram text-pink-400 mr-2"></i>Instagram
+            </label>
+            <input type="url" id="instagram" class="w-full p-4 rounded-xl form-input"
+              placeholder="https://instagram.com/username">
+          </div>
+        </div>
+      </div>
+
+      <!-- Skills -->
+      <div class="form-container rounded-2xl p-6 animate-slide-up animation-delay-600">
+        <h3 class="text-xl font-light text-white mb-6 flex items-center">
+          <i class="fas fa-code mr-3 text-indigo-400"></i>
+          Skills
+        </h3>
+
+        <div>
+          <label class="block text-gray-400 text-sm mb-2" for="skills">Skills (separated by commas)</label>
+          <textarea id="skills" class="w-full p-4 rounded-xl form-input" rows="3"
+            placeholder="JavaScript, React, Node.js, Python, Design, etc."></textarea>
+          <p class="text-gray-500 text-xs mt-2">Enter your skills separated by commas. They will be displayed as tags on
+            your profile.</p>
+        </div>
+      </div>
+
+      <!-- Form Actions -->
+      <div class="flex flex-col sm:flex-row gap-4 justify-end">
+        <button type="button"
+          class="px-6 py-3 border border-gray-600 hover:border-gray-500 text-white rounded-xl transition"
+          onclick="window.location.href='/api/v1/profile'">
+          <i class="fas fa-times mr-2"></i>Cancel
+        </button>
+        <button type="button" class="px-6 py-3 bg-gray-700 hover:bg-gray-600 text-white rounded-xl transition"
+          onclick="saveAsDraft()">
+          <i class="fas fa-save mr-2"></i>Save as Draft
+        </button>
+        <button type="submit" class="px-6 py-3 bg-indigo-600 hover:bg-indigo-700 text-white rounded-xl transition">
+          <i class="fas fa-check mr-2"></i>Save Changes
+        </button>
+      </div>
+    </form>
+  </main>
+</div>
+
+<script>
+  // Form submission handler
+  // document.getElementById('profileForm').addEventListener('submit', function (e) {
+  //   e.preventDefault();
+  //
+  //   // Show loading state
+  //   const submitBtn = e.target.querySelector('button[type="submit"]');
+  //   const originalText = submitBtn.innerHTML;
+  //   submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i>Saving...';
+  //   submitBtn.disabled = true;
+  //
+  //   // Simulate API call
+  //   setTimeout(() => {
+  //     // Show success message
+  //     const successMessage = document.getElementById('successMessage');
+  //     successMessage.classList.remove('hidden');
+  //
+  //     // Reset button
+  //     submitBtn.innerHTML = originalText;
+  //     submitBtn.disabled = false;
+  //
+  //     // Scroll to top to show success message
+  //     window.scrollTo({top: 0, behavior: 'smooth'});
+  //
+  //     // Hide success message after 5 seconds
+  //     setTimeout(() => {
+  //       successMessage.classList.add('hidden');
+  //     }, 5000);
+  //
+  //     // Here you would normally send the data to your server
+  //     console.log('Form data:', new FormData(this));
+  //   }, 2000);
+  // });
+  //
+  // Save as draft function
+  function saveAsDraft() {
+    const draftBtn = document.querySelector('button[onclick="saveAsDraft()"]');
+    const originalText = draftBtn.innerHTML;
+    draftBtn.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i>Saving Draft...';
+    draftBtn.disabled = true;
+ 
+    setTimeout(() => {
+      draftBtn.innerHTML = '<i class="fas fa-check mr-2"></i>Draft Saved';
+      setTimeout(() => {
+        draftBtn.innerHTML = originalText;
+        draftBtn.disabled = false;
+      }, 2000);
+    }, 1000);
+  }
+
+  // Profile photo preview
+  // document.getElementById('profilePhoto').addEventListener('change', function (e) {
+  //   const file = e.target.files[0];
+  //   if (file) {
+  //     const reader = new FileReader();
+  //     reader.onload = function (e) {
+  //       const photoContainer = document.querySelector('.profile-photo-upload > div');
+  //       photoContainer.style.backgroundImage = `url('${e.target.result}')`;
+  //       photoContainer.style.backgroundSize = 'cover';
+  //       photoContainer.style.backgroundPosition = 'center';
+  //       photoContainer.innerHTML = '<div class="upload-overlay rounded-full"><i class="fas fa-camera text-white text-2xl"></i></div>';
+  //     };
+  //     reader.readAsDataURL(file);
+  //   }
+  // });
+
+  // Form validation
+  function validateForm() {
+    const requiredFields = document.querySelectorAll('input[required]');
+    let isValid = true;
+
+    requiredFields.forEach(field => {
+      if (!field.value.trim()) {
+        field.style.borderColor = '#ef4444';
+        isValid = false;
+      } else {
+        field.style.borderColor = '';
+      }
+    });
+
+    return isValid;
+  }
+
+  // Real-time validation
+  document.querySelectorAll('input[required]').forEach(field => {
+    field.addEventListener('blur', function () {
+      if (!this.value.trim()) {
+        this.style.borderColor = '#ef4444';
+      } else {
+        this.style.borderColor = '';
+      }
+    });
+  });
+
+  // Mobile menu functionality (if needed)
+  const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+  if (mobileMenuBtn) {
+    mobileMenuBtn.addEventListener('click', () => {
+      // Add mobile menu functionality if needed
+    });
+  }
+
+  // Auto-save functionality (optional)
+  let autoSaveTimeout;
+  function setupAutoSave() {
+    const formInputs = document.querySelectorAll('input, textarea, select');
+
+    formInputs.forEach(input => {
+      input.addEventListener('input', () => {
+        clearTimeout(autoSaveTimeout);
+        autoSaveTimeout = setTimeout(() => {
+          // Auto-save logic here
+          console.log('Auto-saving...');
+        }, 5000); // Auto-save after 5 seconds of inactivity
+      });
+    });
+  }
+
+  setupAutoSave();
+</script>
