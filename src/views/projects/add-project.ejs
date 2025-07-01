@@ -1,0 +1,285 @@
+  <!-- Background elements (identical to other pages) -->
+  <div class="absolute inset-0 overflow-hidden z-0">
+    <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-indigo-900 rounded-full mix-blend-soft-light filter blur-3xl opacity-20 animate-float"></div>
+    <div class="absolute top-1/3 right-1/4 w-80 h-80 bg-purple-900 rounded-full mix-blend-soft-light filter blur-3xl opacity-15 animate-float animation-delay-2000"></div>
+    <div class="absolute bottom-1/4 left-1/3 w-72 h-72 bg-blue-900 rounded-full mix-blend-soft-light filter blur-3xl opacity-20 animate-float animation-delay-3000"></div>
+  </div>
+
+  <!-- Navigation Header -->
+<div class="container mx-auto px-4 relative z-10">
+  <nav class="relative z-20 p-6 animate-fade-in">
+    <div class="max-w-6xl mx-auto flex justify-between items-center">
+      <div class="flex items-center space-x-3">
+        <a href="/api/v1/projects/view" class="flex items-center space-x-3">
+          <div class="w-10 h-10 rounded-full bg-gradient-to-br from-indigo-900 to-purple-900 flex items-center justify-center glow">
+            <i class="fas fa-plus text-white text-sm"></i>
+          </div>
+          <h1 class="text-2xl font-light text-white">Add Project</h1>
+        </a>
+      </div>
+      
+      <div class="flex items-center space-x-4">
+        <a href="/api/v1/projects/view" class="p-2 rounded-xl bg-gray-800/50 border border-gray-700 text-gray-400 hover:text-white hover:border-gray-600 transition">
+          <i class="fas fa-arrow-left"></i>
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main Content -->
+  <main class="relative z-10 max-w-4xl mx-auto px-6 pb-12">
+    <!-- Header Section -->
+    <div class="mb-8 animate-slide-up">
+      <h2 class="text-4xl font-light text-white mb-2">
+        Create <span class="text-indigo-400">New Project</span>
+      </h2>
+      <p class="text-gray-400">Fill in the details to add a new project to your portfolio</p>
+    </div>
+
+    <!-- Project Form -->
+    <div class="form-container rounded-2xl p-8 animate-slide-up animation-delay-150">
+      <% if (typeof error !== 'undefined') { %>
+        <div class="bg-red-900/50 border border-red-700 text-red-200 px-4 py-3 rounded mb-6 animate-fade-in">
+          <%= error %>
+        </div>
+      <% } %>
+
+      <form method="POST" action="/projects/add" enctype="multipart/form-data" class="space-y-6">
+
+        <!-- Project Cover Image -->
+        <div class="space-y-4">
+          <label class="block text-gray-400 text-sm font-light mb-2">Project Cover Image</label>
+          <div class="relative group">
+            <div id="image-preview" class="w-full h-64 rounded-xl bg-gray-800/30 border-2 border-dashed border-gray-700 flex items-center justify-center overflow-hidden">
+              <div class="text-center p-6">
+                <i class="fas fa-image text-4xl text-gray-500 mb-3"></i>
+                <p class="text-gray-400">Click to upload or drag and drop</p>
+                <p class="text-gray-500 text-sm mt-1">PNG, JPG, GIF up to 5MB</p>
+              </div>
+            </div>
+            <input 
+              type="file" 
+              id="cover-image" 
+              name="coverImage" 
+              accept="image/*" 
+              class="absolute inset-0 w-full h-full opacity-0 cursor-pointer"
+            >
+          </div>
+        </div>
+
+        <!-- Basic Information -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <!-- Project Name -->
+          <div>
+            <label class="block text-gray-400 text-sm font-light mb-2">Project Name</label>
+            <input 
+              type="text" 
+              name="name" 
+              required 
+              class="input-field w-full px-4 py-3 rounded-xl text-white border border-gray-700 focus:outline-none focus:ring-1 focus:ring-indigo-500/50" 
+              placeholder="e.g. Analytics Dashboard"
+            >
+          </div>
+
+          <!-- Project Category -->
+          <div>
+            <label class="block text-gray-400 text-sm font-light mb-2">Category</label>
+            <div class="relative">
+              <i class="fas fa-tag absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-500"></i>
+              <select 
+                name="category" 
+                required 
+                class="input-field w-full pl-12 pr-4 py-3 rounded-xl text-white border border-gray-700 focus:outline-none focus:ring-1 focus:ring-indigo-500/50 appearance-none"
+              >
+                <option value="" disabled selected>Select category</option>
+                <option value="web">Web Application</option>
+                <option value="mobile">Mobile App</option>
+                <option value="design">UI/UX Design</option>
+                <option value="other">Other</option>
+              </select>
+              <i class="fas fa-chevron-down absolute right-4 top-1/2 transform -translate-y-1/2 text-gray-500 pointer-events-none"></i>
+            </div>
+          </div>
+
+          <!-- Project URL -->
+          <div class="md:col-span-2">
+            <label class="block text-gray-400 text-sm font-light mb-2">Project URL</label>
+            <div class="relative">
+              <i class="fas fa-link absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-500"></i>
+              <input 
+                type="url" 
+                name="url" 
+                class="input-field w-full pl-12 pr-4 py-3 rounded-xl text-white border border-gray-700 focus:outline-none focus:ring-1 focus:ring-indigo-500/50" 
+                placeholder="https://example.com"
+              >
+            </div>
+          </div>
+        </div>
+
+        <!-- Project Description -->
+        <div class="space-y-4">
+          <label class="block text-gray-400 text-sm font-light mb-2">Description</label>
+          <textarea 
+            name="description" 
+            rows="4" 
+            required 
+            class="input-field w-full px-4 py-3 rounded-xl text-white border border-gray-700 focus:outline-none focus:ring-1 focus:ring-indigo-500/50" 
+            placeholder="Describe your project in detail..."
+          ></textarea>
+        </div>
+
+        <!-- Project Status -->
+        <div class="space-y-4">
+          <label class="block text-gray-400 text-sm font-light mb-2">Status</label>
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+            <label class="flex items-center space-x-3 p-3 rounded-xl border border-gray-700 hover:border-indigo-500 transition cursor-pointer">
+              <input type="radio" name="status" value="planned" class="text-indigo-500 focus:ring-indigo-500">
+              <div>
+                <span class="block text-white font-medium">Planned</span>
+                <span class="block text-gray-400 text-xs">In the pipeline</span>
+              </div>
+            </label>
+            
+            <label class="flex items-center space-x-3 p-3 rounded-xl border border-gray-700 hover:border-indigo-500 transition cursor-pointer">
+              <input type="radio" name="status" value="progress" class="text-indigo-500 focus:ring-indigo-500" checked>
+              <div>
+                <span class="block text-white font-medium">In Progress</span>
+                <span class="block text-gray-400 text-xs">Currently working on</span>
+              </div>
+            </label>
+            
+            <label class="flex items-center space-x-3 p-3 rounded-xl border border-gray-700 hover:border-indigo-500 transition cursor-pointer">
+              <input type="radio" name="status" value="completed" class="text-indigo-500 focus:ring-indigo-500">
+              <div>
+                <span class="block text-white font-medium">Completed</span>
+                <span class="block text-gray-400 text-xs">Finished project</span>
+              </div>
+            </label>
+          </div>
+        </div>
+
+        <!-- Project Tags -->
+        <div class="space-y-4">
+          <label class="block text-gray-400 text-sm font-light mb-2">Tags</label>
+          <div class="flex flex-wrap gap-2" id="tags-container">
+            <!-- Tags will be added here by JavaScript -->
+          </div>
+          <div class="relative">
+            <input 
+              type="text" 
+              id="tag-input" 
+              class="input-field w-full px-4 py-3 rounded-xl text-white border border-gray-700 focus:outline-none focus:ring-1 focus:ring-indigo-500/50" 
+              placeholder="Add tags (press Enter)"
+            >
+            <input type="hidden" name="tags" id="tags-hidden">
+          </div>
+        </div>
+
+        <!-- Form Actions -->
+        <div class="flex justify-end space-x-4 pt-6">
+          <a href="/api/v1/projects/view" class="px-6 py-3 rounded-xl border border-gray-700 text-gray-400 hover:text-white hover:border-gray-600 transition">
+            Cancel
+          </a>
+          <button 
+            type="submit" 
+            class="login-btn px-8 py-3 rounded-xl text-white font-medium text-lg hover:bg-indigo-700 transition-colors"
+          >
+            Create Project
+          </button>
+        </div>
+      </form>
+    </div>
+  </main>
+</div>
+
+  <script>
+    // Image preview functionality
+    const coverImageInput = document.getElementById('cover-image');
+    const imagePreview = document.getElementById('image-preview');
+
+    coverImageInput.addEventListener('change', function(e) {
+      const file = e.target.files[0];
+      if (file) {
+        const reader = new FileReader();
+        reader.onload = function(event) {
+          imagePreview.innerHTML = `<img src="${event.target.result}" alt="Preview" class="w-full h-full object-cover">`;
+          imagePreview.classList.remove('border-dashed');
+        };
+        reader.readAsDataURL(file);
+      }
+    });
+
+    // Drag and drop for image
+    imagePreview.addEventListener('dragover', (e) => {
+      e.preventDefault();
+      imagePreview.classList.add('border-indigo-500');
+    });
+
+    imagePreview.addEventListener('dragleave', () => {
+      imagePreview.classList.remove('border-indigo-500');
+    });
+
+    imagePreview.addEventListener('drop', (e) => {
+      e.preventDefault();
+      imagePreview.classList.remove('border-indigo-500');
+      if (e.dataTransfer.files.length) {
+        coverImageInput.files = e.dataTransfer.files;
+        const event = new Event('change');
+        coverImageInput.dispatchEvent(event);
+      }
+    });
+
+    // Tags functionality
+    const tagInput = document.getElementById('tag-input');
+    const tagsContainer = document.getElementById('tags-container');
+    const tagsHidden = document.getElementById('tags-hidden');
+    let tags = [];
+
+    tagInput.addEventListener('keydown', function(e) {
+      if (e.key === 'Enter' && this.value.trim() !== '') {
+        e.preventDefault();
+        const tagText = this.value.trim();
+        
+        if (!tags.includes(tagText)) {
+          tags.push(tagText);
+          updateTagsDisplay();
+          this.value = '';
+        }
+      }
+    });
+
+    function updateTagsDisplay() {
+      tagsContainer.innerHTML = '';
+      tags.forEach((tag, index) => {
+        const tagElement = document.createElement('div');
+        tagElement.className = 'inline-flex items-center bg-indigo-900/30 text-indigo-400 px-3 py-1 rounded-full text-sm';
+        tagElement.innerHTML = `
+          ${tag}
+          <button type="button" data-index="${index}" class="ml-2 text-indigo-300 hover:text-white">
+            <i class="fas fa-times text-xs"></i>
+          </button>
+        `;
+        tagsContainer.appendChild(tagElement);
+      });
+      tagsHidden.value = JSON.stringify(tags);
+    }
+
+    tagsContainer.addEventListener('click', function(e) {
+      if (e.target.closest('button')) {
+        const index = e.target.closest('button').getAttribute('data-index');
+        tags.splice(index, 1);
+        updateTagsDisplay();
+      }
+    });
+
+    // Add hover effect to submit button
+    const submitButton = document.querySelector('.login-btn');
+    submitButton.addEventListener('mouseenter', () => {
+      submitButton.style.transform = 'translateY(-2px)';
+    });
+    submitButton.addEventListener('mouseleave', () => {
+      submitButton.style.transform = 'translateY(0)';
+    });
+  </script>
+</body>
+</html>

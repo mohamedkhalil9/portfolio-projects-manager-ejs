@@ -1,444 +1,692 @@
-  <!-- Background elements -->
-  <div class="absolute inset-0 overflow-hidden z-0">
-    <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-indigo-900 rounded-full mix-blend-soft-light filter blur-3xl opacity-20 animate-float"></div>
-    <div class="absolute top-1/3 right-1/4 w-80 h-80 bg-purple-900 rounded-full mix-blend-soft-light filter blur-3xl opacity-15 animate-float animation-delay-2000"></div>
-    <div class="absolute bottom-1/4 left-1/3 w-72 h-72 bg-blue-900 rounded-full mix-blend-soft-light filter blur-3xl opacity-20 animate-float animation-delay-3000"></div>
-  </div>
+<!-- Background elements -->
+<div class="absolute inset-0 overflow-hidden z-0">
+    <div
+        class="absolute top-1/4 left-1/4 w-96 h-96 bg-indigo-900 rounded-full mix-blend-soft-light filter blur-3xl opacity-20 animate-float">
+    </div>
+    <div
+        class="absolute top-1/3 right-1/4 w-80 h-80 bg-purple-900 rounded-full mix-blend-soft-light filter blur-3xl opacity-15 animate-float animation-delay-2000">
+    </div>
+    <div
+        class="absolute bottom-1/4 left-1/3 w-72 h-72 bg-blue-900 rounded-full mix-blend-soft-light filter blur-3xl opacity-20 animate-float animation-delay-3000">
+    </div>
+</div>
 
-<div class="container  py-12  relative z-10">
-  <!-- Back button -->
-        <a href="/api/v1/profile" class="flex items-center space-x-3 text-gray-400 hover:text-white transition">
-          <i class="fas fa-arrow-left"></i>
-          <span>Back to Profile</span>
-        </a>
-  <!-- Navigation Header -->
-  <!-- <div class="container mx-auto px-4 py-12 max-w-4xl relative z-10"> -->
-  <!-- <nav class="relative z-20 p-6 animate-fade-in"> -->
-  <!--   <div class="max-w-7xl mx-auto flex justify-between items-center"> -->
-  <!--     <div class="flex items-center space-x-3"> -->
-  <!--       <a href="/api/v1/profile" class="flex items-center space-x-3"> -->
-  <!--         <div class="w-10 h-10 rounded-full bg-gradient-to-br from-indigo-900 to-purple-900 flex items-center justify-center glow"> -->
-  <!--           <i class="fas fa-arrow-left text-white text-sm"></i> -->
-  <!--         </div> -->
-  <!--         <h1 class="text-2xl font-light text-white">Project Catalog</h1> -->
-  <!--       </a> -->
-  <!--     </div> -->
-  <!--      -->
-  <!--     <div class="flex items-center space-x-6 text-gray-400"> -->
-  <!--       <a href="#" class="hover:text-white transition">All Projects</a> -->
-  <!--       <a href="#" class="hover:text-white transition">Web Apps</a> -->
-  <!--       <a href="#" class="hover:text-white transition">Mobile</a> -->
-  <!--       <a href="#" class="hover:text-white transition">Open Source</a> -->
-  <!--     </div> -->
-  <!--   </div> -->
-  <!-- </nav> -->
+<!-- Navigation Header -->
+<div class="container mx-auto px-4 relative z-10">
+    <nav class="relative z-20 p-6 animate-fade-in">
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
+            <div class="flex items-center space-x-3">
+                <a href="/api/v1/profile" class="flex items-center space-x-3">
+                    <div
+                        class="w-10 h-10 rounded-full bg-gradient-to-br from-indigo-900 to-purple-900 flex items-center justify-center glow">
+                        <i class="fas fa-arrow-left text-white text-sm"></i>
+                    </div>
+                    <h1 class="text-2xl font-light text-white">Project Catalog</h1>
+                </a>
+            </div>
 
-  <!-- Main Content -->
-  <main class="relative z-10 max-w-7xl mx-auto px-6 pb-12">
-    
-    <!-- Header Section -->
-    <div class="mb-8 text-center animate-slide-up">
-      <h2 class="text-4xl font-light text-white mb-4">
-        My <span class="text-indigo-400">Project</span> Gallery
-      </h2>
-      <p class="text-xl text-gray-400 mb-8">Explore my collection of web applications, mobile apps, and open-source contributions</p>
+            <div class="flex items-center space-x-6 text-gray-400">
+                <a href="#" class="hover:text-white transition">All Projects</a>
+                <a href="#" class="hover:text-white transition">Web Apps</a>
+                <a href="#" class="hover:text-white transition">Mobile</a>
+                <a href="#" class="hover:text-white transition">Open Source</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="relative z-10 max-w-7xl mx-auto px-6 pb-12">
+
+        <!-- Header Section -->
+        <div class="mb-8 text-center animate-slide-up">
+            <h2 class="text-4xl font-light text-white mb-4">
+                My <span class="text-indigo-400">Project</span> Gallery
+            </h2>
+            <p class="text-xl text-gray-400 mb-8">Explore my collection of web applications, mobile apps, and
+                open-source contributions</p>
+        </div>
+
+        <!-- Search and Filter Section -->
+        <div class="mb-8 animate-slide-up animation-delay-150">
+            <div class="form-container rounded-2xl p-6">
+                <div class="flex flex-col md:flex-row gap-6 items-center justify-between">
+                    <!-- Search Bar -->
+                    <div class="search-container flex-1 max-w-md">
+                        <div class="relative">
+                            <input type="text" id="searchInput" placeholder="Search projects..."
+                                class="search-input w-full px-4 py-3 pl-12 rounded-xl text-white placeholder-gray-400 focus:outline-none">
+                            <i
+                                class="fas fa-search absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400"></i>
+                        </div>
+                    </div>
+
+                    <!-- Filter Buttons -->
+                    <div class="flex flex-wrap gap-3">
+                        <button
+                            class="filter-btn active px-4 py-2 rounded-xl bg-gray-700 text-gray-300 hover:bg-gray-600"
+                            data-filter="all">
+                            All Projects
+                        </button>
+                        <button class="filter-btn px-4 py-2 rounded-xl bg-gray-700 text-gray-300 hover:bg-gray-600"
+                            data-filter="web">
+                            Web Apps
+                        </button>
+                        <button class="filter-btn px-4 py-2 rounded-xl bg-gray-700 text-gray-300 hover:bg-gray-600"
+                            data-filter="mobile">
+                            Mobile
+                        </button>
+                        <button class="filter-btn px-4 py-2 rounded-xl bg-gray-700 text-gray-300 hover:bg-gray-600"
+                            data-filter="fullstack">
+                            Full Stack
+                        </button>
+                        <button class="filter-btn px-4 py-2 rounded-xl bg-gray-700 text-gray-300 hover:bg-gray-600"
+                            data-filter="opensource">
+                            Open Source
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Projects Grid -->
+        <div id="projectsGrid"
+            class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 animate-slide-up animation-delay-300">
+
+            <!-- Project 1 - E-Commerce Platform -->
+            <div class="project-card form-container rounded-2xl p-6" data-category="web fullstack"
+                data-project="ecommerce">
+                <div
+                    class="w-full h-48 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-xl mb-4 flex items-center justify-center relative overflow-hidden">
+                    <i class="fas fa-shopping-cart text-white text-4xl"></i>
+                    <div class="absolute top-2 right-2">
+                        <span class="px-2 py-1 bg-green-500 text-white text-xs rounded-full">Live</span>
+                    </div>
+                </div>
+                <h4 class="text-white font-medium mb-2 text-lg">E-Commerce Platform</h4>
+                <p class="text-gray-400 text-sm mb-4">Full-stack e-commerce solution with React, Node.js, and Stripe
+                    integration. Features include user authentication, shopping cart, and payment processing.</p>
+                <div class="flex flex-wrap gap-2 mb-4">
+                    <span class="px-2 py-1 bg-blue-900/30 text-blue-400 text-xs rounded">React</span>
+                    <span class="px-2 py-1 bg-green-900/30 text-green-400 text-xs rounded">Node.js</span>
+                    <span class="px-2 py-1 bg-purple-900/30 text-purple-400 text-xs rounded">MongoDB</span>
+                    <span class="px-2 py-1 bg-yellow-900/30 text-yellow-400 text-xs rounded">Stripe</span>
+                </div>
+                <div class="flex justify-between items-center">
+                    <div class="flex space-x-3">
+                        <a href="#" class="text-indigo-400 hover:text-indigo-300 transition">
+                            <i class="fab fa-github"></i>
+                        </a>
+                        <a href="#" class="text-indigo-400 hover:text-indigo-300 transition">
+                            <i class="fas fa-external-link-alt"></i>
+                        </a>
+                    </div>
+                    <div class="flex items-center text-gray-400 text-sm">
+                        <i class="fas fa-star mr-1"></i>
+                        <span>4.8</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 2 - Analytics Dashboard -->
+            <div class="project-card form-container rounded-2xl p-6" data-category="web fullstack"
+                data-project="analytics">
+                <div
+                    class="w-full h-48 bg-gradient-to-br from-green-500 to-teal-600 rounded-xl mb-4 flex items-center justify-center relative overflow-hidden">
+                    <i class="fas fa-chart-line text-white text-4xl"></i>
+                    <div class="absolute top-2 right-2">
+                        <span class="px-2 py-1 bg-blue-500 text-white text-xs rounded-full">Demo</span>
+                    </div>
+                </div>
+                <h4 class="text-white font-medium mb-2 text-lg">Analytics Dashboard</h4>
+                <p class="text-gray-400 text-sm mb-4">Real-time analytics dashboard with interactive charts and data
+                    visualization. Built with Vue.js and D3.js for dynamic data presentation.</p>
+                <div class="flex flex-wrap gap-2 mb-4">
+                    <span class="px-2 py-1 bg-green-900/30 text-green-400 text-xs rounded">Vue.js</span>
+                    <span class="px-2 py-1 bg-yellow-900/30 text-yellow-400 text-xs rounded">D3.js</span>
+                    <span class="px-2 py-1 bg-red-900/30 text-red-400 text-xs rounded">Redis</span>
+                    <span class="px-2 py-1 bg-blue-900/30 text-blue-400 text-xs rounded">WebSocket</span>
+                </div>
+                <div class="flex justify-between items-center">
+                    <div class="flex space-x-3">
+                        <a href="#" class="text-indigo-400 hover:text-indigo-300 transition">
+                            <i class="fab fa-github"></i>
+                        </a>
+                        <a href="#" class="text-indigo-400 hover:text-indigo-300 transition">
+                            <i class="fas fa-external-link-alt"></i>
+                        </a>
+                    </div>
+                    <div class="flex items-center text-gray-400 text-sm">
+                        <i class="fas fa-star mr-1"></i>
+                        <span>4.6</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 3 - Task Management App -->
+            <div class="project-card form-container rounded-2xl p-6" data-category="mobile" data-project="taskmanager">
+                <div
+                    class="w-full h-48 bg-gradient-to-br from-pink-500 to-rose-600 rounded-xl mb-4 flex items-center justify-center relative overflow-hidden">
+                    <i class="fas fa-mobile-alt text-white text-4xl"></i>
+                    <div class="absolute top-2 right-2">
+                        <span class="px-2 py-1 bg-green-500 text-white text-xs rounded-full">Live</span>
+                    </div>
+                </div>
+                <h4 class="text-white font-medium mb-2 text-lg">Task Management App</h4>
+                <p class="text-gray-400 text-sm mb-4">Cross-platform mobile app for team collaboration and task
+                    management. Features real-time sync and offline capabilities.</p>
+                <div class="flex flex-wrap gap-2 mb-4">
+                    <span class="px-2 py-1 bg-blue-900/30 text-blue-400 text-xs rounded">React Native</span>
+                    <span class="px-2 py-1 bg-purple-900/30 text-purple-400 text-xs rounded">Firebase</span>
+                    <span class="px-2 py-1 bg-green-900/30 text-green-400 text-xs rounded">GraphQL</span>
+                </div>
+                <div class="flex justify-between items-center">
+                    <div class="flex space-x-3">
+                        <a href="#" class="text-indigo-400 hover:text-indigo-300 transition">
+                            <i class="fab fa-github"></i>
+                        </a>
+                        <a href="#" class="text-indigo-400 hover:text-indigo-300 transition">
+                            <i class="fas fa-external-link-alt"></i>
+                        </a>
+                    </div>
+                    <div class="flex items-center text-gray-400 text-sm">
+                        <i class="fas fa-star mr-1"></i>
+                        <span>4.9</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 4 - Social Media Platform -->
+            <div class="project-card form-container rounded-2xl p-6" data-category="web fullstack"
+                data-project="social">
+                <div
+                    class="w-full h-48 bg-gradient-to-br from-blue-500 to-cyan-600 rounded-xl mb-4 flex items-center justify-center relative overflow-hidden">
+                    <i class="fas fa-users text-white text-4xl"></i>
+                    <div class="absolute top-2 right-2">
+                        <span class="px-2 py-1 bg-yellow-500 text-white text-xs rounded-full">Beta</span>
+                    </div>
+                </div>
+                <h4 class="text-white font-medium mb-2 text-lg">Social Media Platform</h4>
+                <p class="text-gray-400 text-sm mb-4">Modern social media platform with real-time messaging, post
+                    sharing, and user interactions. Built with microservices architecture.</p>
+                <div class="flex flex-wrap gap-2 mb-4">
+                    <span class="px-2 py-1 bg-blue-900/30 text-blue-400 text-xs rounded">Next.js</span>
+                    <span class="px-2 py-1 bg-green-900/30 text-green-400 text-xs rounded">Node.js</span>
+                    <span class="px-2 py-1 bg-purple-900/30 text-purple-400 text-xs rounded">PostgreSQL</span>
+                    <span class="px-2 py-1 bg-red-900/30 text-red-400 text-xs rounded">Socket.io</span>
+                </div>
+                <div class="flex justify-between items-center">
+                    <div class="flex space-x-3">
+                        <a href="#" class="text-indigo-400 hover:text-indigo-300 transition">
+                            <i class="fab fa-github"></i>
+                        </a>
+                        <a href="#" class="text-indigo-400 hover:text-indigo-300 transition">
+                            <i class="fas fa-external-link-alt"></i>
+                        </a>
+                    </div>
+                    <div class="flex items-center text-gray-400 text-sm">
+                        <i class="fas fa-star mr-1"></i>
+                        <span>4.7</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 5 - Weather App -->
+            <div class="project-card form-container rounded-2xl p-6" data-category="mobile" data-project="weather">
+                <div
+                    class="w-full h-48 bg-gradient-to-br from-orange-500 to-red-600 rounded-xl mb-4 flex items-center justify-center relative overflow-hidden">
+                    <i class="fas fa-cloud-sun text-white text-4xl"></i>
+                    <div class="absolute top-2 right-2">
+                        <span class="px-2 py-1 bg-green-500 text-white text-xs rounded-full">Live</span>
+                    </div>
+                </div>
+                <h4 class="text-white font-medium mb-2 text-lg">Weather Forecast App</h4>
+                <p class="text-gray-400 text-sm mb-4">Beautiful weather app with 7-day forecast, location-based weather,
+                    and animated weather icons. Available on iOS and Android.</p>
+                <div class="flex flex-wrap gap-2 mb-4">
+                    <span class="px-2 py-1 bg-blue-900/30 text-blue-400 text-xs rounded">Flutter</span>
+                    <span class="px-2 py-1 bg-green-900/30 text-green-400 text-xs rounded">Dart</span>
+                    <span class="px-2 py-1 bg-purple-900/30 text-purple-400 text-xs rounded">API</span>
+                </div>
+                <div class="flex justify-between items-center">
+                    <div class="flex space-x-3">
+                        <a href="#" class="text-indigo-400 hover:text-indigo-300 transition">
+                            <i class="fab fa-github"></i>
+                        </a>
+                        <a href="#" class="text-indigo-400 hover:text-indigo-300 transition">
+                            <i class="fas fa-external-link-alt"></i>
+                        </a>
+                    </div>
+                    <div class="flex items-center text-gray-400 text-sm">
+                        <i class="fas fa-star mr-1"></i>
+                        <span>4.5</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 6 - Open Source Library -->
+            <div class="project-card form-container rounded-2xl p-6" data-category="opensource" data-project="library">
+                <div
+                    class="w-full h-48 bg-gradient-to-br from-purple-500 to-indigo-600 rounded-xl mb-4 flex items-center justify-center relative overflow-hidden">
+                    <i class="fas fa-code text-white text-4xl"></i>
+                    <div class="absolute top-2 right-2">
+                        <span class="px-2 py-1 bg-blue-500 text-white text-xs rounded-full">Open Source</span>
+                    </div>
+                </div>
+                <h4 class="text-white font-medium mb-2 text-lg">React UI Component Library</h4>
+                <p class="text-gray-400 text-sm mb-4">Comprehensive React component library with TypeScript support,
+                    customizable themes, and extensive documentation. 1000+ GitHub stars.</p>
+                <div class="flex flex-wrap gap-2 mb-4">
+                    <span class="px-2 py-1 bg-blue-900/30 text-blue-400 text-xs rounded">React</span>
+                    <span class="px-2 py-1 bg-blue-900/30 text-blue-400 text-xs rounded">TypeScript</span>
+                    <span class="px-2 py-1 bg-purple-900/30 text-purple-400 text-xs rounded">Storybook</span>
+                    <span class="px-2 py-1 bg-green-900/30 text-green-400 text-xs rounded">NPM</span>
+                </div>
+                <div class="flex justify-between items-center">
+                    <div class="flex space-x-3">
+                        <a href="#" class="text-indigo-400 hover:text-indigo-300 transition">
+                            <i class="fab fa-github"></i>
+                        </a>
+                        <a href="#" class="text-indigo-400 hover:text-indigo-300 transition">
+                            <i class="fas fa-external-link-alt"></i>
+                        </a>
+                    </div>
+                    <div class="flex items-center text-gray-400 text-sm">
+                        <i class="fas fa-star mr-1"></i>
+                        <span>4.8</span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Load More Button -->
+        <div class="text-center mt-12 animate-slide-up animation-delay-600">
+            <button id="loadMoreBtn"
+                class="px-8 py-4 bg-indigo-600 hover:bg-indigo-700 text-white rounded-xl transition">
+                <i class="fas fa-plus mr-2"></i>Load More Projects
+            </button>
+        </div>
+
+        <!-- Statistics Section -->
+        <div class="mt-16 grid grid-cols-1 md:grid-cols-4 gap-6 animate-slide-up animation-delay-750">
+            <div class="form-container rounded-2xl p-6 text-center">
+                <div class="text-3xl font-bold text-indigo-400 mb-2">25+</div>
+                <div class="text-gray-400">Completed Projects</div>
+            </div>
+            <div class="form-container rounded-2xl p-6 text-center">
+                <div class="text-3xl font-bold text-green-400 mb-2">15</div>
+                <div class="text-gray-400">Live Applications</div>
+            </div>
+            <div class="form-container rounded-2xl p-6 text-center">
+                <div class="text-3xl font-bold text-purple-400 mb-2">8</div>
+                <div class="text-gray-400">Open Source</div>
+            </div>
+            <div class="form-container rounded-2xl p-6 text-center">
+                <div class="text-3xl font-bold text-yellow-400 mb-2">5k+</div>
+                <div class="text-gray-400">GitHub Stars</div>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Project Modal -->
+    <div id="projectModal" class="project-modal fixed inset-0 z-50 hidden flex items-center justify-center p-4">
+        <div class="modal-content max-w-4xl w-full max-h-[90vh] overflow-y-auto rounded-2xl p-8">
+            <div class="flex justify-between items-start mb-6">
+                <h3 id="modalTitle" class="text-2xl font-light text-white">Project Details</h3>
+                <button id="closeModal" class="text-gray-400 hover:text-white transition">
+                    <i class="fas fa-times text-xl"></i>
+                </button>
+            </div>
+
+            <div id="modalContent" class="space-y-6">
+                <!-- Modal content will be dynamically loaded -->
+            </div>
+        </div>
     </div>
 
-    <!-- Search and Filter Section -->
-    <div class="mb-8 animate-slide-up animation-delay-150">
-      <div class="form-container rounded-2xl p-6">
-        <div class="flex flex-col md:flex-row gap-6 items-center justify-between">
-          <!-- Search Bar -->
-          <div class="search-container flex-1 max-w-md">
-            <div class="relative">
-              <input 
-                type="text" 
-                id="searchInput"
-                placeholder="Search projects..." 
-                class="search-input w-full px-4 py-3 pl-12 rounded-xl text-white placeholder-gray-400 focus:outline-none"
-              >
-              <i class="fas fa-search absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400"></i>
-            </div>
+    <script>
+        // Project data
+        const projects = {
+            ecommerce: {
+                title: "E-Commerce Platform",
+                description: "A comprehensive e-commerce solution built with modern web technologies. Features include user authentication, product catalog, shopping cart, payment processing with Stripe, order management, and admin dashboard.",
+                fullDescription: "This full-stack e-commerce platform was built to demonstrate modern web development practices. The frontend uses React with hooks for state management, while the backend is powered by Node.js and Express. The application features a responsive design, secure payment processing, and a comprehensive admin panel for managing products and orders.",
+                features: [
+                    "User authentication and authorization",
+                    "Product catalog with search and filtering",
+                    "Shopping cart and checkout process",
+                    "Stripe payment integration",
+                    "Order tracking and management",
+                    "Admin dashboard",
+                    "Responsive design",
+                    "Email notifications"
+                ],
+                technologies: ["React", "Node.js", "MongoDB", "Stripe", "JWT", "Tailwind CSS"],
+                github: "https://github.com/user/ecommerce-platform",
+                live: "https://ecommerce-demo.com",
+                images: ["image1.jpg", "image2.jpg", "image3.jpg"]
+            },
+            analytics: {
+                title: "Analytics Dashboard",
+                description: "Real-time analytics dashboard with interactive charts and data visualization capabilities.",
+                fullDescription: "A sophisticated analytics dashboard that provides real-time insights into business metrics. Built with Vue.js and D3.js for dynamic data visualization, it connects to multiple data sources and provides customizable dashboards for different user roles.",
+                features: [
+                    "Real-time data updates",
+                    "Interactive charts and graphs",
+                    "Customizable dashboards",
+                    "Multi-source data integration",
+                    "Export capabilities",
+                    "User role management",
+                    "Mobile responsive design"
+                ],
+                technologies: ["Vue.js", "D3.js", "Redis", "WebSocket", "Chart.js", "Express"],
+                github: "https://github.com/user/analytics-dashboard",
+                live: "https://analytics-demo.com"
+            },
+            // Add more project details...
+        };
+
+        // Filter functionality
+        const filterButtons = document.querySelectorAll('.filter-btn');
+        const projectCards = document.querySelectorAll('.project-card');
+        const searchInput = document.getElementById('searchInput');
+
+        filterButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                // Remove active class from all buttons
+                filterButtons.forEach(btn => btn.classList.remove('active'));
+                // Add active class to clicked button
+                button.classList.add('active');
+
+                const filter = button.getAttribute('data-filter');
+                filterProjects(filter);
+            });
+        });
+
+        function filterProjects(filter) {
+            projectCards.forEach(card => {
+                const categories = card.getAttribute('data-category').split(' ');
+
+                if (filter === 'all' || categories.includes(filter)) {
+                    card.style.display = 'block';
+                    setTimeout(() => {
+                        card.style.opacity = '1';
+                        card.style.transform = 'translateY(0)';
+                    }, 100);
+                } else {
+                    card.style.opacity = '0';
+                    card.style.transform = 'translateY(20px)';
+                    setTimeout(() => {
+                        card.style.display = 'none';
+                    }, 300);
+                }
+            });
+        }
+
+        // Search functionality
+        searchInput.addEventListener('input', (e) => {
+            const searchTerm = e.target.value.toLowerCase();
+
+            projectCards.forEach(card => {
+                const title = card.querySelector('h4').textContent.toLowerCase();
+                const description = card.querySelector('p').textContent.toLowerCase();
+                const technologies = Array.from(card.querySelectorAll('.px-2')).map(tech => tech.textContent.toLowerCase());
+
+                const matches = title.includes(searchTerm) ||
+                    description.includes(searchTerm) ||
+                    technologies.some(tech => tech.includes(searchTerm));
+
+                if (matches) {
+                    card.style.display = 'block';
+                    card.style.opacity = '1';
+                    card.style.transform = 'translateY(0)';
+                } else {
+                    card.style.opacity = '0';
+                    card.style.transform = 'translateY(20px)';
+                    setTimeout(() => {
+                        card.style.display = 'none';
+                    }, 300);
+                }
+            });
+        });
+
+        // Modal functionality
+        const modal = document.getElementById('projectModal');
+        const modalTitle = document.getElementById('modalTitle');
+        const modalContent = document.getElementById('modalContent');
+        const closeModal = document.getElementById('closeModal');
+
+        projectCards.forEach(card => {
+            card.addEventListener('click', () => {
+                const projectId = card.getAttribute('data-project');
+                openProjectModal(projectId);
+            });
+        });
+
+        function openProjectModal(projectId) {
+            const project = projects[projectId];
+            if (!project) return;
+
+            modalTitle.textContent = project.title;
+            modalContent.innerHTML = `
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+          <div>
+            <h4 class="text-xl font-medium text-white mb-4">Key Features</h4>
+            <ul class="space-y-2 mb-6">
+              ${project.features.map(feature => `<li class="text-gray-300 flex items-start"><i class="fas fa-check text-green-400 mr-2 mt-1"></i>${feature}</li>`).join('')}
+            </ul>
           </div>
           
-          <!-- Filter Buttons -->
-          <div class="flex flex-wrap gap-3">
-            <button class="filter-btn active px-4 py-2 rounded-xl bg-gray-700 text-gray-300 hover:bg-gray-600" data-filter="all">
-              All Projects
-            </button>
-            <button class="filter-btn px-4 py-2 rounded-xl bg-gray-700 text-gray-300 hover:bg-gray-600" data-filter="web">
-              Web Apps
-            </button>
-            <button class="filter-btn px-4 py-2 rounded-xl bg-gray-700 text-gray-300 hover:bg-gray-600" data-filter="mobile">
-              Mobile
-            </button>
-            <button class="filter-btn px-4 py-2 rounded-xl bg-gray-700 text-gray-300 hover:bg-gray-600" data-filter="fullstack">
-              Full Stack
-            </button>
-            <button class="filter-btn px-4 py-2 rounded-xl bg-gray-700 text-gray-300 hover:bg-gray-600" data-filter="opensource">
-              Open Source
-            </button>
+          <div>
+            <h4 class="text-xl font-medium text-white mb-4">Technologies Used</h4>
+            <div class="flex flex-wrap gap-2 mb-6">
+              ${project.technologies.map(tech => `<span class="px-3 py-1 bg-indigo-900/30 text-indigo-400 text-sm rounded-full">${tech}</span>`).join('')}
+            </div>
+            
+            <h4 class="text-xl font-medium text-white mb-4">Project Links</h4>
+            <div class="space-y-3">
+              ${project.github ? `<a href="${project.github}" class="flex items-center space-x-3 p-3 bg-gray-800/50 rounded-xl hover:bg-gray-700/50 transition">
+                <i class="fab fa-github text-gray-400"></i>
+                <span class="text-gray-300">View Source Code</span>
+              </a>` : ''}
+              ${project.live ? `<a href="${project.live}" class="flex items-center space-x-3 p-3 bg-gray-800/50 rounded-xl hover:bg-gray-700/50 transition">
+                <i class="fas fa-external-link-alt text-gray-400"></i>
+                <span class="text-gray-300">View Live Demo</span>
+              </a>` : ''}
+            </div>
           </div>
         </div>
-      </div>
-    </div>
+      `;
 
-    <!-- Projects Grid -->
-    <div id="projectsGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 animate-slide-up animation-delay-300">
-      
-      <!-- Project 1 - E-Commerce Platform -->
-      <div class="project-card form-container rounded-2xl p-6" data-category="web fullstack" data-project="ecommerce">
-        <div class="w-full h-48 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-xl mb-4 flex items-center justify-center relative overflow-hidden">
-          <i class="fas fa-shopping-cart text-white text-4xl"></i>
-          <div class="absolute top-2 right-2">
-            <span class="px-2 py-1 bg-green-500 text-white text-xs rounded-full">Live</span>
-          </div>
-        </div>
-        <h4 class="text-white font-medium mb-2 text-lg">E-Commerce Platform</h4>
-        <p class="text-gray-400 text-sm mb-4">Full-stack e-commerce solution with React, Node.js, and Stripe integration. Features include user authentication, shopping cart, and payment processing.</p>
-        <div class="flex flex-wrap gap-2 mb-4">
-          <span class="px-2 py-1 bg-blue-900/30 text-blue-400 text-xs rounded">React</span>
-          <span class="px-2 py-1 bg-green-900/30 text-green-400 text-xs rounded">Node.js</span>
-          <span class="px-2 py-1 bg-purple-900/30 text-purple-400 text-xs rounded">MongoDB</span>
-          <span class="px-2 py-1 bg-yellow-900/30 text-yellow-400 text-xs rounded">Stripe</span>
-        </div>
-        <div class="flex justify-between items-center">
-          <div class="flex space-x-3">
-            <a href="#" class="text-indigo-400 hover:text-indigo-300 transition">
-              <i class="fab fa-github"></i>
-            </a>
-            <a href="#" class="text-indigo-400 hover:text-indigo-300 transition">
-              <i class="fas fa-external-link-alt"></i>
-            </a>
-          </div>
-          <div class="flex items-center text-gray-400 text-sm">
-            <i class="fas fa-star mr-1"></i>
-            <span>4.8</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- Project 2 - Analytics Dashboard -->
-      <div class="project-card form-container rounded-2xl p-6" data-category="web fullstack" data-project="analytics">
-        <div class="w-full h-48 bg-gradient-to-br from-green-500 to-teal-600 rounded-xl mb-4 flex items-center justify-center relative overflow-hidden">
-          <i class="fas fa-chart-line text-white text-4xl"></i>
-          <div class="absolute top-2 right-2">
-            <span class="px-2 py-1 bg-blue-500 text-white text-xs rounded-full">Demo</span>
-          </div>
-        </div>
-        <h4 class="text-white font-medium mb-2 text-lg">Analytics Dashboard</h4>
-        <p class="text-gray-400 text-sm mb-4">Real-time analytics dashboard with interactive charts and data visualization. Built with Vue.js and D3.js for dynamic data presentation.</p>
-        <div class="flex flex-wrap gap-2 mb-4">
-          <span class="px-2 py-1 bg-green-900/30 text-green-400 text-xs rounded">Vue.js</span>
-          <span class="px-2 py-1 bg-yellow-900/30 text-yellow-400 text-xs rounded">D3.js</span>
-          <span class="px-2 py-1 bg-red-900/30 text-red-400 text-xs rounded">Redis</span>
-          <span class="px-2 py-1 bg-blue-900/30 text-blue-400 text-xs rounded">WebSocket</span>
-        </div>
-        <div class="flex justify-between items-center">
-          <div class="flex space-x-3">
-            <a href="#" class="text-indigo-400 hover:text-indigo-300 transition">
-              <i class="fab fa-github"></i>
-            </a>
-            <a href="#" class="text-indigo-400 hover:text-indigo-300 transition">
-              <i class="fas fa-external-link-alt"></i>
-            </a>
-          </div>
-          <div class="flex items-center text-gray-400 text-sm">
-            <i class="fas fa-star mr-1"></i>
-            <span>4.6</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- Project 3 - Task Management App -->
-      <div class="project-card form-container rounded-2xl p-6" data-category="mobile" data-project="taskmanager">
-        <div class="w-full h-48 bg-gradient-to-br from-pink-500 to-rose-600 rounded-xl mb-4 flex items-center justify-center relative overflow-hidden">
-          <i class="fas fa-mobile-alt text-white text-4xl"></i>
-          <div class="absolute top-2 right-2">
-            <span class="px-2 py-1 bg-green-500 text-white text-xs rounded-full">Live</span>
-          </div>
-        </div>
-        <h4 class="text-white font-medium mb-2 text-lg">Task Management App</h4>
-        <p class="text-gray-400 text-sm mb-4">Cross-platform mobile app for team collaboration and task management. Features real-time sync and offline capabilities.</p>
-        <div class="flex flex-wrap gap-2 mb-4">
-          <span class="px-2 py-1 bg-blue-900/30 text-blue-400 text-xs rounded">React Native</span>
-          <span class="px-2 py-1 bg-purple-900/30 text-purple-400 text-xs rounded">Firebase</span>
-          <span class="px-2 py-1 bg-green-900/30 text-green-400 text-xs rounded">GraphQL</span>
-        </div>
-        <div class="flex justify-between items-center">
-          <div class="flex space-x-3">
-            <a href="#" class="text-indigo-400 hover:text-indigo-300 transition">
-              <i class="fab fa-github"></i>
-            </a>
-            <a href="#" class="text-indigo-400 hover:text-indigo-300 transition">
-              <i class="fas fa-external-link-alt"></i>
-            </a>
-          </div>
-          <div class="flex items-center text-gray-400 text-sm">
-            <i class="fas fa-star mr-1"></i>
-            <span>4.9</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- Project 4 - Social Media Platform -->
-      <div class="project-card form-container rounded-2xl p-6" data-category="web fullstack" data-project="social">
-        <div class="w-full h-48 bg-gradient-to-br from-blue-500 to-cyan-600 rounded-xl mb-4 flex items-center justify-center relative overflow-hidden">
-          <i class="fas fa-users text-white text-4xl"></i>
-          <div class="absolute top-2 right-2">
-            <span class="px-2 py-1 bg-yellow-500 text-white text-xs rounded-full">Beta</span>
-          </div>
-        </div>
-        <h4 class="text-white font-medium mb-2 text-lg">Social Media Platform</h4>
-        <p class="text-gray-400 text-sm mb-4">Modern social media platform with real-time messaging, post sharing, and user interactions. Built with microservices architecture.</p>
-        <div class="flex flex-wrap gap-2 mb-4">
-          <span class="px-2 py-1 bg-blue-900/30 text-blue-400 text-xs rounded">Next.js</span>
-          <span class="px-2 py-1 bg-green-900/30 text-green-400 text-xs rounded">Node.js</span>
-          <span class="px-2 py-1 bg-purple-900/30 text-purple-400 text-xs rounded">PostgreSQL</span>
-          <span class="px-2 py-1 bg-red-900/30 text-red-400 text-xs rounded">Socket.io</span>
-        </div>
-        <div class="flex justify-between items-center">
-          <div class="flex space-x-3">
-            <a href="#" class="text-indigo-400 hover:text-indigo-300 transition">
-              <i class="fab fa-github"></i>
-            </a>
-            <a href="#" class="text-indigo-400 hover:text-indigo-300 transition">
-              <i class="fas fa-external-link-alt"></i>
-            </a>
-          </div>
-          <div class="flex items-center text-gray-400 text-sm">
-            <i class="fas fa-star mr-1"></i>
-            <span>4.7</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- Project 5 - Weather App -->
-      <div class="project-card form-container rounded-2xl p-6" data-category="mobile" data-project="weather">
-        <div class="w-full h-48 bg-gradient-to-br from-orange-500 to-red-600 rounded-xl mb-4 flex items-center justify-center relative overflow-hidden">
-          <i class="fas fa-cloud-sun text-white text-4xl"></i>
-          <div class="absolute top-2 right-2">
-            <span class="px-2 py-1 bg-green-500 text-white text-xs rounded-full">Live</span>
-          </div>
-        </div>
-        <h4 class="text-white font-medium mb-2 text-lg">Weather Forecast App</h4>
-        <p class="text-gray-400 text-sm mb-4">Beautiful weather app with 7-day forecast, location-based weather, and animated weather icons. Available on iOS and Android.</p>
-        <div class="flex flex-wrap gap-2 mb-4">
-          <span class="px-2 py-1 bg-blue-900/30 text-blue-400 text-xs rounded">Flutter</span>
-          <span class="px-2 py-1 bg-green-900/30 text-green-400 text-xs rounded">Dart</span>
-          <span class="px-2 py-1 bg-purple-900/30 text-purple-400 text-xs rounded">API</span>
-        </div>
-        <div class="flex justify-between items-center">
-          <div class="flex space-x-3">
-            <a href="#" class="text-indigo-400 hover:text-indigo-300 transition">
-              <i class="fab fa-github"></i>
-            </a>
-            <a href="#" class="text-indigo-400 hover:text-indigo-300 transition">
-              <i class="fas fa-external-link-alt"></i>
-            </a>
-          </div>
-          <div class="flex items-center text-gray-400 text-sm">
-            <i class="fas fa-star mr-1"></i>
-            <span>4.5</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- Project 6 - Open Source Library -->
-      <div class="project-card form-container rounded-2xl p-6" data-category="opensource" data-project="library">
-        <div class="w-full h-48 bg-gradient-to-br from-purple-500 to-indigo-600 rounded-xl mb-4 flex items-center justify-center relative overflow-hidden">
-          <i class="fas fa-code text-white text-4xl"></i>
-          <div class="absolute top-2 right-2">
-            <span class="px-2 py-1 bg-blue-500 text-white text-xs rounded-full">Open Source</span>
-          </div>
-        </div>
-        <h4 class="text-white font-medium mb-2 text-lg">React UI Component Library</h4>
-        <p class="text-gray-400 text-sm mb-4">Comprehensive React component library with TypeScript support, customizable themes, and extensive documentation. 1000+ GitHub stars.</p>
-        <div class="flex flex-wrap gap-2 mb-4">
-          <span class="px-2 py-1 bg-blue-900/30 text-blue-400 text-xs rounded">React</span>
-          <span class="px-2 py-1 bg-blue-900/30 text-blue-400 text-xs rounded">TypeScript</span>
-          <span class="px-2 py-1 bg-purple-900/30 text-purple-400 text-xs rounded">Storybook</span>
-          <span class="px-2 py-1 bg-green-900/30 text-green-400 text-xs rounded">NPM</span>
-        </div>
-        <div class="flex justify-between items-center">
-          <div class="flex space-x-3">
-            <a href="#" class="text-indigo-400 hover:text-indigo-300 transition">
-              <i class="fab fa-github"></i>
-            </a>
-            <a href="#" class="text-indigo-400 hover:text-indigo-300 transition">
-              <i class="fas fa-external-link-alt"></i>
-            </a>
-          </div>
-          <div class="flex items-center text-gray-400 text-sm">
-            <i class="fas fa-star mr-1"></i>
-            <span>4.8</span>
-          </div>
-        </div>
-      </div>
-
-    </div>
-
-    <!-- Load More Button -->
-    <div class="text-center mt-12 animate-slide-up animation-delay-600">
-      <button id="loadMoreBtn" class="px-8 py-4 bg-indigo-600 hover:bg-indigo-700 text-white rounded-xl transition">
-        <i class="fas fa-plus mr-2"></i>Load More Projects
-      </button>
-    </div>
-
-    <!-- Statistics Section -->
-    <div class="mt-16 grid grid-cols-1 md:grid-cols-4 gap-6 animate-slide-up animation-delay-750">
-      <div class="form-container rounded-2xl p-6 text-center">
-        <div class="text-3xl font-bold text-indigo-400 mb-2">25+</div>
-        <div class="text-gray-400">Completed Projects</div>
-      </div>
-      <div class="form-container rounded-2xl p-6 text-center">
-        <div class="text-3xl font-bold text-green-400 mb-2">15</div>
-        <div class="text-gray-400">Live Applications</div>
-      </div>
-      <div class="form-container rounded-2xl p-6 text-center">
-        <div class="text-3xl font-bold text-purple-400 mb-2">8</div>
-        <div class="text-gray-400">Open Source</div>
-      </div>
-      <div class="form-container rounded-2xl p-6 text-center">
-        <div class="text-3xl font-bold text-yellow-400 mb-2">5k+</div>
-        <div class="text-gray-400">GitHub Stars</div>
-      </div>
-    </div>
-
-  </main>
-
-  <!-- Project Modal -->
-  <div id="projectModal" class="project-modal fixed inset-0 z-50 hidden flex items-center justify-center p-4">
-    <div class="modal-content max-w-4xl w-full max-h-[90vh] overflow-y-auto rounded-2xl p-8">
-      <div class="flex justify-between items-start mb-6">
-        <h3 id="modalTitle" class="text-2xl font-light text-white">Project Details</h3>
-        <button id="closeModal" class="text-gray-400 hover:text-white transition">
-          <i class="fas fa-times text-xl"></i>
-        </button>
-      </div>
-      
-      <div id="modalContent" class="space-y-6">
-        <!-- Modal content will be dynamically loaded -->
-      </div>
-    </div>
-  </div>
-
-  <script>
-    // Project data
-    const projects = {
-      ecommerce: {
-        title: "E-Commerce Platform",
-        description: "A comprehensive e-commerce solution built with modern web technologies. Features include user authentication, product catalog, shopping cart, payment processing with Stripe, order management, and admin dashboard.",
-        fullDescription: "This full-stack e-commerce platform was built to demonstrate modern web development practices. The frontend uses React with hooks for state management, while the backend is powered by Node.js and Express. The application features a responsive design, secure payment processing, and a comprehensive admin panel for managing products and orders.",
-        features: [
-          "User authentication and authorization",
-          "Product catalog with search and filtering",
-          "Shopping cart and checkout process",
-          "Stripe payment integration",
-          "Order tracking and management",
-          "Admin dashboard",
-          "Responsive design",
-          "Email notifications"
-        ],
-        technologies: ["React", "Node.js", "MongoDB", "Stripe", "JWT", "Tailwind CSS"],
-        github: "https://github.com/user/ecommerce-platform",
-        live: "https://ecommerce-demo.com",
-        images: ["image1.jpg", "image2.jpg", "image3.jpg"]
-      },
-      analytics: {
-        title: "Analytics Dashboard",
-        description: "Real-time analytics dashboard with interactive charts and data visualization capabilities.",
-        fullDescription: "A sophisticated analytics dashboard that provides real-time insights into business metrics. Built with Vue.js and D3.js for dynamic data visualization, it connects to multiple data sources and provides customizable dashboards for different user roles.",
-        features: [
-          "Real-time data updates",
-          "Interactive charts and graphs",
-          "Customizable dashboards",
-          "Multi-source data integration",
-          "Export capabilities",
-          "User role management",
-          "Mobile responsive design"
-        ],
-        technologies: ["Vue.js", "D3.js", "Redis", "WebSocket", "Chart.js", "Express"],
-        github: "https://github.com/user/analytics-dashboard",
-        live: "https://analytics-demo.com"
-      },
-      // Add more project details...
-    };
-
-    // Filter functionality
-    const filterButtons = document.querySelectorAll('.filter-btn');
-    const projectCards = document.querySelectorAll('.project-card');
-    const searchInput = document.getElementById('searchInput');
-
-    filterButtons.forEach(button => {
-      button.addEventListener('click', () => {
-        // Remove active class from all buttons
-        filterButtons.forEach(btn => btn.classList.remove('active'));
-        // Add active class to clicked button
-        button.classList.add('active');
-        
-        const filter = button.getAttribute('data-filter');
-        filterProjects(filter);
-      });
-    });
-
-    function filterProjects(filter) {
-      projectCards.forEach(card => {
-        const categories = card.getAttribute('data-category').split(' ');
-        
-        if (filter === 'all' || categories.includes(filter)) {
-          card.style.display = 'block';
-          setTimeout(() => {
-            card.style.opacity = '1';
-            card.style.transform = 'translateY(0)';
-          }, 100);
-        } else {
-          card.style.opacity = '0';
-          card.style.transform = 'translateY(20px)';
-          setTimeout(() => {
-            card.style.display = 'none';
-          }, 300);
+            modal.classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
         }
-      });
-    }
 
-    // Search functionality
-    searchInput.addEventListener('input', (e) => {
-      const searchTerm = e.target.value.toLowerCase();
-      
-      projectCards.forEach(card => {
-        const title = card.querySelector('h4').textContent.toLowerCase();
-        const description = card.querySelector('p').textContent.toLowerCase();
-        const technologies = Array.from(card.querySelectorAll('.px-2')).map(tech => tech.textContent.toLowerCase());
-        
-        const matches = title.includes(searchTerm) || 
-                       description.includes(searchTerm) || 
-                       technologies.some(tech => tech.includes(searchTerm));
-        
-        if (matches) {
-          card.style.display = 'block';
-          card.style.opacity = '1';
-          card.style.transform = 'translateY(0)';
-        } else {
-          card.style.opacity = '0';
-          card.style.transform = 'translateY(20px)';
-          setTimeout(() => {
-            card.style.display = 'none';
-          }, 300);
+        closeModal.addEventListener('click', () => {
+            modal.classList.add('hidden');
+            document.body.style.overflow = 'auto';
+        });
+
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                modal.classList.add('hidden');
+                document.body.style.overflow = 'auto';
+            }
+        });
+
+        // Load more functionality
+        const loadMoreBtn = document.getElementById('loadMoreBtn');
+        let currentPage = 1;
+
+        loadMoreBtn.addEventListener('click', () => {
+            // Simulate loading more projects
+            loadMoreBtn.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i>Loading...';
+
+            setTimeout(() => {
+                // Add more project cards here
+                addMoreProjects();
+                loadMoreBtn.innerHTML = '<i class="fas fa-plus mr-2"></i>Load More Projects';
+            }, 1500);
+        });
+
+        function addMoreProjects() {
+            const projectsGrid = document.getElementById('projectsGrid');
+            const additionalProjects = [
+                {
+                    title: "Cryptocurrency Tracker",
+                    description: "Real-time cryptocurrency price tracking with portfolio management features.",
+                    category: "web",
+                    gradient: "from-yellow-500 to-orange-600",
+                    icon: "fas fa-coins",
+                    technologies: ["React", "Redux", "API", "Chart.js"],
+                    status: "Live",
+                    rating: "4.7"
+                },
+                {
+                    title: "Fitness Tracking App",
+                    description: "Mobile app for tracking workouts, nutrition, and fitness goals.",
+                    category: "mobile",
+                    gradient: "from-green-500 to-emerald-600",
+                    icon: "fas fa-dumbbell",
+                    technologies: ["React Native", "SQLite", "Redux"],
+                    status: "Beta",
+                    rating: "4.6"
+                },
+                {
+                    title: "AI Chat Bot",
+                    description: "Intelligent chatbot with natural language processing capabilities.",
+                    category: "web fullstack",
+                    gradient: "from-purple-500 to-pink-600",
+                    icon: "fas fa-robot",
+                    technologies: ["Python", "TensorFlow", "Flask", "React"],
+                    status: "Demo",
+                    rating: "4.8"
+                }
+            ];
+
+            additionalProjects.forEach(project => {
+                const projectCard = document.createElement('div');
+                projectCard.className = 'project-card form-container rounded-2xl p-6';
+                projectCard.setAttribute('data-category', project.category);
+                projectCard.innerHTML = `
+          <div class="w-full h-48 bg-gradient-to-br ${project.gradient} rounded-xl mb-4 flex items-center justify-center relative overflow-hidden">
+            <i class="${project.icon} text-white text-4xl"></i>
+            <div class="absolute top-2 right-2">
+              <span class="px-2 py-1 bg-green-500 text-white text-xs rounded-full">${project.status}</span>
+            </div>
+          </div>
+          <h4 class="text-white font-medium mb-2 text-lg">${project.title}</h4>
+          <p class="text-gray-400 text-sm mb-4">${project.description}</p>
+          <div class="flex flex-wrap gap-2 mb-4">
+            ${project.technologies.map(tech => `<span class="px-2 py-1 bg-blue-900/30 text-blue-400 text-xs rounded">${tech}</span>`).join('')}
+          </div>
+          <div class="flex justify-between items-center">
+            <div class="flex space-x-3">
+              <a href="#" class="text-indigo-400 hover:text-indigo-300 transition">
+                <i class="fab fa-github"></i>
+              </a>
+              <a href="#" class="text-indigo-400 hover:text-indigo-300 transition">
+                <i class="fas fa-external-link-alt"></i>
+              </a>
+            </div>
+            <div class="flex items-center text-gray-400 text-sm">
+              <i class="fas fa-star mr-1"></i>
+              <span>${project.rating}</span>
+            </div>
+          </div>
+        `;
+
+                // Add hover effects
+                projectCard.addEventListener('mouseenter', () => {
+                    projectCard.style.transform = 'translateY(-8px)';
+                });
+
+                projectCard.addEventListener('mouseleave', () => {
+                    projectCard.style.transform = 'translateY(0)';
+                });
+
+                projectsGrid.appendChild(projectCard);
+            });
+
+            currentPage++;
+
+            // Hide load more button after 3 pages
+            if (currentPage > 3) {
+                loadMoreBtn.style.display = 'none';
+            }
         }
-      });
-    });
 
-    // Modal functionality
-    const modal = document.getElementById('projectModal');
-    const modalTitle = document.getElementById('modalTitle');
-    const modalContent = document.getElementById('modalContent');
-    const closeModal = document.getElementById('closeModal');
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
 
-    projectCards.forEach(card => {
-      card.addEventListener('click', () => {
-        const projectId = card.getAttribute('data-project');
-        openProjectModal(projectId);
-      });
-    });
+        // Add scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe all project cards for scroll animations
+        document.querySelectorAll('.project-card').forEach(card => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(30px)';
+            card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(card);
+        });
+
+        // Initialize page
+        document.addEventListener('DOMContentLoaded', () => {
+            // Add initial animations
+            setTimeout(() => {
+                document.querySelectorAll('.animate-slide-up').forEach((element, index) => {
+                    setTimeout(() => {
+                        element.style.opacity = '1';
+                        element.style.transform = 'translateY(0)';
+                    }, index * 150);
+                });
+            }, 100);
+        });
+
+        // Keyboard navigation for modal
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && !modal.classList.contains('hidden')) {
+                modal.classList.add('hidden');
+                document.body.style.overflow = 'auto';
+            }
+        });
+
+        // Add loading states for external links
+        document.addEventListener('click', (e) => {
+            if (e.target.matches('a[href^="http"]') || e.target.closest('a[href^="http"]')) {
+                const link = e.target.matches('a') ? e.target : e.target.closest('a');
+                const icon = link.querySelector('i');
+                if (icon) {
+                    const originalClass = icon.className;
+                    icon.className = 'fas fa-spinner fa-spin';
+                    setTimeout(() => {
+                        icon.className = originalClass;
+                    }, 2000);
+                }
+            }
+        });
     </script>
