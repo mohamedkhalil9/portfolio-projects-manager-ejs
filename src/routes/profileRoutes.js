@@ -7,6 +7,10 @@ import {
   verifyEmail,
   updatePassword,
   uploadProfileImage,
+  editProfileView,
+  getProfile,
+  updateProfile,
+  deleteProfile,
 } from "../controllers/profileController.js";
 import { authenticate } from "../middlewares/authMiddleware.js";
 import { updatePassSchema, updateUserSchema } from "../validation/schemas.js";
@@ -16,14 +20,12 @@ import upload from "../middlewares/multer.js";
 const router = Router();
 
 router.use(authenticate);
-router.get("/edit", (req, res) => {
-  res.render("profile/edit", { user: req.user });
-});
+router.get("/edit", editProfileView);
 router
   .route("/")
   .get(getUserProfile)
   .post(validateBody(updateUserSchema), updateUserProfile)
-  .delete(deleteUserProfile);
+  .delete(deleteProfile);
 
 router.get("/verify-email", authenticate, sendEmailVerification);
 router.get("/verify-email/:token", verifyEmail);

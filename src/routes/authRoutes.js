@@ -27,7 +27,7 @@ router
   .route("/login")
   .get((req, res) => res.render("auth/login"))
   .post(validateBody(loginSchema), login);
-router.route("/logout").post(logout);
+router.route("/logout").get(logout);
 
 router.get(
   "/google",
