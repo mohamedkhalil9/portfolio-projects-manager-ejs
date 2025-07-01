@@ -69,7 +69,7 @@ router
 router
   .route("/reset-password")
   .get((req, res) => res.render("auth/reset-password"))
-  .patch(validateBody(resetPassSchema), resetPassword);
+  .post(validateBody(resetPassSchema), resetPassword);
 
 router.route("/refresh-token").post(newToken);
 

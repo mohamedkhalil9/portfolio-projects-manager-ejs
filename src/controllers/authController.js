@@ -156,7 +156,7 @@ export const forgotPassword = asyncHandler(async (req, res) => {
       httpOnly: true,
       signed: true,
       // secure: true,
-      sameSite: "strict",
+      // sameSite: "strict",
       maxAge: 1000 * 60 * 5,
     })
     // .json({
@@ -205,5 +205,6 @@ export const resetPassword = asyncHandler(async (req, res) => {
 
   res
     .status(200)
-    .json({ status: "success", message: "Password Updated", data: null });
+    // .json({ status: "success", message: "Password Updated", data: null });
+    .redirect("/api/v1/auth/login");
 });

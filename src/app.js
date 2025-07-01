@@ -25,8 +25,8 @@ app.set("view engine", "ejs");
 app.set("views", "src/views");
 app.use(expressLayouts);
 app.set("layout", "layouts/layout");
-app.set("layout extractScripts", true);
-app.set("layout extractStyles", true);
+// app.set("layout extractScripts", true);
+// app.set("layout extractStyles", true);
 app.use(express.static("public"));
 
 app.use(morgan("dev"));
