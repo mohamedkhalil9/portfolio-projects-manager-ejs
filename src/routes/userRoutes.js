@@ -17,6 +17,11 @@ const router = express.Router();
 router.use(authenticate);
 
 router.route("/").get(authorize("MANAGER", "ADMIN"), getUsers);
+router
+  .route("/list")
+  .get(authorize("MANAGER", "ADMIN"), (req, res) =>
+    res.render("admin/users-2"),
+  );
 
 router
   .route("/:id")
