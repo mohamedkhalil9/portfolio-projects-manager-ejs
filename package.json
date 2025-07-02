@@ -5,12 +5,14 @@
   "main": "src/server.js",
   "scripts": {
     "dev": "nodemon src/server.js",
-    "start": "node src/server.js"
+    "start": "node src/server.js",
+    "build:css": "pnpx @tailwindcss/cli -i ./public/css/input.css -o ./public/css/style.css"
   },
   "type": "module",
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@tailwindcss/cli": "^4.1.11",
     "bcrypt": "^6.0.0",
     "cloudinary": "^2.6.1",
     "compression": "^1.8.0",
@@ -39,6 +41,7 @@
     "passport-google-oauth20": "^2.0.0",
     "swagger-jsdoc": "^6.2.8",
     "swagger-ui-express": "^5.0.1",
+    "tailwindcss": "^4.1.11",
     "xss-clean": "^0.1.4"
   },
   "devDependencies": {
