@@ -130,3 +130,31 @@
       </div>
     </div>
 </div>
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        // // Add staggered animation delays
+        // const animatedElements = document.querySelectorAll('[class*="animate-"]');
+        // animatedElements.forEach((el, index) => {
+        //     const delay = index * 150 + 300;
+        //     el.style.animationDelay = `${delay}ms`;
+        //     el.style.opacity = "0";
+        // });
+
+        // Password visibility toggle
+        const passwordField = document.querySelector('input[type="password"]');
+        const eyeIcon = document.querySelector(".fa-eye-slash");
+
+        if (eyeIcon) {
+          eyeIcon.addEventListener("click", () => {
+            if (passwordField.type === "password") {
+              passwordField.type = "text";
+              eyeIcon.classList.replace("fa-eye-slash", "fa-eye");
+            } else {
+              passwordField.type = "password";
+              eyeIcon.classList.replace("fa-eye", "fa-eye-slash");
+            }
+          });
+        }
+      });
+
+    </script>
