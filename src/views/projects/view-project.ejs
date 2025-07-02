@@ -1,0 +1,188 @@
+<div>
+  <!-- Background elements -->
+  <div class="absolute inset-0 overflow-hidden z-0">
+    <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-indigo-900 rounded-full mix-blend-soft-light filter blur-3xl opacity-20 animate-float"></div>
+    <div class="absolute top-1/3 right-1/4 w-80 h-80 bg-purple-900 rounded-full mix-blend-soft-light filter blur-3xl opacity-15 animate-float animation-delay-2000"></div>
+    <div class="absolute bottom-1/4 left-1/3 w-72 h-72 bg-blue-900 rounded-full mix-blend-soft-light filter blur-3xl opacity-20 animate-float animation-delay-3000"></div>
+  </div>
+
+  <!-- Navigation -->
+  <nav class="relative z-20 p-6">
+    <div class="max-w-6xl mx-auto flex justify-between items-center">
+      <a href="/api/v1/profile" class="flex items-center space-x-3">
+        <div class="w-10 h-10 rounded-full bg-gradient-to-br from-indigo-900 to-purple-900 flex items-center justify-center glow">
+          <i class="fas fa-boxes text-white text-sm"></i>
+        </div>
+        <h1 class="text-2xl font-light text-white">Project Gallery</h1>
+      </a>
+
+      <div class="flex items-center space-x-6 text-gray-400">
+        <a href="/api/v1/projects/view" class="nav-btn hover:text-white transition">
+          <i class="fas fa-grid mr-2"></i>
+          <span class="hidden md:inline">All Projects</span>
+        </a>
+        <a href="/api/v1/projects/edit" class="nav-btn hover:text-white transition">
+          <i class="fas fa-arrow-left"></i>
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main Content -->
+  <div class="container mx-auto px-4 py-12 relative z-10">
+    <main class="relative z-10 max-w-6xl mx-auto px-6 pb-12">
+      <!-- Project Header -->
+      <header class="form-container rounded-2xl p-6 mb-8 animate-slide-up">
+        <h1 class="text-4xl font-light text-white mb-2">
+          Nexus - <span class="text-indigo-400">Social Media Dashboard</span>
+        </h1>
+        <p class="text-xl text-gray-400 mb-6">
+          Unified platform for managing multiple social media accounts with advanced analytics
+        </p>
+
+        <div class="flex flex-wrap gap-4">
+          <span class="px-4 py-2 bg-green-900/30 text-green-300 rounded-full border border-green-800/50 flex items-center">
+            <i class="fas fa-check-circle mr-2"></i>
+            Completed
+          </span>
+          <span class="px-4 py-2 bg-indigo-900/30 text-indigo-300 rounded-full border border-indigo-800/50 flex items-center">
+            <i class="fas fa-globe mr-2"></i>
+            Web Application
+          </span>
+          <div class="flex items-center text-gray-400">
+            <i class="far fa-calendar mr-2"></i>
+            <span>Launched: Oct 12, 2023</span>
+          </div>
+          <div class="flex items-center text-gray-400">
+            <i class="fas fa-users mr-2"></i>
+            <span>Team: 6 members</span>
+          </div>
+        </div>
+      </header>
+
+      <!-- Project Layout -->
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-8">
+        <!-- Gallery Column -->
+        <div class="lg:col-span-2 form-container rounded-2xl p-6 animate-slide-up animation-delay-100">
+          <div class="gallery-main mb-4">
+            <img src="https://images.unsplash.com/photo-1551650975-87deedd944c3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1074&q=80"
+                 alt="Nexus Dashboard" id="mainMedia" class="rounded-xl" />
+          </div>
+
+          <div class="gallery-thumbs flex space-x-4 overflow-x-auto py-2">
+            <!-- Thumb items here -->
+          </div>
+        </div>
+
+        <!-- Details Panel -->
+        <div class="form-container rounded-2xl p-6 animate-slide-up animation-delay-200">
+          <h2 class="text-2xl font-light text-white mb-4 flex items-center">
+            <i class="fas fa-info-circle mr-3 text-purple-400"></i>
+            Project Details
+          </h2>
+
+          <div class="space-y-4">
+            <div class="flex justify-between">
+              <span class="text-gray-400">Client</span>
+              <span class="text-white">SocialConnect Solutions</span>
+            </div>
+            
+            <div class="flex justify-between">
+              <span class="text-gray-400">Timeline</span>
+              <span class="text-white">6 months</span>
+            </div>
+            
+            <div>
+              <div class="text-gray-400 mb-2">Technologies</div>
+              <div class="flex flex-wrap gap-2">
+                <span class="px-3 py-1 bg-indigo-900/30 text-indigo-300 rounded-full border border-indigo-800/50">React</span>
+                <span class="px-3 py-1 bg-indigo-900/30 text-indigo-300 rounded-full border border-indigo-800/50">Node.js</span>
+                <!-- More tech items -->
+              </div>
+            </div>
+            
+            <div class="flex justify-between">
+              <span class="text-gray-400">Project Value</span>
+              <span class="text-white">$120,000</span>
+            </div>
+          </div>
+
+          <div class="flex flex-col space-y-3 mt-6">
+            <a href="https://nexus-dashboard.example.com" target="_blank" 
+               class="px-4 py-3 bg-indigo-600 hover:bg-indigo-700 text-white rounded-xl transition text-center">
+              <i class="fas fa-external-link-alt mr-2"></i>
+              Live Demo
+            </a>
+            <a href="https://github.com/nexus-dashboard" target="_blank" 
+               class="px-4 py-3 border border-gray-600 hover:border-gray-500 text-white rounded-xl transition text-center">
+              <i class="fab fa-github mr-2"></i>
+              GitHub Repository
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Project Content -->
+      <div class="form-container rounded-2xl p-6 animate-slide-up animation-delay-300">
+        <h2 class="text-2xl font-light text-white mb-4 flex items-center">
+          <i class="fas fa-file-alt mr-3 text-blue-400"></i>
+          Project Description
+        </h2>
+
+        <div class="text-gray-300 leading-relaxed space-y-4">
+          <p>
+            Nexus is a comprehensive social media management dashboard designed
+            for marketing teams and agencies...
+          </p>
+          <!-- More content -->
+        </div>
+
+        <h2 class="text-2xl font-light text-white mt-8 mb-4 flex items-center">
+          <i class="fas fa-star mr-3 text-yellow-400"></i>
+          Key Features
+        </h2>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div class="feature-card p-4 rounded-xl border border-gray-700 hover:border-indigo-500 transition">
+            <div class="w-12 h-12 rounded-full bg-indigo-900/30 flex items-center justify-center mb-3">
+              <i class="fas fa-chart-line text-indigo-400"></i>
+            </div>
+            <h3 class="text-white font-medium mb-2">Unified Analytics</h3>
+            <p class="text-gray-400">
+              Track performance across all platforms with customizable reports...
+            </p>
+          </div>
+          <!-- More feature cards -->
+        </div>
+
+        <h2 class="text-2xl font-light text-white mt-8 mb-4 flex items-center">
+          <i class="fas fa-users mr-3 text-green-400"></i>
+          Collaboration Team
+        </h2>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+          <div class="flex items-center space-x-4 p-3 rounded-lg hover:bg-gray-800/30 transition">
+            <div class="w-12 h-12 rounded-full bg-gradient-to-br from-indigo-500 to-purple-500 flex items-center justify-center text-white font-bold">
+              AJ
+            </div>
+            <div>
+              <div class="text-white">Alex Johnson</div>
+              <div class="text-gray-400 text-sm">Project Lead & Fullstack Dev</div>
+            </div>
+          </div>
+          <!-- More team members -->
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <!-- Footer -->
+  <footer class="relative z-10 py-8 text-center text-gray-400 animate-slide-up animation-delay-400">
+    <div class="max-w-6xl mx-auto">
+      <p>© 2024 Project Gallery. All rights reserved.</p>
+      <p class="mt-2">
+        Crafted with <i class="fas fa-heart text-indigo-400"></i> for innovative solutions
+      </p>
+    </div>
+  </footer>
+</div>

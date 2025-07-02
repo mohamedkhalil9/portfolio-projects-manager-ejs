@@ -31,6 +31,7 @@ router.get("/add", (req, res) => res.render("projects/add-project"));
 router.get("/edit", (req, res) =>
   res.render("projects/edit-project", { project }),
 );
+router.get("/single", (req, res) => res.render("projects/view-project"));
 router.route("/").get(getCurrentUserProjects).post(createProject);
 
 router
