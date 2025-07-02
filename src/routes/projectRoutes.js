@@ -23,7 +23,7 @@ router.use(authenticate);
 const project = {
   name: "test project",
   description: "a project to show case the edit view",
-  url: "https://github.com/JWT-Auth-node.git",
+  url: "https://github.com/mohamedkhalil9/portfolio-projects-manager-ejs.git",
   tags: ["js", "node"],
 };
 router.get("/view", (req, res) => res.render("projects/view-projects-2"));
@@ -31,7 +31,9 @@ router.get("/add", (req, res) => res.render("projects/add-project"));
 router.get("/edit", (req, res) =>
   res.render("projects/edit-project", { project }),
 );
-router.get("/single", (req, res) => res.render("projects/view-project"));
+router.get("/single", (req, res) =>
+  res.render("projects/view-project-2", { project }),
+);
 router.route("/").get(getCurrentUserProjects).post(createProject);
 
 router
