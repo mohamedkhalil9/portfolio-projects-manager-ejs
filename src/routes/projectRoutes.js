@@ -32,7 +32,7 @@ router.get("/edit", (req, res) =>
   res.render("projects/edit-project", { project }),
 );
 router.get("/single", (req, res) =>
-  res.render("projects/view-project-2", { project }),
+  res.render("projects/view-project", { project }),
 );
 router.route("/").get(getCurrentUserProjects).post(createProject);
 
