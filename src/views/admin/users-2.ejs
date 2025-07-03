@@ -1,49 +1,64 @@
-  <!-- Background elements -->
-  <div class="absolute inset-0 overflow-hidden z-0">
-    <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-indigo-900 rounded-full mix-blend-soft-light filter blur-3xl opacity-20 animate-float"></div>
-    <div class="absolute top-1/3 right-1/4 w-80 h-80 bg-purple-900 rounded-full mix-blend-soft-light filter blur-3xl opacity-15 animate-float animation-delay-2000"></div>
-    <div class="absolute bottom-1/4 left-1/3 w-72 h-72 bg-blue-900 rounded-full mix-blend-soft-light filter blur-3xl opacity-20 animate-float animation-delay-3000"></div>
+<!-- Background elements -->
+<div class="absolute inset-0 overflow-hidden z-0">
+  <div
+    class="absolute top-1/4 left-1/4 w-96 h-96 bg-indigo-900 rounded-full mix-blend-soft-light filter blur-3xl opacity-20 animate-float">
   </div>
+  <div
+    class="absolute top-1/3 right-1/4 w-80 h-80 bg-purple-900 rounded-full mix-blend-soft-light filter blur-3xl opacity-15 animate-float animation-delay-2000">
+  </div>
+  <div
+    class="absolute bottom-1/4 left-1/3 w-72 h-72 bg-blue-900 rounded-full mix-blend-soft-light filter blur-3xl opacity-20 animate-float animation-delay-3000">
+  </div>
+</div>
 
-  <!-- Navigation Header -->
+<!-- Navigation Header -->
 <div class="container mx-auto px-4 py-12 relative z-10">
   <nav class="relative z-20 p-6 animate-fade-in">
     <div class="max-w-7xl mx-auto flex justify-between items-center">
       <div class="flex items-center space-x-3">
-        <div class="w-10 h-10 rounded-full bg-gradient-to-br from-indigo-900 to-purple-900 flex items-center justify-center glow">
+        <div
+          class="w-10 h-10 rounded-full bg-gradient-to-br from-indigo-900 to-purple-900 flex items-center justify-center glow">
           <i class="fas fa-users-cog text-white text-sm"></i>
         </div>
         <h1 class="text-2xl font-light text-white">Admin Dashboard</h1>
       </div>
-      
+
       <div class="flex items-center space-x-4">
-        <button class="p-3 rounded-xl bg-black/50 border border-white/10 text-gray-400 hover:text-white hover:border-white/20 hover:bg-black/70 transition-all duration-300 backdrop-filter backdrop-blur-md">
+        <button
+          class="p-3 rounded-xl bg-black/50 border border-white/10 text-gray-400 hover:text-white hover:border-white/20 hover:bg-black/70 transition-all duration-300 backdrop-filter backdrop-blur-md">
           <i class="fas fa-bell"></i>
         </button>
-        <button class="p-3 rounded-xl bg-black/50 border border-white/10 text-gray-400 hover:text-white hover:border-white/20 hover:bg-black/70 transition-all duration-300 backdrop-filter backdrop-blur-md">
+        <button
+          class="p-3 rounded-xl bg-black/50 border border-white/10 text-gray-400 hover:text-white hover:border-white/20 hover:bg-black/70 transition-all duration-300 backdrop-filter backdrop-blur-md">
           <i class="fas fa-cog"></i>
         </button>
         <div class="relative">
-          <button class="flex items-center space-x-2 p-3 rounded-xl bg-black/50 border border-white/10 text-gray-400 hover:text-white hover:border-white/20 hover:bg-black/70 transition-all duration-300 backdrop-filter backdrop-blur-md" id="profileDropdown">
-            <div class="w-8 h-8 rounded-full bg-gradient-to-br from-indigo-500 to-purple-500 flex items-center justify-center text-white text-sm font-medium">
+          <button
+            class="flex items-center space-x-2 p-3 rounded-xl bg-black/50 border border-white/10 text-gray-400 hover:text-white hover:border-white/20 hover:bg-black/70 transition-all duration-300 backdrop-filter backdrop-blur-md"
+            id="profileDropdown">
+            <div
+              class="w-8 h-8 rounded-full bg-gradient-to-br from-indigo-500 to-purple-500 flex items-center justify-center text-white text-sm font-medium">
               AD
             </div>
             <i class="fas fa-chevron-down text-xs"></i>
           </button>
-          
+
           <!-- Dropdown Menu -->
           <div class="absolute right-0 mt-2 w-48 form-container rounded-xl shadow-2xl hidden" id="dropdownMenu">
             <div class="p-2">
-              <a href="/admin/profile" class="flex items-center space-x-2 p-3 rounded-lg text-gray-400 hover:text-white hover:bg-black/50 transition-all duration-300">
+              <a href="/admin/profile"
+                class="flex items-center space-x-2 p-3 rounded-lg text-gray-400 hover:text-white hover:bg-black/50 transition-all duration-300">
                 <i class="fas fa-user text-sm"></i>
                 <span>Profile</span>
               </a>
-              <a href="/admin/settings" class="flex items-center space-x-2 p-3 rounded-lg text-gray-400 hover:text-white hover:bg-black/50 transition-all duration-300">
+              <a href="/admin/settings"
+                class="flex items-center space-x-2 p-3 rounded-lg text-gray-400 hover:text-white hover:bg-black/50 transition-all duration-300">
                 <i class="fas fa-cog text-sm"></i>
                 <span>Settings</span>
               </a>
-              <hr class="border-white/10 my-2">
-              <a href="/auth/logout" class="flex items-center space-x-2 p-3 rounded-lg text-red-400 hover:text-red-300 hover:bg-red-900/20 transition-all duration-300">
+              <hr class="border-white/10 my-2" />
+              <a href="/auth/logout"
+                class="flex items-center space-x-2 p-3 rounded-lg text-red-400 hover:text-red-300 hover:bg-red-900/20 transition-all duration-300">
                 <i class="fas fa-sign-out-alt text-sm"></i>
                 <span>Logout</span>
               </a>
@@ -70,7 +85,9 @@
         <div class="flex items-center justify-between">
           <div>
             <p class="text-gray-400 text-sm font-medium">Total Users</p>
-            <p class="text-3xl font-light text-white mt-1">1,247</p>
+            <p class="text-3xl font-light text-white mt-1">
+              <%= users.length %>
+            </p>
             <p class="text-indigo-400 text-xs mt-1 flex items-center">
               <i class="fas fa-arrow-up text-xs mr-1"></i>
               +12% from last month
@@ -81,7 +98,7 @@
           </div>
         </div>
       </div>
-      
+
       <div class="form-container rounded-2xl p-6 animate-slide-up animation-delay-300">
         <div class="flex items-center justify-between">
           <div>
@@ -97,7 +114,7 @@
           </div>
         </div>
       </div>
-      
+
       <div class="form-container rounded-2xl p-6 animate-slide-up animation-delay-450">
         <div class="flex items-center justify-between">
           <div>
@@ -113,11 +130,13 @@
           </div>
         </div>
       </div>
-      
+
       <div class="form-container rounded-2xl p-6 animate-slide-up animation-delay-600">
         <div class="flex items-center justify-between">
           <div>
-            <p class="text-gray-400 text-sm font-medium">Pending Verification</p>
+            <p class="text-gray-400 text-sm font-medium">
+              Pending Verification
+            </p>
             <p class="text-3xl font-light text-white mt-1">23</p>
             <p class="text-yellow-400 text-xs mt-1 flex items-center">
               <i class="fas fa-minus text-xs mr-1"></i>
@@ -137,24 +156,20 @@
         <div class="flex-1 max-w-md">
           <div class="search-container">
             <i class="fas fa-search search-icon"></i>
-            <input 
-              type="text" 
-              placeholder="Search users..." 
-              class="search-input"
-              id="searchInput"
-            >
+            <input type="text" placeholder="Search users..." class="search-input" id="searchInput" />
           </div>
         </div>
-        
+
         <div class="flex items-center gap-4">
-          <select class="search-input" id="statusFilter" style="width: auto; padding-left: 1rem;">
+          <select class="search-input" id="statusFilter" style="width: auto; padding-left: 1rem">
             <option value="">All Status</option>
             <option value="active">Active</option>
             <option value="inactive">Inactive</option>
             <option value="pending">Pending</option>
           </select>
-          
-          <button class="px-6 py-3 bg-gradient-to-r from-indigo-600 to-purple-600 text-white rounded-xl hover:from-indigo-700 hover:to-purple-700 transition-all duration-300 flex items-center gap-2 shadow-lg hover:shadow-xl hover:shadow-indigo-500/25 transform hover:scale-105">
+
+          <button
+            class="px-6 py-3 bg-gradient-to-r from-indigo-600 to-purple-600 text-white rounded-xl hover:from-indigo-700 hover:to-purple-700 transition-all duration-300 flex items-center gap-2 shadow-lg hover:shadow-xl hover:shadow-indigo-500/25 transform hover:scale-105">
             <i class="fas fa-plus"></i>
             Add User
           </button>
@@ -177,196 +192,213 @@
               <th>Actions</th>
             </tr>
           </thead>
+
           <tbody id="usersTableBody">
             <!-- Sample data - in real app this would be dynamically generated -->
-            <tr class="user-row">
-              <td>
-                <div class="flex items-center space-x-3">
-                  <div class="user-avatar">JD</div>
-                  <div>
-                    <p class="font-medium">John Doe</p>
-                    <p class="text-sm text-gray-400">ID: #1001</p>
+            <% users.forEach((user)=> { %>
+              <tr class="user-row">
+                <td>
+                  <div class="flex items-center space-x-3">
+                    <div class="user-avatar">
+                      <%= `${user.firstName.charAt(0)}${user.lastName.charAt(0)}` %>
+                    </div>
+                    <div>
+                      <p class="font-medium">
+                        <%= user.firstName %>
+                      </p>
+                      <p class="text-sm text-gray-400">
+                        ID: 1001 %>
+                      </p>
+                    </div>
                   </div>
-                </div>
-              </td>
-              <td>john.doe@example.com</td>
-              <td>
-                <span class="status-badge status-active">
-                  <i class="fas fa-circle text-xs mr-1"></i>
-                  Active
-                </span>
-              </td>
-              <td>
-                <span class="text-gray-300">User</span>
-              </td>
-              <td>Jan 15, 2024</td>
-              <td>2 hours ago</td>
-              <td>
-                <div class="flex items-center space-x-2">
-                  <button class="action-button action-view" onclick="viewUser(1001)" title="View User">
-                    <i class="fas fa-eye"></i>
-                  </button>
-                  <button class="action-button action-edit" onclick="editUser(1001)" title="Edit User">
-                    <i class="fas fa-edit"></i>
-                  </button>
-                  <button class="action-button action-delete" onclick="deleteUser(1001, 'John Doe')" title="Delete User">
-                    <i class="fas fa-trash"></i>
-                  </button>
-                </div>
-              </td>
-            </tr>
-            
-            <tr class="user-row">
-              <td>
-                <div class="flex items-center space-x-3">
-                  <div class="user-avatar">JS</div>
-                  <div>
-                    <p class="font-medium">Jane Smith</p>
-                    <p class="text-sm text-gray-400">ID: #1002</p>
+                </td>
+                <td>
+                  <%= user.email %>
+                </td>
+                <td>
+                  <span class="status-badge status-active">
+                    <i class="fas fa-circle text-xs mr-1"></i>
+                    Active
+                  </span>
+                </td>
+                <td>
+                  <span class="text-gray-300"><%= user.role %></span>
+                </td>
+                <td>
+                  <!-- <%= user.createdAt %> -->
+                </td>
+                <td>2 hours ago</td>
+                <td>
+                  <div class="flex items-center space-x-2">
+                    <button class="action-button action-view" onclick="viewUser(1001)" title="View User">
+                      <i class="fas fa-eye"></i>
+                    </button>
+                    <button class="action-button action-edit" onclick="editUser(1001)" title="Edit User">
+                      <i class="fas fa-edit"></i>
+                    </button>
+                    <button class="action-button action-delete" onclick="deleteUser(1001, 'John Doe')"
+                      title="Delete User">
+                      <i class="fas fa-trash"></i>
+                    </button>
                   </div>
-                </div>
-              </td>
-              <td>jane.smith@example.com</td>
-              <td>
-                <span class="status-badge status-pending">
-                  <i class="fas fa-clock text-xs mr-1"></i>
-                  Pending
-                </span>
-              </td>
-              <td>
-                <span class="text-gray-300">User</span>
-              </td>
-              <td>Jan 20, 2024</td>
-              <td>Never</td>
-              <td>
-                <div class="flex items-center space-x-2">
-                  <button class="action-button action-view" onclick="viewUser(1002)" title="View User">
-                    <i class="fas fa-eye"></i>
-                  </button>
-                  <button class="action-button action-edit" onclick="editUser(1002)" title="Edit User">
-                    <i class="fas fa-edit"></i>
-                  </button>
-                  <button class="action-button action-delete" onclick="deleteUser(1002, 'Jane Smith')" title="Delete User">
-                    <i class="fas fa-trash"></i>
-                  </button>
-                </div>
-              </td>
-            </tr>
-            
-            <tr class="user-row">
-              <td>
-                <div class="flex items-center space-x-3">
-                  <div class="user-avatar">MW</div>
-                  <div>
-                    <p class="font-medium">Mike Wilson</p>
-                    <p class="text-sm text-gray-400">ID: #1003</p>
-                  </div>
-                </div>
-              </td>
-              <td>mike.wilson@example.com</td>
-              <td>
-                <span class="status-badge status-active">
-                  <i class="fas fa-circle text-xs mr-1"></i>
-                  Active
-                </span>
-              </td>
-              <td>
-                <span class="text-indigo-400">Admin</span>
-              </td>
-              <td>Dec 5, 2023</td>
-              <td>1 day ago</td>
-              <td>
-                <div class="flex items-center space-x-2">
-                  <button class="action-button action-view" onclick="viewUser(1003)" title="View User">
-                    <i class="fas fa-eye"></i>
-                  </button>
-                  <button class="action-button action-edit" onclick="editUser(1003)" title="Edit User">
-                    <i class="fas fa-edit"></i>
-                  </button>
-                  <button class="action-button action-delete" onclick="deleteUser(1003, 'Mike Wilson')" title="Delete User">
-                    <i class="fas fa-trash"></i>
-                  </button>
-                </div>
-              </td>
-            </tr>
-            
-            <tr class="user-row">
-              <td>
-                <div class="flex items-center space-x-3">
-                  <div class="user-avatar">SB</div>
-                  <div>
-                    <p class="font-medium">Sarah Brown</p>
-                    <p class="text-sm text-gray-400">ID: #1004</p>
-                  </div>
-                </div>
-              </td>
-              <td>sarah.brown@example.com</td>
-              <td>
-                <span class="status-badge status-inactive">
-                  <i class="fas fa-circle text-xs mr-1"></i>
-                  Inactive
-                </span>
-              </td>
-              <td>
-                <span class="text-gray-300">User</span>
-              </td>
-              <td>Nov 28, 2023</td>
-              <td>2 weeks ago</td>
-              <td>
-                <div class="flex items-center space-x-2">
-                  <button class="action-button action-view" onclick="viewUser(1004)" title="View User">
-                    <i class="fas fa-eye"></i>
-                  </button>
-                  <button class="action-button action-edit" onclick="editUser(1004)" title="Edit User">
-                    <i class="fas fa-edit"></i>
-                  </button>
-                  <button class="action-button action-delete" onclick="deleteUser(1004, 'Sarah Brown')" title="Delete User">
-                    <i class="fas fa-trash"></i>
-                  </button>
-                </div>
-              </td>
-            </tr>
-            
-            <tr class="user-row">
-              <td>
-                <div class="flex items-center space-x-3">
-                  <div class="user-avatar">DL</div>
-                  <div>
-                    <p class="font-medium">David Lee</p>
-                    <p class="text-sm text-gray-400">ID: #1005</p>
-                  </div>
-                </div>
-              </td>
-              <td>david.lee@example.com</td>
-              <td>
-                <span class="status-badge status-active">
-                  <i class="fas fa-circle text-xs mr-1"></i>
-                  Active
-                </span>
-              </td>
-              <td>
-                <span class="text-purple-400">Moderator</span>
-              </td>
-              <td>Oct 12, 2023</td>
-              <td>3 hours ago</td>
-              <td>
-                <div class="flex items-center space-x-2">
-                  <button class="action-button action-view" onclick="viewUser(1005)" title="View User">
-                    <i class="fas fa-eye"></i>
-                  </button>
-                  <button class="action-button action-edit" onclick="editUser(1005)" title="Edit User">
-                    <i class="fas fa-edit"></i>
-                  </button>
-                  <button class="action-button action-delete" onclick="deleteUser(1005, 'David Lee')" title="Delete User">
-                    <i class="fas fa-trash"></i>
-                  </button>
-                </div>
-              </td>
-            </tr>
+                </td>
+              </tr>
+              <% }) %>
+                <!-- <tr class="user-row"> -->
+                <!--   <td> -->
+                <!--     <div class="flex items-center space-x-3"> -->
+                <!--       <div class="user-avatar">JS</div> -->
+                <!--       <div> -->
+                <!--         <p class="font-medium">Jane Smith</p> -->
+                <!--         <p class="text-sm text-gray-400">ID: #1002</p> -->
+                <!--       </div> -->
+                <!--     </div> -->
+                <!--   </td> -->
+                <!--   <td>jane.smith@example.com</td> -->
+                <!--   <td> -->
+                <!--     <span class="status-badge status-pending"> -->
+                <!--       <i class="fas fa-clock text-xs mr-1"></i> -->
+                <!--       Pending -->
+                <!--     </span> -->
+                <!--   </td> -->
+                <!--   <td> -->
+                <!--     <span class="text-gray-300">User</span> -->
+                <!--   </td> -->
+                <!--   <td>Jan 20, 2024</td> -->
+                <!--   <td>Never</td> -->
+                <!--   <td> -->
+                <!--     <div class="flex items-center space-x-2"> -->
+                <!--       <button class="action-button action-view" onclick="viewUser(1002)" title="View User"> -->
+                <!--         <i class="fas fa-eye"></i> -->
+                <!--       </button> -->
+                <!--       <button class="action-button action-edit" onclick="editUser(1002)" title="Edit User"> -->
+                <!--         <i class="fas fa-edit"></i> -->
+                <!--       </button> -->
+                <!--       <button class="action-button action-delete" onclick="deleteUser(1002, 'Jane Smith')" -->
+                <!--         title="Delete User"> -->
+                <!--         <i class="fas fa-trash"></i> -->
+                <!--       </button> -->
+                <!--     </div> -->
+                <!--   </td> -->
+                <!-- </tr> -->
+                <!---->
+                <!-- <tr class="user-row"> -->
+                <!--   <td> -->
+                <!--     <div class="flex items-center space-x-3"> -->
+                <!--       <div class="user-avatar">MW</div> -->
+                <!--       <div> -->
+                <!--         <p class="font-medium">Mike Wilson</p> -->
+                <!--         <p class="text-sm text-gray-400">ID: #1003</p> -->
+                <!--       </div> -->
+                <!--     </div> -->
+                <!--   </td> -->
+                <!--   <td>mike.wilson@example.com</td> -->
+                <!--   <td> -->
+                <!--     <span class="status-badge status-active"> -->
+                <!--       <i class="fas fa-circle text-xs mr-1"></i> -->
+                <!--       Active -->
+                <!--     </span> -->
+                <!--   </td> -->
+                <!--   <td> -->
+                <!--     <span class="text-indigo-400">Admin</span> -->
+                <!--   </td> -->
+                <!--   <td>Dec 5, 2023</td> -->
+                <!--   <td>1 day ago</td> -->
+                <!--   <td> -->
+                <!--     <div class="flex items-center space-x-2"> -->
+                <!--       <button class="action-button action-view" onclick="viewUser(1003)" title="View User"> -->
+                <!--         <i class="fas fa-eye"></i> -->
+                <!--       </button> -->
+                <!--       <button class="action-button action-edit" onclick="editUser(1003)" title="Edit User"> -->
+                <!--         <i class="fas fa-edit"></i> -->
+                <!--       </button> -->
+                <!--       <button class="action-button action-delete" onclick="deleteUser(1003, 'Mike Wilson')" -->
+                <!--         title="Delete User"> -->
+                <!--         <i class="fas fa-trash"></i> -->
+                <!--       </button> -->
+                <!--     </div> -->
+                <!--   </td> -->
+                <!-- </tr> -->
+                <!---->
+                <!-- <tr class="user-row"> -->
+                <!--   <td> -->
+                <!--     <div class="flex items-center space-x-3"> -->
+                <!--       <div class="user-avatar">SB</div> -->
+                <!--       <div> -->
+                <!--         <p class="font-medium">Sarah Brown</p> -->
+                <!--         <p class="text-sm text-gray-400">ID: #1004</p> -->
+                <!--       </div> -->
+                <!--     </div> -->
+                <!--   </td> -->
+                <!--   <td>sarah.brown@example.com</td> -->
+                <!--   <td> -->
+                <!--     <span class="status-badge status-inactive"> -->
+                <!--       <i class="fas fa-circle text-xs mr-1"></i> -->
+                <!--       Inactive -->
+                <!--     </span> -->
+                <!--   </td> -->
+                <!--   <td> -->
+                <!--     <span class="text-gray-300">User</span> -->
+                <!--   </td> -->
+                <!--   <td>Nov 28, 2023</td> -->
+                <!--   <td>2 weeks ago</td> -->
+                <!--   <td> -->
+                <!--     <div class="flex items-center space-x-2"> -->
+                <!--       <button class="action-button action-view" onclick="viewUser(1004)" title="View User"> -->
+                <!--         <i class="fas fa-eye"></i> -->
+                <!--       </button> -->
+                <!--       <button class="action-button action-edit" onclick="editUser(1004)" title="Edit User"> -->
+                <!--         <i class="fas fa-edit"></i> -->
+                <!--       </button> -->
+                <!--       <button class="action-button action-delete" onclick="deleteUser(1004, 'Sarah Brown')" -->
+                <!--         title="Delete User"> -->
+                <!--         <i class="fas fa-trash"></i> -->
+                <!--       </button> -->
+                <!--     </div> -->
+                <!--   </td> -->
+                <!-- </tr> -->
+                <!---->
+                <!-- <tr class="user-row"> -->
+                <!--   <td> -->
+                <!--     <div class="flex items-center space-x-3"> -->
+                <!--       <div class="user-avatar">DL</div> -->
+                <!--       <div> -->
+                <!--         <p class="font-medium">David Lee</p> -->
+                <!--         <p class="text-sm text-gray-400">ID: #1005</p> -->
+                <!--       </div> -->
+                <!--     </div> -->
+                <!--   </td> -->
+                <!--   <td>david.lee@example.com</td> -->
+                <!--   <td> -->
+                <!--     <span class="status-badge status-active"> -->
+                <!--       <i class="fas fa-circle text-xs mr-1"></i> -->
+                <!--       Active -->
+                <!--     </span> -->
+                <!--   </td> -->
+                <!--   <td> -->
+                <!--     <span class="text-purple-400">Moderator</span> -->
+                <!--   </td> -->
+                <!--   <td>Oct 12, 2023</td> -->
+                <!--   <td>3 hours ago</td> -->
+                <!--   <td> -->
+                <!--     <div class="flex items-center space-x-2"> -->
+                <!--       <button class="action-button action-view" onclick="viewUser(1005)" title="View User"> -->
+                <!--         <i class="fas fa-eye"></i> -->
+                <!--       </button> -->
+                <!--       <button class="action-button action-edit" onclick="editUser(1005)" title="Edit User"> -->
+                <!--         <i class="fas fa-edit"></i> -->
+                <!--       </button> -->
+                <!--       <button class="action-button action-delete" onclick="deleteUser(1005, 'David Lee')" -->
+                <!--         title="Delete User"> -->
+                <!--         <i class="fas fa-trash"></i> -->
+                <!--       </button> -->
+                <!--     </div> -->
+                <!--   </td> -->
+                <!-- </tr> -->
           </tbody>
         </table>
       </div>
-      
+
       <!-- Pagination -->
       <div class="pagination">
         <button onclick="previousPage()" id="prevBtn" disabled>
@@ -393,18 +425,22 @@
           <i class="fas fa-times"></i>
         </button>
       </div>
-      
+
       <div class="mb-6">
-        <p class="text-gray-300">Are you sure you want to delete the user account for:</p>
+        <p class="text-gray-300">
+          Are you sure you want to delete the user account for:
+        </p>
         <p class="text-white font-medium mt-2" id="deleteUserName"></p>
         <p class="text-red-400 text-sm mt-2">This action cannot be undone.</p>
       </div>
-      
+
       <div class="flex items-center justify-end space-x-4">
-        <button onclick="closeDeleteModal()" class="px-6 py-3 border border-gray-600 text-gray-300 rounded-xl bg-black/50 hover:bg-black/70 hover:border-gray-500 transition-all duration-300">
+        <button onclick="closeDeleteModal()"
+          class="px-6 py-3 border border-gray-600 text-gray-300 rounded-xl bg-black/50 hover:bg-black/70 hover:border-gray-500 transition-all duration-300">
           Cancel
         </button>
-        <button onclick="confirmDelete()" class="px-6 py-3 bg-gradient-to-r from-red-600 to-red-700 text-white rounded-xl hover:from-red-700 hover:to-red-800 transition-all duration-300 shadow-lg hover:shadow-red-500/25">
+        <button onclick="confirmDelete()"
+          class="px-6 py-3 bg-gradient-to-r from-red-600 to-red-700 text-white rounded-xl hover:from-red-700 hover:to-red-800 transition-all duration-300 shadow-lg hover:shadow-red-500/25">
           Delete User
         </button>
       </div>
@@ -417,54 +453,61 @@
     let userToDelete = null;
 
     // Profile dropdown toggle
-    const dropdownButton = document.getElementById('profileDropdown');
-    const dropdownMenu = document.getElementById('dropdownMenu');
+    const dropdownButton = document.getElementById("profileDropdown");
+    const dropdownMenu = document.getElementById("dropdownMenu");
 
-    dropdownButton.addEventListener('click', (e) => {
+    dropdownButton.addEventListener("click", (e) => {
       e.stopPropagation();
-      dropdownMenu.classList.toggle('hidden');
+      dropdownMenu.classList.toggle("hidden");
     });
 
     // Close dropdown when clicking outside
-    document.addEventListener('click', (e) => {
-      if (!dropdownButton.contains(e.target) && !dropdownMenu.contains(e.target)) {
-        dropdownMenu.classList.add('hidden');
+    document.addEventListener("click", (e) => {
+      if (
+        !dropdownButton.contains(e.target) &&
+        !dropdownMenu.contains(e.target)
+      ) {
+        dropdownMenu.classList.add("hidden");
       }
     });
 
     // Search functionality
-    document.getElementById('searchInput').addEventListener('input', function(e) {
-      const searchTerm = e.target.value.toLowerCase();
-      const rows = document.querySelectorAll('.user-row');
-      
-      rows.forEach(row => {
-        const name = row.querySelector('p').textContent.toLowerCase();
-        const email = row.querySelectorAll('td')[1].textContent.toLowerCase();
-        
-        if (name.includes(searchTerm) || email.includes(searchTerm)) {
-          row.style.display = '';
-        } else {
-          row.style.display = 'none';
-        }
+    document
+      .getElementById("searchInput")
+      .addEventListener("input", function (e) {
+        const searchTerm = e.target.value.toLowerCase();
+        const rows = document.querySelectorAll(".user-row");
+
+        rows.forEach((row) => {
+          const name = row.querySelector("p").textContent.toLowerCase();
+          const email = row.querySelectorAll("td")[1].textContent.toLowerCase();
+
+          if (name.includes(searchTerm) || email.includes(searchTerm)) {
+            row.style.display = "";
+          } else {
+            row.style.display = "none";
+          }
+        });
       });
-    });
 
     // Status filter
-    document.getElementById('statusFilter').addEventListener('change', function(e) {
-      const filterValue = e.target.value.toLowerCase();
-      const rows = document.querySelectorAll('.user-row');
-      
-      rows.forEach(row => {
-        const statusBadge = row.querySelector('.status-badge');
-        const status = statusBadge.textContent.toLowerCase().trim();
-        
-        if (filterValue === '' || status.includes(filterValue)) {
-          row.style.display = '';
-        } else {
-          row.style.display = 'none';
-        }
+    document
+      .getElementById("statusFilter")
+      .addEventListener("change", function (e) {
+        const filterValue = e.target.value.toLowerCase();
+        const rows = document.querySelectorAll(".user-row");
+
+        rows.forEach((row) => {
+          const statusBadge = row.querySelector(".status-badge");
+          const status = statusBadge.textContent.toLowerCase().trim();
+
+          if (filterValue === "" || status.includes(filterValue)) {
+            row.style.display = "";
+          } else {
+            row.style.display = "none";
+          }
+        });
       });
-    });
 
     // Action functions
     function viewUser(userId) {
@@ -478,33 +521,38 @@
     }
 
     function deleteUser(userId, userName) {
-      userToDelete = { id: userId, name: userName };
-      document.getElementById('deleteUserName').textContent = userName;
-      document.getElementById('deleteModal').classList.add('show');
+      userToDelete = {id: userId, name: userName};
+      document.getElementById("deleteUserName").textContent = userName;
+      document.getElementById("deleteModal").classList.add("show");
     }
 
     function closeDeleteModal() {
-      document.getElementById('deleteModal').classList.remove('show');
+      document.getElementById("deleteModal").classList.remove("show");
       userToDelete = null;
     }
 
     function confirmDelete() {
       if (userToDelete) {
         // In a real app, this would make an API call to delete the user
-        console.log(`Deleting user: ${userToDelete.name} (ID: ${userToDelete.id})`);
-        
+        console.log(
+          `Deleting user: ${userToDelete.name} (ID: ${userToDelete.id})`,
+        );
+
         // Remove the user row from the table
-        const rows = document.querySelectorAll('.user-row');
-        rows.forEach(row => {
-          const userIdCell = row.querySelector('.text-gray-400');
-          if (userIdCell && userIdCell.textContent.includes(`#${userToDelete.id}`)) {
+        const rows = document.querySelectorAll(".user-row");
+        rows.forEach((row) => {
+          const userIdCell = row.querySelector(".text-gray-400");
+          if (
+            userIdCell &&
+            userIdCell.textContent.includes(`#${userToDelete.id}`)
+          ) {
             row.remove();
           }
         });
-        
+
         // Show success message (in real app, handle API response)
         alert(`User ${userToDelete.name} has been deleted successfully.`);
-        
+
         closeDeleteModal();
       }
     }
@@ -518,7 +566,8 @@
     }
 
     function nextPage() {
-      if (currentPage < 25) { // Assuming 25 total pages
+      if (currentPage < 25) {
+        // Assuming 25 total pages
         currentPage++;
         updatePagination();
       }
@@ -531,44 +580,47 @@
 
     function updatePagination() {
       // Update active page button
-      document.querySelectorAll('.pagination button').forEach(btn => {
-        btn.classList.remove('active');
+      document.querySelectorAll(".pagination button").forEach((btn) => {
+        btn.classList.remove("active");
       });
-      
+
       // Find and activate current page button
-      const pageButtons = document.querySelectorAll('.pagination button');
-      pageButtons.forEach(btn => {
+      const pageButtons = document.querySelectorAll(".pagination button");
+      pageButtons.forEach((btn) => {
         if (btn.textContent == currentPage && !btn.id) {
-          btn.classList.add('active');
+          btn.classList.add("active");
         }
       });
-      
+
       // Update prev/next buttons
-      document.getElementById('prevBtn').disabled = currentPage === 1;
-      document.getElementById('nextBtn').disabled = currentPage === 25;
-      
+      document.getElementById("prevBtn").disabled = currentPage === 1;
+      document.getElementById("nextBtn").disabled = currentPage === 25;
+
       // In a real app, this would load new data from the server
       console.log(`Loading page ${currentPage}`);
     }
 
     // Close modal when clicking outside
-    document.getElementById('deleteModal').addEventListener('click', function(e) {
-      if (e.target === this) {
-        closeDeleteModal();
-      }
-    });
+    document
+      .getElementById("deleteModal")
+      .addEventListener("click", function (e) {
+        if (e.target === this) {
+          closeDeleteModal();
+        }
+      });
 
     // Add hover effects to table rows
-    document.querySelectorAll('.user-row').forEach(row => {
-      row.addEventListener('mouseenter', function() {
-        this.style.transform = 'translateY(-1px)';
+    document.querySelectorAll(".user-row").forEach((row) => {
+      row.addEventListener("mouseenter", function () {
+        this.style.transform = "translateY(-1px)";
       });
-      
-      row.addEventListener('mouseleave', function() {
-        this.style.transform = 'translateY(0)';
+
+      row.addEventListener("mouseleave", function () {
+        this.style.transform = "translateY(0)";
       });
     });
 
     // Initialize page
     updatePagination();
   </script>
+</div>
