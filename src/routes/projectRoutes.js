@@ -26,7 +26,7 @@ const project = {
   url: "https://github.com/mohamedkhalil9/portfolio-projects-manager-ejs.git",
   tags: ["js", "node"],
 };
-router.get("/view", (req, res) => res.render("projects/view-projects-2"));
+// router.get("/view", (req, res) => res.render("projects/view-projects"));
 router.get("/add", (req, res) => res.render("projects/add-project"));
 router.get("/edit", (req, res) =>
   res.render("projects/edit-project", { project }),
