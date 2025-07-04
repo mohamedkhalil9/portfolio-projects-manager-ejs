@@ -41,13 +41,19 @@
         <!-- Hero Section -->
         <div class="text-left animate-slide-up">
           <h2 class="text-5xl font-light text-white mb-4">
-            <span class="text-indigo-400">John</span>
-            Doe
+            <span class="text-indigo-400">
+              <!-- John -->
+              <%= user.firstName %>
+            </span>
+            <%= user.lastName %>
+              <!-- Doe -->
           </h2>
           <p class="text-xl text-gray-400 mb-6">
-            Full Stack Developer & UI/UX Designer
+            <!-- Full Stack Developer & UI/UX Designer -->
+            <%= user.jobTitle %>
           </p>
         </div>
+
 
         <!-- Bio/Overview -->
         <div class=" rounded-2xl p-6 animate-slide-up animation-delay-150">
@@ -56,10 +62,11 @@
           <!--     About Me -->
           <!-- </h3> -->
           <p class="text-gray-300 leading-relaxed">
-            I'm a passionate full-stack developer with over 5 years of experience creating innovative web applications
-            and user experiences. I specialize in modern JavaScript frameworks, responsive design, and creating
-            seamless user interfaces that bridge the gap between design and functionality. My expertise spans from
-            front-end technologies like React and Vue.js to back-end development with Node.js and Python.
+            <!-- I'm a passionate full-stack developer with over 5 years of experience creating innovative web applications -->
+            <!-- and user experiences. I specialize in modern JavaScript frameworks, responsive design, and creating -->
+            <!-- seamless user interfaces that bridge the gap between design and functionality. My expertise spans from -->
+            <!-- front-end technologies like React and Vue.js to back-end development with Node.js and Python. -->
+            <%= user.bio %>
           </p>
         </div>
       </div>
@@ -76,24 +83,30 @@
           <div class="space-y-4">
             <div class="flex items-center space-x-3">
               <i class="fas fa-envelope text-indigo-400 w-5"></i>
-              <span class="text-gray-300 text-sm">john.doe@email.com</span>
+              <!-- <span class="text-gray-300 text-sm">john.doe@email.com</span> -->
+              <span class="text-gray-300 text-sm">
+                <%= user.email %>
+              </span>
             </div>
             <div class="flex items-center space-x-3">
               <i class="fas fa-phone text-green-400 w-5"></i>
-              <span class="text-gray-300 text-sm">+1 (555) 123-4567</span>
+              <span class="text-gray-300 text-sm">
+                <%= user.phone %>
+              </span>
+              <!-- <span class="text-gray-300 text-sm">+1 (555) 123-4567</span> -->
             </div>
-            <div class="flex items-center space-x-3">
-              <i class="fas fa-map-marker-alt text-red-400 w-5"></i>
-              <span class="text-gray-300 text-sm">New York, NY</span>
-            </div>
+            <!-- <div class="flex items-center space-x-3"> -->
+            <!--   <i class="fas fa-map-marker-alt text-red-400 w-5"></i> -->
+            <!--   <span class="text-gray-300 text-sm">New York, NY</span> -->
+            <!-- </div> -->
             <div class="flex items-center space-x-3">
               <i class="fab fa-linkedin text-blue-400 w-5"></i>
-              <a href="#" class="text-gray-300 text-sm hover:text-blue-400 transition">linkedin.com/in/johndoe</a>
+              <a href="<%= user.linkedinUrl %>"
+                class="text-gray-300 text-sm hover:text-blue-400 transition">LinkedIn</a>
             </div>
             <div class="flex items-center space-x-3">
               <i class="fab fa-github text-gray-400 w-5"></i>
-              <a href="https://github.com/mohamedkhalil9"
-                class="text-gray-300 text-sm hover:text-gray-100 transition">github.com/johndoe</a>
+              <a href="<%= user.githubUrl %>" class="text-gray-300 text-sm hover:text-gray-100 transition">GitHub</a>
             </div>
           </div>
         </div>
@@ -385,65 +398,76 @@
 
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         <!-- Frontend Skills -->
-        <div class="space-y-4">
-          <h4 class="text-indigo-400 font-medium mb-3 flex items-center">
-            <i class="fas fa-laptop-code mr-2"></i>
-            Frontend
-          </h4>
-          <div class="flex flex-wrap gap-2">
-            <span
-              class="px-3 py-1.5 bg-indigo-900/30 text-indigo-300 text-sm rounded-full border border-indigo-800/50">React/Next.js</span>
-            <span
-              class="px-3 py-1.5 bg-indigo-900/30 text-indigo-300 text-sm rounded-full border border-indigo-800/50">JavaScript/TypeScript</span>
-            <span
-              class="px-3 py-1.5 bg-indigo-900/30 text-indigo-300 text-sm rounded-full border border-indigo-800/50">HTML/CSS</span>
-            <span
-              class="px-3 py-1.5 bg-indigo-900/30 text-indigo-300 text-sm rounded-full border border-indigo-800/50">Tailwind
-              CSS</span>
-            <span
-              class="px-3 py-1.5 bg-indigo-900/30 text-indigo-300 text-sm rounded-full border border-indigo-800/50">Vue.js</span>
-          </div>
-        </div>
+        <% user.skillSet.map( set=> { %>
 
-        <!-- Backend Skills -->
-        <div class="space-y-4">
-          <h4 class="text-green-400 font-medium mb-3 flex items-center">
-            <i class="fas fa-server mr-2"></i>
-            Backend
-          </h4>
-          <div class="flex flex-wrap gap-2">
-            <span
-              class="px-3 py-1.5 bg-green-900/30 text-green-300 text-sm rounded-full border border-green-800/50">Node.js/Express</span>
-            <span
-              class="px-3 py-1.5 bg-green-900/30 text-green-300 text-sm rounded-full border border-green-800/50">Python/Django</span>
-            <span
-              class="px-3 py-1.5 bg-green-900/30 text-green-300 text-sm rounded-full border border-green-800/50">MongoDB</span>
-            <span
-              class="px-3 py-1.5 bg-green-900/30 text-green-300 text-sm rounded-full border border-green-800/50">PostgreSQL</span>
-            <span
-              class="px-3 py-1.5 bg-green-900/30 text-green-300 text-sm rounded-full border border-green-800/50">GraphQL</span>
-          </div>
-        </div>
+          <div class="space-y-4">
+            <h4 class="text-indigo-400 font-medium mb-3 flex items-center">
+              <i class="fas fa-laptop-code mr-2"></i>
+              <!-- Frontend -->
+              <%= set.category %>
+            </h4>
+            <div class="flex flex-wrap gap-2">
+              <% set.skills.map( skill=> { %>
 
-        <!-- Tools & Others -->
-        <div class="space-y-4">
-          <h4 class="text-yellow-400 font-medium mb-3 flex items-center">
-            <i class="fas fa-tools mr-2"></i>
-            Tools & Others
-          </h4>
-          <div class="flex flex-wrap gap-2">
-            <span
-              class="px-3 py-1.5 bg-yellow-900/30 text-yellow-300 text-sm rounded-full border border-yellow-800/50">Git/GitHub</span>
-            <span
-              class="px-3 py-1.5 bg-yellow-900/30 text-yellow-300 text-sm rounded-full border border-yellow-800/50">Docker</span>
-            <span
-              class="px-3 py-1.5 bg-yellow-900/30 text-yellow-300 text-sm rounded-full border border-yellow-800/50">AWS</span>
-            <span
-              class="px-3 py-1.5 bg-yellow-900/30 text-yellow-300 text-sm rounded-full border border-yellow-800/50">Figma</span>
-            <span
-              class="px-3 py-1.5 bg-yellow-900/30 text-yellow-300 text-sm rounded-full border border-yellow-800/50">CI/CD</span>
+                <!-- <span -->
+                <!-- class="px-3 py-1.5 bg-indigo-900/30 text-indigo-300 text-sm rounded-full border border-indigo-800/50">React/Next.js</span> -->
+                <span
+                  class="px-3 py-1.5 bg-indigo-900/30 text-indigo-300 text-sm rounded-full border border-indigo-800/50">
+                  <%= skill %>
+                </span>
+                <% }) %>
+                  <!-- <span -->
+                  <!--   class="px-3 py-1.5 bg-indigo-900/30 text-indigo-300 text-sm rounded-full border border-indigo-800/50">JavaScript/TypeScript</span> -->
+                  <!-- <span -->
+                  <!--   class="px-3 py-1.5 bg-indigo-900/30 text-indigo-300 text-sm rounded-full border border-indigo-800/50">HTML/CSS</span> -->
+                  <!-- <span -->
+                  <!--   class="px-3 py-1.5 bg-indigo-900/30 text-indigo-300 text-sm rounded-full border border-indigo-800/50">Tailwind -->
+                  <!--   CSS</span> -->
+                  <!-- <span -->
+                  <!--   class="px-3 py-1.5 bg-indigo-900/30 text-indigo-300 text-sm rounded-full border border-indigo-800/50">Vue.js</span> -->
+            </div>
           </div>
-        </div>
+          <% }) %>
+
+            <!-- <!-- Backend Skills -->
+            <!-- <div class="space-y-4"> -->
+            <!--   <h4 class="text-green-400 font-medium mb-3 flex items-center"> -->
+            <!--     <i class="fas fa-server mr-2"></i> -->
+            <!--     Backend -->
+            <!--   </h4> -->
+            <!--   <div class="flex flex-wrap gap-2"> -->
+            <!--     <span -->
+            <!--       class="px-3 py-1.5 bg-green-900/30 text-green-300 text-sm rounded-full border border-green-800/50">Node.js/Express</span> -->
+            <!--     <span -->
+            <!--       class="px-3 py-1.5 bg-green-900/30 text-green-300 text-sm rounded-full border border-green-800/50">Python/Django</span> -->
+            <!--     <span -->
+            <!--       class="px-3 py-1.5 bg-green-900/30 text-green-300 text-sm rounded-full border border-green-800/50">MongoDB</span> -->
+            <!--     <span -->
+            <!--       class="px-3 py-1.5 bg-green-900/30 text-green-300 text-sm rounded-full border border-green-800/50">PostgreSQL</span> -->
+            <!--     <span -->
+            <!--       class="px-3 py-1.5 bg-green-900/30 text-green-300 text-sm rounded-full border border-green-800/50">GraphQL</span> -->
+            <!--   </div> -->
+            <!-- </div> -->
+            <!---->
+            <!-- <!-- Tools & Others -->
+            <!-- <div class="space-y-4"> -->
+            <!--   <h4 class="text-yellow-400 font-medium mb-3 flex items-center"> -->
+            <!--     <i class="fas fa-tools mr-2"></i> -->
+            <!--     Tools & Others -->
+            <!--   </h4> -->
+            <!--   <div class="flex flex-wrap gap-2"> -->
+            <!--     <span -->
+            <!--       class="px-3 py-1.5 bg-yellow-900/30 text-yellow-300 text-sm rounded-full border border-yellow-800/50">Git/GitHub</span> -->
+            <!--     <span -->
+            <!--       class="px-3 py-1.5 bg-yellow-900/30 text-yellow-300 text-sm rounded-full border border-yellow-800/50">Docker</span> -->
+            <!--     <span -->
+            <!--       class="px-3 py-1.5 bg-yellow-900/30 text-yellow-300 text-sm rounded-full border border-yellow-800/50">AWS</span> -->
+            <!--     <span -->
+            <!--       class="px-3 py-1.5 bg-yellow-900/30 text-yellow-300 text-sm rounded-full border border-yellow-800/50">Figma</span> -->
+            <!--     <span -->
+            <!--       class="px-3 py-1.5 bg-yellow-900/30 text-yellow-300 text-sm rounded-full border border-yellow-800/50">CI/CD</span> -->
+            <!--   </div> -->
+            <!-- </div> -->
       </div>
     </div>
     <!-- Projects Section -->
