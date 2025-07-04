@@ -56,6 +56,16 @@ export const registerSchema = Joi.object({
       "string.pattern.base":
         "Password must contain at least one uppercase letter, one lowercase letter, one number, and one special character (@$!%*?&)",
     }),
+  githubUrl: Joi.string(),
+  linkedinUrl: Joi.string(),
+  jobTitle: Joi.string(),
+  bio: Joi.string(),
+  skillSet: Joi.array().items(
+    Joi.object({
+      category: Joi.string(),
+      skills: Joi.array().items(Joi.string()),
+    }),
+  ),
   role: Joi.string()
     .valid("USER", "ADMIN", "MANAGER")
     .default("USER")

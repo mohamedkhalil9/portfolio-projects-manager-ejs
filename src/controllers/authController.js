@@ -19,6 +19,11 @@ export const register = asyncHandler(async (req, res) => {
     phone,
     country,
     address,
+    jobTitle,
+    bio,
+    githubUrl,
+    linkedinUrl,
+    skillSet,
   } = req.body;
 
   const user = await User.findOne({ email: email });
@@ -36,9 +41,15 @@ export const register = asyncHandler(async (req, res) => {
     phone,
     country,
     address,
+    jobTitle,
+    bio,
+    githubUrl,
+    linkedinUrl,
+    skillSet,
   });
 
-  res.status(201).json({ status: "success", data: newUser });
+  res.status(201).redirect("/api/v1/auth/login");
+  // .json({ status: "success", data: newUser });
 });
 
 export const login = asyncHandler(async (req, res) => {

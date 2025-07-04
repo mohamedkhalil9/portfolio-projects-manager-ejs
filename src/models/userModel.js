@@ -18,7 +18,7 @@ const userSchema = new mongoose.Schema(
       required: true,
     },
     githubUrl: String,
-    likedinUrl: String,
+    linkedinUrl: String,
     username: String,
     password: {
       type: String,
@@ -26,7 +26,12 @@ const userSchema = new mongoose.Schema(
     },
     jobTitle: String,
     bio: String,
-    skills: [String],
+    skillSet: [
+      {
+        category: String,
+        skills: [String],
+      },
+    ],
     education: [
       {
         institute: String,
