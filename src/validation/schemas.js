@@ -188,10 +188,26 @@ export const updateUserSchema = Joi.object({
     "date.min": "Date of birth must be after 1900",
     "date.format": "Date of birth must be in ISO format (YYYY-MM-DD)",
   }),
-  address: Joi.string().trim().min(5).max(500).messages({
-    "string.min": "Address must be at least 5 characters long",
-    "string.max": "Address cannot exceed 500 characters",
-  }),
+  githubUrl: Joi.string(),
+  linkedinUrl: Joi.string(),
+  jobTitle: Joi.string(),
+  bio: Joi.string(),
+  skillSet: Joi.array().items(
+    Joi.object({
+      category: Joi.string(),
+      skills: Joi.array().items(Joi.string()),
+    }),
+  ),
+  country: Joi.string()
+    .length(2)
+    .uppercase()
+    .pattern(/^[A-Z]{2}$/)
+    .messages({
+      "string.length": "Country must be a 2-letter ISO country code",
+      "string.pattern.base":
+        "Country must be a valid ISO 3166-1 alpha-2 country code (e.g., US, GB, CA)",
+    }),
+  city: Joi.string(),
   bio: Joi.string(),
   githubUrl: Joi.string(),
 });
