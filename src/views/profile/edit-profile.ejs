@@ -134,16 +134,21 @@
           </div>
           <div>
             <label class="block text-gray-400 text-sm mb-2" for="gender">Gender</label>
-            <select id="gender" name="gender" class="w-full p-4 rounded-xl form-input">
+            <select id="gender" name="gender" class="w-full p-4 rounded-xl form-select  border border-gray-700 text-white focus:outline-none focus:ring-1 focus:ring-indigo-500/50">
               <option value="">Select Gender</option>
               <option value="Male" <%=user.gender==='Male' ? 'selected' : '' %>>Male</option>
               <option value="Memale" <%=user.gender==='Female' ? 'selected' : '' %>>Female</option>
             </select>
           </div>
-          <div class="md:col-span-2">
-            <label class="block text-gray-400 text-sm mb-2" for="location">Location</label>
-            <input type="text"  id="location" class="w-full p-4 rounded-xl form-input"
-              placeholder="City, Country">
+          <div>
+            <label class="block text-gray-400 text-sm mb-2" for="city">City</label>
+            <input type="text" id="city" name="city" class="w-full p-4 rounded-xl form-input"
+              placeholder="City" value="<%= user.city %>">
+          </div>
+          <div>
+            <label class="block text-gray-400 text-sm mb-2" for="country">Country</label>
+            <input type="text" id="country" name="country" class="w-full p-4 rounded-xl form-input"
+              placeholder="Country" value="<%= user.country %>">
           </div>
         </div>
       </div>
@@ -158,22 +163,13 @@
         <div class="space-y-6">
           <div>
             <label class="block text-gray-400 text-sm mb-2" for="jobTitle">Job Title</label>
-            <input type="text" id="jobTitle" class="w-full p-4 rounded-xl form-input"
-              placeholder="Full Stack Developer">
-          </div>
-          <div>
-            <label class="block text-gray-400 text-sm mb-2" for="company">Company</label>
-            <input type="text" id="company" class="w-full p-4 rounded-xl form-input" placeholder="Company Name">
-          </div>
-          <div>
-            <label class="block text-gray-400 text-sm mb-2" for="website">Website/Portfolio</label>
-            <input type="url" id="website" class="w-full p-4 rounded-xl form-input"
-              placeholder="https://yourportfolio.com">
+            <input type="text" id="jobTitle" name="jobTitle" class="w-full p-4 rounded-xl form-input"
+              placeholder="Full Stack Developer" value="<%= user.jobTitle %>">
           </div>
           <div>
             <label class="block text-gray-400 text-sm mb-2" for="bio">Bio/About</label>
-            <textarea id="bio" class="w-full p-4 rounded-xl form-input form-textarea" name="bio" value="<%= user.bio %>"
-              placeholder="Tell us about yourself, your experience, and what drives you..."></textarea>
+            <textarea id="bio" name="bio" class="w-full p-4 rounded-xl form-input form-textarea"
+              placeholder="Tell us about yourself, your experience, and what drives you..."><%= user.bio %></textarea>
           </div>
         </div>
       </div>
@@ -190,8 +186,8 @@
             <label class="block text-gray-400 text-sm mb-2" for="linkedin">
               <i class="fab fa-linkedin text-blue-400 mr-2"></i>LinkedIn
             </label>
-            <input type="url" id="linkedin" class="w-full p-4 rounded-xl form-input"
-              placeholder="https://linkedin.com/in/username">
+            <input type="url" id="linkedin" name="linkedinUrl" class="w-full p-4 rounded-xl form-input"
+              placeholder="https://linkedin.com/in/username" value="<%= user.linkedinUrl %>">
           </div>
           <div>
             <label class="block text-gray-400 text-sm mb-2" for="github">
@@ -224,13 +220,81 @@
           Skills
         </h3>
 
-        <div>
-          <label class="block text-gray-400 text-sm mb-2" for="skills">Skills (separated by commas)</label>
-          <textarea id="skills" class="w-full p-4 rounded-xl form-input" rows="3"
-            placeholder="JavaScript, React, Node.js, Python, Design, etc."></textarea>
-          <p class="text-gray-500 text-xs mt-2">Enter your skills separated by commas. They will be displayed as tags on
-            your profile.</p>
+        <div id="skills-container">
+          <% user.skillSet.forEach((skill, index) => { %>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-4 skill-set">
+              <div>
+                <label class="block text-gray-400 text-sm mb-2">Category</label>
+                <input type="text" name="skillSet[<%= index %>][category]" class="w-full p-4 rounded-xl form-input" value="<%= skill.category %>">
+              </div>
+              <div>
+                <label class="block text-gray-400 text-sm mb-2">Skills (comma-separated)</label>
+                <input type="text" name="skillSet[<%= index %>][skills]" class="w-full p-4 rounded-xl form-input" value="<%= skill.skills.join(', ') %>">
+              </div>
+            </div>
+          <% }); %>
         </div>
+        <button type="button" id="add-skill" class="px-4 py-2 bg-indigo-600 hover:bg-indigo-700 text-white rounded-xl transition text-sm">Add Skill</button>
+      </div>
+
+      <!-- Education -->
+      <div class="form-container rounded-2xl p-6 animate-slide-up animation-delay-600">
+        <h3 class="text-xl font-light text-white mb-6 flex items-center">
+          <i class="fas fa-graduation-cap mr-3 text-indigo-400"></i>
+          Education
+        </h3>
+
+        <div id="education-fields">
+          <% user.education.forEach((edu, index) => { %>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-4">
+              <div>
+                <label class="block text-gray-400 text-sm mb-2" for="institute">Institute</label>
+                <input type="text" name="education[<%= index %>][institute]" class="w-full p-4 rounded-xl form-input" value="<%= edu.institute %>">
+              </div>
+              <div>
+                <label class="block text-gray-400 text-sm mb-2" for="from">From</label>
+                <input type="date" name="education[<%= index %>][from]" class="w-full p-4 rounded-xl form-input" value="<%= edu.from ? new Date(edu.from).toISOString().split('T')[0] : '' %>">
+              </div>
+              <div>
+                <label class="block text-gray-400 text-sm mb-2" for="to">To</label>
+                <input type="date" name="education[<%= index %>][to]" class="w-full p-4 rounded-xl form-input" value="<%= edu.to ? new Date(edu.to).toISOString().split('T')[0] : '' %>">
+              </div>
+            </div>
+          <% }); %>
+        </div>
+        <button type="button" id="add-education" class="px-4 py-2 bg-indigo-600 hover:bg-indigo-700 text-white rounded-xl transition text-sm">Add Education</button>
+      </div>
+
+      <!-- Experience -->
+      <div class="form-container rounded-2xl p-6 animate-slide-up animation-delay-600">
+        <h3 class="text-xl font-light text-white mb-6 flex items-center">
+          <i class="fas fa-briefcase mr-3 text-yellow-400"></i>
+          Experience
+        </h3>
+
+        <div id="experience-fields">
+          <% user.experience.forEach((exp, index) => { %>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-4">
+              <div>
+                <label class="block text-gray-400 text-sm mb-2" for="corporate">Corporate</label>
+                <input type="text" name="experience[<%= index %>][corporate]" class="w-full p-4 rounded-xl form-input" value="<%= exp.corporate %>">
+              </div>
+              <div>
+                <label class="block text-gray-400 text-sm mb-2" for="workedOn">Worked On</label>
+                <input type="text" name="experience[<%= index %>][workedOn]" class="w-full p-4 rounded-xl form-input" value="<%= exp.workedOn %>">
+              </div>
+              <div>
+                <label class="block text-gray-400 text-sm mb-2" for="from">From</label>
+                <input type="date" name="experience[<%= index %>][from]" class="w-full p-4 rounded-xl form-input" value="<%= exp.from ? new Date(exp.from).toISOString().split('T')[0] : '' %>">
+              </div>
+              <div>
+                <label class="block text-gray-400 text-sm mb-2" for="to">To</label>
+                <input type="date" name="experience[<%= index %>][to]" class="w-full p-4 rounded-xl form-input" value="<%= exp.to ? new Date(exp.to).toISOString().split('T')[0] : '' %>">
+              </div>
+            </div>
+          <% }); %>
+        </div>
+        <button type="button" id="add-experience" class="px-4 py-2 bg-indigo-600 hover:bg-indigo-700 text-white rounded-xl transition text-sm">Add Experience</button>
       </div>
 
       <!-- Form Actions -->
@@ -371,4 +435,70 @@
   }
 
   setupAutoSave();
+
+  document.getElementById('add-education').addEventListener('click', function() {
+    const educationFields = document.getElementById('education-fields');
+    const newIndex = educationFields.children.length;
+    const newEducationField = `
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-4">
+        <div>
+          <label class="block text-gray-400 text-sm mb-2" for="institute">Institute</label>
+          <input type="text" name="education[${newIndex}][institute]" class="w-full p-4 rounded-xl form-input">
+        </div>
+        <div>
+          <label class="block text-gray-400 text-sm mb-2" for="from">From</label>
+          <input type="date" name="education[${newIndex}][from]" class="w-full p-4 rounded-xl form-input">
+        </div>
+        <div>
+          <label class="block text-gray-400 text-sm mb-2" for="to">To</label>
+          <input type="date" name="education[${newIndex}][to]" class="w-full p-4 rounded-xl form-input">
+        </div>
+      </div>
+    `;
+    educationFields.insertAdjacentHTML('beforeend', newEducationField);
+  });
+
+  document.getElementById('add-experience').addEventListener('click', function() {
+    const experienceFields = document.getElementById('experience-fields');
+    const newIndex = experienceFields.children.length;
+    const newExperienceField = `
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-4">
+        <div>
+          <label class="block text-gray-400 text-sm mb-2" for="corporate">Corporate</label>
+          <input type="text" name="experience[${newIndex}][corporate]" class="w-full p-4 rounded-xl form-input">
+        </div>
+        <div>
+          <label class="block text-gray-400 text-sm mb-2" for="workedOn">Worked On</label>
+          <input type="text" name="experience[${newIndex}][workedOn]" class="w-full p-4 rounded-xl form-input">
+        </div>
+        <div>
+          <label class="block text-gray-400 text-sm mb-2" for="from">From</label>
+          <input type="date" name="experience[${newIndex}][from]" class="w-full p-4 rounded-xl form-input">
+        </div>
+        <div>
+          <label class="block text-gray-400 text-sm mb-2" for="to">To</label>
+          <input type="date" name="experience[${newIndex}][to]" class="w-full p-4 rounded-xl form-input">
+        </div>
+      </div>
+    `;
+    experienceFields.insertAdjacentHTML('beforeend', newExperienceField);
+  });
+
+  document.getElementById('add-skill').addEventListener('click', function() {
+    const skillsContainer = document.getElementById('skills-container');
+    const newIndex = skillsContainer.children.length;
+    const newSkillField = `
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-4 skill-set">
+        <div>
+          <label class="block text-gray-400 text-sm mb-2">Category</label>
+          <input type="text" name="skillSet[${newIndex}][category]" class="w-full p-4 rounded-xl form-input">
+        </div>
+        <div>
+          <label class="block text-gray-400 text-sm mb-2">Skills (comma-separated)</label>
+          <input type="text" name="skillSet[${newIndex}][skills]" class="w-full p-4 rounded-xl form-input">
+        </div>
+      </div>
+    `;
+    skillsContainer.insertAdjacentHTML('beforeend', newSkillField);
+  });
 </script>
