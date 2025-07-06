@@ -1,4 +1,5 @@
 import User from "../models/userModel.js";
+import Project from "../models/projectModel.js";
 import asyncHandler from "../middlewares/asyncHandler.js";
 import AppError from "../utils/AppError.js";
 import jwt from "jsonwebtoken";
@@ -14,11 +15,12 @@ export const deleteProfile = factory.deleteOne(User, "currentUser");
 export const getUserProfile = asyncHandler(async (req, res) => {
   const { id } = req.user;
   const user = await User.findById(id).select("-password");
+  const projects = await Project.find({ user: id });
   if (!user) throw new AppError("user not found", 404);
   res
     .status(200)
     // .json({ status: "success", data: user });
-    .render("profile/view-profile", { user });
+    .render("profile/view-profile", { user, projects });
 });
 
 export const editProfileView = asyncHandler(async (req, res) => {
@@ -31,6 +33,22 @@ export const editProfileView = asyncHandler(async (req, res) => {
 export const updateUserProfile = asyncHandler(async (req, res) => {
   const { id } = req.user;
   const userData = req.body;
+
+  // if (userData.skillSet) {
+  //   userData.skillSet = Object.values(userData.skillSet).map((skill) => ({
+  //     category: skill.category,
+  //     skills: skill.skills.split(",").map((s) => s.trim()),
+  //   }));
+  // }
+
+  if (userData.education) {
+    userData.education = Object.values(userData.education);
+  }
+
+  if (userData.experience) {
+    userData.experience = Object.values(userData.experience);
+  }
+
   const user = await User.findByIdAndUpdate(id, userData, { new: true });
   if (!user) throw new AppError("user not found", 404);
   res
