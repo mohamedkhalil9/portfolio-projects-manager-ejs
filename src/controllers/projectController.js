@@ -4,7 +4,8 @@ import * as factory from "./factory.js";
 
 export const createProject = factory.createOne(Project, "currentUser");
 export const getCurrentUserProjects = asyncHandler(async (req, res) => {
-  const projects = await Project.find();
+  const { id } = req.user;
+  const projects = await Project.find({ user: id });
 
   res.status(200).render("projects/view-projects-2", { projects });
   // .json({ status: "success", results: projects.length, data: projects });

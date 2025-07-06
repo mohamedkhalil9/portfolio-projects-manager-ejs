@@ -34,17 +34,22 @@ const userSchema = new mongoose.Schema(
     ],
     education: [
       {
-        institute: String,
-        from: Date,
-        to: Date,
+        institute: { type: String, required: true },
+        degree: { type: String, required: true },
+        fieldOfStudy: { type: String, required: true },
+        from: { type: Date, required: true },
+        to: { type: Date },
+        grade: { type: String },
       },
     ],
     experience: [
       {
-        corporate: String,
-        workedOn: String,
-        from: Date,
-        to: Date,
+        designation: { type: String, required: true },
+        company: { type: String, required: true },
+        location: { type: String },
+        from: { type: Date, required: true },
+        to: { type: Date },
+        description: { type: String },
       },
     ],
 
@@ -66,7 +71,7 @@ const userSchema = new mongoose.Schema(
     dateOfBirth: Date,
     phone: String,
     country: String,
-    address: String,
+    city: String,
     verified: Boolean,
     token: String,
     otp: String,
@@ -82,13 +87,13 @@ const userSchema = new mongoose.Schema(
   { timestamps: true },
 );
 
-userSchema.pre("save", async function (next) {
+userSchema.pre("save", async function(next) {
   if (!this.isModified("password")) return next();
 
   this.password = await bcrypt.hash(this.password, 10);
   next();
 });
-userSchema.methods.isValidPassword = async function (password) {
+userSchema.methods.isValidPassword = async function(password) {
   const valid = await bcrypt.compare(password, this.password);
   if (!valid) throw new AppError("ivalid email or password", 401);
 };
