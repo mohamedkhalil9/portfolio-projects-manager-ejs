@@ -8,9 +8,6 @@ import {
   updatePassword,
   uploadProfileImage,
   editProfileView,
-  getProfile,
-  updateProfile,
-  deleteProfile,
 } from "../controllers/profileController.js";
 import { authenticate } from "../middlewares/authMiddleware.js";
 import { updatePassSchema, updateUserSchema } from "../validation/schemas.js";
@@ -19,13 +16,19 @@ import upload from "../middlewares/multer.js";
 
 const router = Router();
 
+// get public profile
+// use subdomain
+// router.route("/:id").get(getUserProfile);
+
 router.use(authenticate);
+
+// edit and delete view
 router.get("/edit", editProfileView);
 router
   .route("/")
   .get(getUserProfile)
   .post(validateBody(updateUserSchema), updateUserProfile)
-  .delete(deleteProfile);
+  .delete(deleteUserProfile);
 
 router.get("/verify-email", authenticate, sendEmailVerification);
 router.get("/verify-email/:token", verifyEmail);

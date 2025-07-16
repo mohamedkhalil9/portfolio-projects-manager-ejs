@@ -1,0 +1,363 @@
+<div>
+  <!-- Background elements -->
+  <div class="background-elements">
+    <div class="bg-element bg-element-1"></div>
+    <div class="bg-element bg-element-2"></div>
+    <div class="bg-element bg-element-3"></div>
+  </div>
+
+  <!-- Background elements -->
+  <!-- <div class="absolute inset-0 overflow-hidden z-0"> -->
+  <!--   <div -->
+  <!--     class="absolute top-1/4 left-1/4 w-96 h-96 bg-indigo-900 rounded-full mix-blend-soft-light filter blur-3xl opacity-20 animate-float"> -->
+  <!--   </div> -->
+  <!--   <div -->
+  <!--     class="absolute top-1/3 right-1/4 w-80 h-80 bg-purple-900 rounded-full mix-blend-soft-light filter blur-3xl opacity-15 animate-float animation-delay-2000"> -->
+  <!--   </div> -->
+  <!--   <div -->
+  <!--     class="absolute bottom-1/4 left-1/3 w-72 h-72 bg-blue-900 rounded-full mix-blend-soft-light filter blur-3xl opacity-20 animate-float animation-delay-3000"> -->
+  <!--   </div> -->
+  <!-- </div> -->
+  <!-- Navigation -->
+  <nav>
+    <div class="nav-container">
+      <a href="/api/v1/profile" class="logo">
+        <div class="logo-icon">
+          <i class="fas fa-boxes"></i>
+        </div>
+        <div class="logo-text">Project Gallery</div>
+      </a>
+
+      <div class="nav-links">
+        <a href="/api/v1/projects/view" class="nav-btn">
+          <i class="fas fa-grid"></i>
+          <span class="hidden md:inline">All Projects</span>
+        </a>
+        <a href="/api/v1/projects/edit" class="nav-btn">
+          <i class="fas fa-arrow-left"></i>
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main Content -->
+  <div class="container">
+    <!-- Project Header -->
+    <header class="project-header animate-slide-up">
+      <h1 class="project-title">
+        Nexus - <span class="highlight">Social Media Dashboard</span>
+      </h1>
+      <p class="project-subtitle">
+        Unified platform for managing multiple social media accounts with
+        advanced analytics
+      </p>
+
+      <div class="project-meta">
+        <span class="status-badge status-completed">
+          <i class="fas fa-check-circle mr-2"></i>
+          Completed
+        </span>
+        <span class="status-badge category-badge">
+          <i class="fas fa-globe mr-2"></i>
+          Web Application
+        </span>
+        <div class="meta-item">
+          <i class="far fa-calendar"></i>
+          <span>Launched: Oct 12, 2023</span>
+        </div>
+        <div class="meta-item">
+          <i class="fas fa-users"></i>
+          <span>Team: 6 members</span>
+        </div>
+      </div>
+    </header>
+
+    <!-- Project Layout -->
+    <div class="project-layout">
+      <!-- Gallery Column -->
+      <div class="gallery-container animate-slide-up delay-100">
+        <div class="gallery-main">
+          <img
+            src="https://images.unsplash.com/photo-1551650975-87deedd944c3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1074&q=80"
+            alt="Nexus Dashboard" id="mainMedia" />
+        </div>
+
+        <div class="gallery-thumbs">
+          <div class="thumb-item active"
+            data-src="https://images.unsplash.com/photo-1551650975-87deedd944c3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1074&q=80">
+            <img
+              src="https://images.unsplash.com/photo-1551650975-87deedd944c3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1074&q=80"
+              alt="Dashboard Overview" />
+          </div>
+
+          <div class="thumb-item"
+            data-src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1115&q=80">
+            <img
+              src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1115&q=80"
+              alt="Analytics View" />
+          </div>
+
+          <div class="thumb-item"
+            data-src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80">
+            <img
+              src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80"
+              alt="Content Management" />
+          </div>
+
+          <div class="thumb-item video-thumb" data-src="https://assets.codepen.io/3364143/screen-recording.mp4">
+            <video muted loop>
+              <source src="https://assets.codepen.io/3364143/screen-recording.mp4" type="video/mp4" />
+            </video>
+            <div class="video-indicator">
+              <i class="fas fa-play"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Details Panel -->
+      <div class="details-panel animate-slide-up delay-200">
+        <h2 class="panel-title">
+          <i class="fas fa-info-circle"></i>
+          Project Details
+        </h2>
+
+        <div class="detail-item">
+          <div class="detail-label">Client</div>
+          <div class="detail-value">SocialConnect Solutions</div>
+        </div>
+
+        <div class="detail-item">
+          <div class="detail-label">Timeline</div>
+          <div class="detail-value">6 months</div>
+        </div>
+
+        <div class="detail-item">
+          <div class="detail-label">Technologies</div>
+          <div class="tech-stack">
+            <span class="tech-item">React</span>
+            <span class="tech-item">Node.js</span>
+            <span class="tech-item">MongoDB</span>
+            <span class="tech-item">GraphQL</span>
+            <span class="tech-item">Tailwind CSS</span>
+            <span class="tech-item">D3.js</span>
+            <span class="tech-item">OAuth 2.0</span>
+          </div>
+        </div>
+
+        <div class="detail-item">
+          <div class="detail-label">Project Value</div>
+          <div class="detail-value">$120,000</div>
+        </div>
+
+        <div class="action-buttons">
+          <a href="https://nexus-dashboard.example.com" target="_blank" class="btn btn-primary">
+            <i class="fas fa-external-link-alt"></i>
+            Live Demo
+          </a>
+          <a href="https://github.com/nexus-dashboard" target="_blank" class="btn btn-secondary">
+            <i class="fab fa-github"></i>
+            GitHub Repository
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Project Content -->
+    <div class="project-content animate-slide-up delay-300">
+      <h2 class="section-title">
+        <i class="fas fa-file-alt"></i>
+        Project Description
+      </h2>
+
+      <div class="description">
+        <p>
+          Nexus is a comprehensive social media management dashboard designed
+          for marketing teams and agencies. It consolidates multiple social
+          media accounts into a single interface, providing powerful analytics,
+          scheduling capabilities, and audience engagement tools.
+        </p>
+
+        <p>
+          The platform integrates with all major social networks including
+          Facebook, Instagram, Twitter, LinkedIn, and TikTok. Our solution helps
+          businesses save up to 20 hours per week on social media management
+          while increasing engagement rates by an average of 35%.
+        </p>
+      </div>
+
+      <h2 class="section-title">
+        <i class="fas fa-star"></i>
+        Key Features
+      </h2>
+
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="feature-icon">
+            <i class="fas fa-chart-line"></i>
+          </div>
+          <h3 class="feature-title">Unified Analytics</h3>
+          <p class="feature-desc">
+            Track performance across all platforms with customizable reports and
+            real-time metrics.
+          </p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon">
+            <i class="fas fa-calendar-alt"></i>
+          </div>
+          <h3 class="feature-title">Content Scheduling</h3>
+          <p class="feature-desc">
+            Plan and schedule posts across multiple networks with visual
+            calendar and bulk upload.
+          </p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon">
+            <i class="fas fa-users"></i>
+          </div>
+          <h3 class="feature-title">Audience Insights</h3>
+          <p class="feature-desc">
+            Understand your audience demographics, peak engagement times, and
+            content preferences.
+          </p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon">
+            <i class="fas fa-bolt"></i>
+          </div>
+          <h3 class="feature-title">AI Recommendations</h3>
+          <p class="feature-desc">
+            Get content suggestions and optimal posting times based on
+            performance data.
+          </p>
+        </div>
+      </div>
+
+      <div class="collaboration">
+        <h2 class="section-title">
+          <i class="fas fa-users"></i>
+          Collaboration Team
+        </h2>
+
+        <div class="team-grid">
+          <div class="team-member">
+            <div class="member-avatar">AJ</div>
+            <div class="member-info">
+              <div class="member-name">Alex Johnson</div>
+              <div class="member-role">Project Lead & Fullstack Dev</div>
+            </div>
+          </div>
+
+          <div class="team-member">
+            <div class="member-avatar">MS</div>
+            <div class="member-info">
+              <div class="member-name">Maria Sanchez</div>
+              <div class="member-role">UI/UX Designer</div>
+            </div>
+          </div>
+
+          <div class="team-member">
+            <div class="member-avatar">DR</div>
+            <div class="member-info">
+              <div class="member-name">David Reynolds</div>
+              <div class="member-role">Backend Developer</div>
+            </div>
+          </div>
+
+          <div class="team-member">
+            <div class="member-avatar">TP</div>
+            <div class="member-info">
+              <div class="member-name">Taylor Park</div>
+              <div class="member-role">Frontend Developer</div>
+            </div>
+          </div>
+
+          <div class="team-member">
+            <div class="member-avatar">KC</div>
+            <div class="member-info">
+              <div class="member-name">Kevin Chen</div>
+              <div class="member-role">DevOps Engineer</div>
+            </div>
+          </div>
+
+          <div class="team-member">
+            <div class="member-avatar">EJ</div>
+            <div class="member-info">
+              <div class="member-name">Emma Johnson</div>
+              <div class="member-role">QA Specialist</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="animate-slide-up delay-400">
+    <div class="max-w-6xl mx-auto">
+      <p>© 2024 Project Gallery. All rights reserved.</p>
+      <p class="mt-2">
+        Crafted with <i class="fas fa-heart text-indigo-400"></i> for innovative
+        solutions
+      </p>
+    </div>
+  </footer>
+
+  <script>
+    // Gallery functionality
+    document.addEventListener("DOMContentLoaded", function () {
+      const thumbItems = document.querySelectorAll(".thumb-item");
+      const mainMedia = document.getElementById("mainMedia");
+
+      thumbItems.forEach((item) => {
+        item.addEventListener("click", function () {
+          const src = this.getAttribute("data-src");
+
+          // Update active class
+          thumbItems.forEach((thumb) => thumb.classList.remove("active"));
+          this.classList.add("active");
+
+          // Check if it's a video
+          if (this.classList.contains("video-thumb")) {
+            mainMedia.parentElement.innerHTML = `
+              <video controls autoplay muted loop class="w-full h-full object-cover">
+                <source src="${src}" type="video/mp4">
+                Your browser does not support the video tag.
+              </video>
+            `;
+          } else {
+            mainMedia.parentElement.innerHTML = `<img src="${src}" alt="Nexus Dashboard" id="mainMedia" class="w-full h-full object-cover">`;
+          }
+        });
+      });
+
+      // Add hover effect to cards
+      const featureCards = document.querySelectorAll(".feature-card");
+      featureCards.forEach((card) => {
+        card.addEventListener("mouseenter", () => {
+          card.style.transform = "translateY(-5px)";
+        });
+
+        card.addEventListener("mouseleave", () => {
+          card.style.transform = "translateY(0)";
+        });
+      });
+
+      // Add hover effect to buttons
+      const buttons = document.querySelectorAll(".btn");
+      buttons.forEach((btn) => {
+        btn.addEventListener("mouseenter", () => {
+          btn.style.transform = "translateY(-2px)";
+        });
+
+        btn.addEventListener("mouseleave", () => {
+          btn.style.transform = "translateY(0)";
+        });
+      });
+    });
+  </script>
+</div>

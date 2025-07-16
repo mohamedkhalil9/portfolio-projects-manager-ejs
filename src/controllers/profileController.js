@@ -6,14 +6,9 @@ import jwt from "jsonwebtoken";
 import { sendVerifyEmail } from "../utils/sendEmail.js";
 import { v2 as cloudinary } from "cloudinary";
 import { verifyToken } from "../utils/verifyToken.js";
-import * as factory from "./factory.js";
-
-export const getProfile = factory.getOne(User, "currentUser");
-export const updateProfile = factory.updateOne(User, "currentUser");
-export const deleteProfile = factory.deleteOne(User, "currentUser");
 
 export const getUserProfile = asyncHandler(async (req, res) => {
-  const { id } = req.user;
+  const { id } = req.user ?? req.params;
   const user = await User.findById(id).select("-password");
   const projects = await Project.find({ user: id });
   if (!user) throw new AppError("user not found", 404);
@@ -31,30 +26,39 @@ export const editProfileView = asyncHandler(async (req, res) => {
 });
 
 export const updateUserProfile = asyncHandler(async (req, res) => {
-  const { id } = req.user;
+  // const { id } = req.user;
   const userData = req.body;
-
+  //
   // if (userData.skillSet) {
+  //   const skillSetArr = [];
+  //
   //   userData.skillSet = Object.values(userData.skillSet).map((skill) => ({
-  //     category: skill.category,
-  //     skills: skill.skills.split(",").map((s) => s.trim()),
+  //       category: skill.category,
+  //       skills: skill.skills.split(",").map((s) => s.trim()),
   //   }));
   // }
 
-  if (userData.education) {
-    userData.education = Object.values(userData.education);
+  // if (userData.education) {
+  //   userData.education = Object.values(userData.education);
+  // }
+  //
+  // if (userData.experience) {
+  //   userData.experience = Object.values(userData.experience);
+  // }
+  if (userData.skillSet) {
+    userData.skillSet = Object.values(userData.skillSet).map((skill) => ({
+      category: skill.category,
+      skills: skill.skills
+        .split(",")
+        .map((s) => s.trim())
+        .filter((s) => s.length > 0),
+    }));
   }
-
-  if (userData.experience) {
-    userData.experience = Object.values(userData.experience);
-  }
-
-  const user = await User.findByIdAndUpdate(id, userData, { new: true });
-  if (!user) throw new AppError("user not found", 404);
-  res
-    .status(200)
-    // .json({ status: "success", data: user });
-    .redirect("/api/v1/profile/edit");
+  // const user = await User.findByIdAndUpdate(id, userData, { new: true });
+  // if (!user) throw new AppError("user not found", 404);
+  res.status(200).json(userData);
+  // .json({ status: "success", data: user });
+  // .redirect("/api/v1/profile/edit");
 });
 
 export const deleteUserProfile = asyncHandler(async (req, res) => {

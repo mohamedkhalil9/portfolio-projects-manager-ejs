@@ -106,6 +106,7 @@
 .input-field {
   transition: all 0.3s ease;
   background: rgba(30, 30, 30, 0.7);
+  /* border: 1px solid rgba(255, 255, 255, 0.1); */
 }
 .input-field:focus {
   background: rgba(40, 40, 40, 0.7);

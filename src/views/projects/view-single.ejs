@@ -1,0 +1,203 @@
+  <!-- Background elements -->
+  <div class="absolute inset-0 overflow-hidden z-0">
+    <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-indigo-900 rounded-full mix-blend-soft-light filter blur-3xl opacity-20 animate-float"></div>
+    <div class="absolute top-1/3 right-1/4 w-80 h-80 bg-purple-900 rounded-full mix-blend-soft-light filter blur-3xl opacity-15 animate-float animation-delay-2000"></div>
+    <div class="absolute bottom-1/4 left-1/3 w-72 h-72 bg-blue-900 rounded-full mix-blend-soft-light filter blur-3xl opacity-20 animate-float animation-delay-3000"></div>
+  </div>
+
+  <!-- Navigation Header -->
+<div class="container mx-auto px-4 relative z-10">
+  <nav class="relative z-20 p-6 animate-slide-up">
+    <div class="max-w-6xl mx-auto flex justify-between items-center">
+      <div class="flex items-center space-x-3">
+        <a href="/home" class="flex items-center space-x-3">
+          <div class="w-10 h-10 rounded-full bg-gradient-to-br from-indigo-900 to-purple-900 flex items-center justify-center glow">
+            <i class="fas fa-boxes text-white text-sm"></i>
+          </div>
+          <h1 class="text-2xl font-light text-white">Project Gallery</h1>
+        </a>
+      </div>
+      
+      <div class="flex items-center space-x-4">
+        <a href="/gallery" class="p-2 rounded-xl bg-gray-800/50 border border-gray-700 text-gray-400 hover:text-white hover:border-gray-600 transition">
+          <i class="fas fa-grid"></i>
+          <span class="ml-2">All Projects</span>
+        </a>
+        <a href="/home" class="p-2 rounded-xl bg-gray-800/50 border border-gray-700 text-gray-400 hover:text-white hover:border-gray-600 transition">
+          <i class="fas fa-arrow-left"></i>
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main Content -->
+  <main class="relative z-10 max-w-6xl mx-auto px-6 pb-12">
+    <!-- Project Header -->
+    <div class="project-header animate-slide-up">
+      <h1 class="text-3xl md:text-4xl font-light text-white">
+        Analytics <span class="text-indigo-400">Dashboard</span>
+      </h1>
+      
+      <div class="project-meta">
+        <span class="status-badge status-completed">
+          <i class="fas fa-check-circle mr-2"></i>
+          Completed
+        </span>
+        <span class="category-badge">
+          <i class="fas fa-globe mr-2"></i>
+          Web Application
+        </span>
+        <div class="flex items-center text-gray-400">
+          <i class="far fa-calendar mr-2"></i>
+          <span>Launched: Jan 15, 2024</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Project Layout -->
+    <div class="project-layout">
+      <!-- Gallery Column -->
+      <div class="project-gallery">
+        <div class="gallery-main animate-slide-up animation-delay-100">
+          <img src="https://images.unsplash.com/photo-1551650975-87deedd944c3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1074&q=80" 
+               alt="Analytics Dashboard Main View">
+        </div>
+        
+        <div class="gallery-thumb animate-slide-up animation-delay-200">
+          <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1115&q=80" 
+               alt="Analytics Dashboard - Charts">
+        </div>
+        
+        <div class="gallery-thumb animate-slide-up animation-delay-250">
+          <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" 
+               alt="Analytics Dashboard - Metrics">
+        </div>
+        
+        <div class="gallery-thumb animate-slide-up animation-delay-300">
+          <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" 
+               alt="Analytics Dashboard - Data Visualization">
+        </div>
+      </div>
+      
+      <!-- Details Column -->
+      <div class="project-details animate-slide-up animation-delay-200">
+        <h2 class="text-xl font-semibold text-white mb-4">Project Details</h2>
+        
+        <div class="detail-item">
+          <div class="detail-label">Client</div>
+          <div class="detail-value">DataVision Inc.</div>
+        </div>
+        
+        <div class="detail-item">
+          <div class="detail-label">Timeline</div>
+          <div class="detail-value">3 months</div>
+        </div>
+        
+        <div class="detail-item">
+          <div class="detail-label">Team Size</div>
+          <div class="detail-value">5 members</div>
+        </div>
+        
+        <div class="detail-item">
+          <div class="detail-label">Technologies</div>
+          <div class="tech-stack">
+            <span class="tech-item">React</span>
+            <span class="tech-item">TypeScript</span>
+            <span class="tech-item">D3.js</span>
+            <span class="tech-item">Node.js</span>
+            <span class="tech-item">MongoDB</span>
+            <span class="tech-item">Tailwind CSS</span>
+          </div>
+        </div>
+        
+        <div class="detail-item">
+          <div class="detail-label">Project Value</div>
+          <div class="detail-value">$85,000</div>
+        </div>
+        
+        <div class="action-buttons">
+          <a href="#" class="btn btn-primary">
+            <i class="fas fa-external-link-alt mr-2"></i>
+            Live Demo
+          </a>
+          <a href="#" class="btn btn-secondary">
+            <i class="fab fa-github mr-2"></i>
+            Source Code
+          </a>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Project Description -->
+    <div class="project-description animate-slide-up animation-delay-300">
+      <h3>About This Project</h3>
+      
+      <p>
+        The Analytics Dashboard is a comprehensive data visualization platform designed to help businesses make data-driven decisions. 
+        With real-time metrics, interactive charts, and customizable reports, this dashboard transforms complex data into actionable insights.
+      </p>
+      
+      <p>
+        Our team developed a solution that aggregates data from multiple sources, processes it in real-time, and presents it through an 
+        intuitive and visually appealing interface. The dashboard features over 15 different visualization types, from heatmaps to 
+        Sankey diagrams, allowing users to explore their data from every angle.
+      </p>
+      
+      <h3 class="mt-6">Key Features</h3>
+      
+      <ul class="mt-2 list-disc list-inside text-gray-300 space-y-2">
+        <li>Real-time data streaming and visualization</li>
+        <li>Customizable dashboards with drag-and-drop widgets</li>
+        <li>Interactive data exploration with drill-down capabilities</li>
+        <li>Automated report generation and scheduling</li>
+        <li>Role-based access control and permissions</li>
+        <li>Responsive design for desktop and mobile access</li>
+        <li>Integration with 10+ data sources including SQL, NoSQL, and APIs</li>
+      </ul>
+      
+      <h3 class="mt-6">Results & Impact</h3>
+      
+      <p>
+        Since its implementation, DataVision's clients have reported a 45% reduction in time spent analyzing data and a 30% improvement 
+        in decision-making speed. The dashboard's intuitive design has reduced training time for new users by 60% compared to their 
+        previous analytics solution.
+      </p>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="animate-slide-up animation-delay-500">
+    <div class="max-w-6xl mx-auto">
+      <p>© 2024 Project Gallery. All rights reserved.</p>
+      <p class="mt-2">Crafted with <i class="fas fa-heart text-indigo-400"></i> for innovative solutions</p>
+    </div>
+  </footer>
+
+  <script>
+    // Simple image gallery functionality
+    const thumbs = document.querySelectorAll('.gallery-thumb');
+    const mainImage = document.querySelector('.gallery-main img');
+    
+    thumbs.forEach(thumb => {
+      thumb.addEventListener('click', () => {
+        const imgSrc = thumb.querySelector('img').src;
+        mainImage.src = imgSrc;
+        
+        // Add active class to selected thumb
+        thumbs.forEach(t => t.classList.remove('border-indigo-500', 'border-2'));
+        thumb.classList.add('border-indigo-500', 'border-2');
+      });
+    });
+    
+    // Add hover effect to buttons
+    const buttons = document.querySelectorAll('.btn');
+    buttons.forEach(btn => {
+      btn.addEventListener('mouseenter', () => {
+        btn.style.transform = 'translateY(-2px)';
+      });
+      
+      btn.addEventListener('mouseleave', () => {
+        btn.style.transform = 'translateY(0)';
+      });
+    });
+  </script>

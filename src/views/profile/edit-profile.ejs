@@ -134,7 +134,7 @@
           </div>
           <div>
             <label class="block text-gray-400 text-sm mb-2" for="gender">Gender</label>
-            <select id="gender" name="gender" class="w-full p-4 rounded-xl form-select  border border-gray-700 text-white focus:outline-none focus:ring-1 focus:ring-indigo-500/50">
+            <select id="gender" name="gender" class="form-container w-full p-4 rounded-xl form-select">
               <option value="">Select Gender</option>
               <option value="Male" <%=user.gender==='Male' ? 'selected' : '' %>>Male</option>
               <option value="Memale" <%=user.gender==='Female' ? 'selected' : '' %>>Female</option>
@@ -142,12 +142,12 @@
           </div>
           <div>
             <label class="block text-gray-400 text-sm mb-2" for="city">City</label>
-            <input type="text" id="city" name="city" class="w-full p-4 rounded-xl form-input"
+            <input type="text" id="city" name="city" class="form-container w-full p-4 rounded-xl form-input"
               placeholder="City" value="<%= user.city %>">
           </div>
           <div>
             <label class="block text-gray-400 text-sm mb-2" for="country">Country</label>
-            <input type="text" id="country" name="country" class="w-full p-4 rounded-xl form-input"
+            <input type="text" id="country" name="country" class="form-container w-full p-4 rounded-xl form-input"
               placeholder="Country" value="<%= user.country %>">
           </div>
         </div>
@@ -169,7 +169,9 @@
           <div>
             <label class="block text-gray-400 text-sm mb-2" for="bio">Bio/About</label>
             <textarea id="bio" name="bio" class="w-full p-4 rounded-xl form-input form-textarea"
-              placeholder="Tell us about yourself, your experience, and what drives you..."><%= user.bio %></textarea>
+              placeholder="Tell us about yourself, your experience, and what drives you...">
+              <%= user.bio %>
+            </textarea>
           </div>
         </div>
       </div>
@@ -221,20 +223,24 @@
         </h3>
 
         <div id="skills-container">
-          <% user.skillSet.forEach((skill, index) => { %>
+          <% user.skillSet.forEach((skill, index)=> { %>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-4 skill-set">
               <div>
                 <label class="block text-gray-400 text-sm mb-2">Category</label>
-                <input type="text" name="skillSet[<%= index %>][category]" class="w-full p-4 rounded-xl form-input" value="<%= skill.category %>">
+                <input type="text" name="skillSet[<%= index %>][category]" class="w-full p-4 rounded-xl form-input"
+                  value="<%= skill.category %>">
               </div>
               <div>
                 <label class="block text-gray-400 text-sm mb-2">Skills (comma-separated)</label>
-                <input type="text" name="skillSet[<%= index %>][skills]" class="w-full p-4 rounded-xl form-input" value="<%= skill.skills.join(', ') %>">
+                <input type="text" name="skillSet[<%= index %>][skills]" class="w-full p-4 rounded-xl form-input"
+                  value="<%= skill.skills.join(', ') %>">
               </div>
             </div>
-          <% }); %>
+            <% }); %>
         </div>
-        <button type="button" id="add-skill" class="px-4 py-2 bg-indigo-600 hover:bg-indigo-700 text-white rounded-xl transition text-sm">Add Skill</button>
+        <button type="button" id="add-skill"
+          class="px-4 py-2 bg-indigo-600 hover:bg-indigo-700 text-white rounded-xl transition text-sm">Add
+          Skill</button>
       </div>
 
       <!-- Education -->
@@ -245,24 +251,29 @@
         </h3>
 
         <div id="education-fields">
-          <% user.education.forEach((edu, index) => { %>
+          <% user.education.forEach((edu, index)=> { %>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-4">
               <div>
                 <label class="block text-gray-400 text-sm mb-2" for="institute">Institute</label>
-                <input type="text" name="education[<%= index %>][institute]" class="w-full p-4 rounded-xl form-input" value="<%= edu.institute %>">
+                <input type="text" name="education[<%= index %>][institute]" class="w-full p-4 rounded-xl form-input"
+                  value="<%= edu.institute %>">
               </div>
               <div>
                 <label class="block text-gray-400 text-sm mb-2" for="from">From</label>
-                <input type="date" name="education[<%= index %>][from]" class="w-full p-4 rounded-xl form-input" value="<%= edu.from ? new Date(edu.from).toISOString().split('T')[0] : '' %>">
+                <input type="date" name="education[<%= index %>][from]" class="w-full p-4 rounded-xl form-input"
+                  value="<%= edu.from ? new Date(edu.from).toISOString().split('T')[0] : '' %>">
               </div>
               <div>
                 <label class="block text-gray-400 text-sm mb-2" for="to">To</label>
-                <input type="date" name="education[<%= index %>][to]" class="w-full p-4 rounded-xl form-input" value="<%= edu.to ? new Date(edu.to).toISOString().split('T')[0] : '' %>">
+                <input type="date" name="education[<%= index %>][to]" class="w-full p-4 rounded-xl form-input"
+                  value="<%= edu.to ? new Date(edu.to).toISOString().split('T')[0] : '' %>">
               </div>
             </div>
-          <% }); %>
+            <% }); %>
         </div>
-        <button type="button" id="add-education" class="px-4 py-2 bg-indigo-600 hover:bg-indigo-700 text-white rounded-xl transition text-sm">Add Education</button>
+        <button type="button" id="add-education"
+          class="px-4 py-2 bg-indigo-600 hover:bg-indigo-700 text-white rounded-xl transition text-sm">Add
+          Education</button>
       </div>
 
       <!-- Experience -->
@@ -273,28 +284,34 @@
         </h3>
 
         <div id="experience-fields">
-          <% user.experience.forEach((exp, index) => { %>
+          <% user.experience.forEach((exp, index)=> { %>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-4">
               <div>
                 <label class="block text-gray-400 text-sm mb-2" for="corporate">Corporate</label>
-                <input type="text" name="experience[<%= index %>][corporate]" class="w-full p-4 rounded-xl form-input" value="<%= exp.corporate %>">
+                <input type="text" name="experience[<%= index %>][corporate]" class="w-full p-4 rounded-xl form-input"
+                  value="<%= exp.corporate %>">
               </div>
               <div>
                 <label class="block text-gray-400 text-sm mb-2" for="workedOn">Worked On</label>
-                <input type="text" name="experience[<%= index %>][workedOn]" class="w-full p-4 rounded-xl form-input" value="<%= exp.workedOn %>">
+                <input type="text" name="experience[<%= index %>][workedOn]" class="w-full p-4 rounded-xl form-input"
+                  value="<%= exp.workedOn %>">
               </div>
               <div>
                 <label class="block text-gray-400 text-sm mb-2" for="from">From</label>
-                <input type="date" name="experience[<%= index %>][from]" class="w-full p-4 rounded-xl form-input" value="<%= exp.from ? new Date(exp.from).toISOString().split('T')[0] : '' %>">
+                <input type="date" name="experience[<%= index %>][from]" class="w-full p-4 rounded-xl form-input"
+                  value="<%= exp.from ? new Date(exp.from).toISOString().split('T')[0] : '' %>">
               </div>
               <div>
                 <label class="block text-gray-400 text-sm mb-2" for="to">To</label>
-                <input type="date" name="experience[<%= index %>][to]" class="w-full p-4 rounded-xl form-input" value="<%= exp.to ? new Date(exp.to).toISOString().split('T')[0] : '' %>">
+                <input type="date" name="experience[<%= index %>][to]" class="w-full p-4 rounded-xl form-input"
+                  value="<%= exp.to ? new Date(exp.to).toISOString().split('T')[0] : '' %>">
               </div>
             </div>
-          <% }); %>
+            <% }); %>
         </div>
-        <button type="button" id="add-experience" class="px-4 py-2 bg-indigo-600 hover:bg-indigo-700 text-white rounded-xl transition text-sm">Add Experience</button>
+        <button type="button" id="add-experience"
+          class="px-4 py-2 bg-indigo-600 hover:bg-indigo-700 text-white rounded-xl transition text-sm">Add
+          Experience</button>
       </div>
 
       <!-- Form Actions -->
@@ -356,7 +373,7 @@
     const originalText = draftBtn.innerHTML;
     draftBtn.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i>Saving Draft...';
     draftBtn.disabled = true;
- 
+
     setTimeout(() => {
       draftBtn.innerHTML = '<i class="fas fa-check mr-2"></i>Draft Saved';
       setTimeout(() => {
@@ -436,7 +453,7 @@
 
   setupAutoSave();
 
-  document.getElementById('add-education').addEventListener('click', function() {
+  document.getElementById('add-education').addEventListener('click', function () {
     const educationFields = document.getElementById('education-fields');
     const newIndex = educationFields.children.length;
     const newEducationField = `
@@ -458,7 +475,7 @@
     educationFields.insertAdjacentHTML('beforeend', newEducationField);
   });
 
-  document.getElementById('add-experience').addEventListener('click', function() {
+  document.getElementById('add-experience').addEventListener('click', function () {
     const experienceFields = document.getElementById('experience-fields');
     const newIndex = experienceFields.children.length;
     const newExperienceField = `
@@ -484,7 +501,7 @@
     experienceFields.insertAdjacentHTML('beforeend', newExperienceField);
   });
 
-  document.getElementById('add-skill').addEventListener('click', function() {
+  document.getElementById('add-skill').addEventListener('click', function () {
     const skillsContainer = document.getElementById('skills-container');
     const newIndex = skillsContainer.children.length;
     const newSkillField = `

@@ -192,12 +192,17 @@ export const updateUserSchema = Joi.object({
   linkedinUrl: Joi.string(),
   jobTitle: Joi.string(),
   bio: Joi.string(),
-  skillSet: Joi.array().items(
-    Joi.object({
-      category: Joi.string(),
-      skills: Joi.array().items(Joi.string()),
-    }),
-  ),
+  skillSet: Joi.object({
+    category: Joi.string(),
+    skills: Joi.string(),
+  }),
+  // ),
+  // skillSet: Joi.array().items(
+  //   Joi.object({
+  //     category: Joi.string(),
+  //     skills: Joi.array().items(Joi.string()),
+  //   }),
+  // ),
   country: Joi.string()
     .length(2)
     .uppercase()
@@ -208,8 +213,6 @@ export const updateUserSchema = Joi.object({
         "Country must be a valid ISO 3166-1 alpha-2 country code (e.g., US, GB, CA)",
     }),
   city: Joi.string(),
-  bio: Joi.string(),
-  githubUrl: Joi.string(),
 });
 
 export const updatePassSchema = Joi.object({
