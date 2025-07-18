@@ -1,3 +1,5 @@
+import AppError from "../utils/AppError.js";
+
 const validate = (schema, source) => {
   return async (req, res, next) => {
     const data =
@@ -8,8 +10,8 @@ const validate = (schema, source) => {
           : req.query;
 
     const { error } = await schema.validate(data);
-    if (error)
-      return res.status(422).json({ status: "error", message: error.message });
+    if (error) return res.status(422).render("error", { error });
+    // .json({ status: "error", message: error.message });
     next();
   };
 };
