@@ -8,7 +8,7 @@ import { v2 as cloudinary } from "cloudinary";
 import { verifyToken } from "../utils/verifyToken.js";
 
 export const getUserProfile = asyncHandler(async (req, res) => {
-  const { id } = req.user ?? req.params;
+  const { id } = req.params;
   const user = await User.findById(id).select("-password");
   const projects = await Project.find({ user: id });
   if (!user) throw new AppError("user not found", 404);

@@ -22,8 +22,6 @@ router.route("/:id").get(getUserProfile);
 
 router.use(authenticate);
 
-router.route("/").get(getUserProfile);
-
 // 2. login or register redirect to user full data
 
 // 3. get edit view

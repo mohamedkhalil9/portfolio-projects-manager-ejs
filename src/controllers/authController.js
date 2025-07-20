@@ -97,7 +97,7 @@ export const login = asyncHandler(async (req, res) => {
     //     user: newUser,
     //   },
     // });
-    .redirect("/api/v1/profile");
+    .redirect(`/api/v1/profile/${user._id}`);
 });
 
 export const newToken = asyncHandler(async (req, res) => {
