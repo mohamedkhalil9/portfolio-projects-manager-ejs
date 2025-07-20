@@ -1,42 +1,24 @@
-<!-- Background elements -->
-<div class="absolute inset-0 overflow-hidden z-0">
-  <div
-    class="absolute top-1/4 left-[15%] w-96 h-96 bg-indigo-900 rounded-full mix-blend-soft-light filter blur-3xl opacity-20 animate-float"
-  ></div>
-  <div
-    class="absolute top-1/3 right-[15%] w-80 h-80 bg-purple-900 rounded-full mix-blend-soft-light filter blur-3xl opacity-15 animate-float animation-delay-2000"
-  ></div>
-  <div
-    class="absolute bottom-1/4 left-1/3 w-72 h-72 bg-blue-900 rounded-full mix-blend-soft-light filter blur-3xl opacity-20 animate-float animation-delay-3000"
-  ></div>
-</div>
-
 <!-- Navigation -->
 <div>
   <nav class="relative z-20 py-6 px-4 sm:px-8">
     <div class="max-w-7xl mx-auto flex justify-between items-center">
-      <a href="/api/v1/profile" class="flex items-center space-x-3">
+      <a href="/api/v1/profile/<%= project.user %>" class="flex items-center space-x-3">
         <div
-          class="w-10 h-10 rounded-full bg-gradient-to-br from-indigo-900 to-purple-900 flex items-center justify-center glow"
-        >
+          class="w-10 h-10 rounded-full bg-gradient-to-br from-indigo-900 to-purple-900 flex items-center justify-center glow">
           <i class="fas fa-arrow-left text-white text-sm"></i>
         </div>
         <h1 class="text-2xl font-light text-white">Project Gallery</h1>
       </a>
 
       <div class="flex items-center space-x-4">
-        <a
-          href="/api/v1/projects/"
-          class="px-4 py-2 rounded-xl border border-gray-700 text-gray-300 hover:text-white hover:border-gray-600 transition flex items-center"
-        >
+        <a href="/api/v1/<%= project.user %>/projects"
+          class="px-4 py-2 rounded-xl border border-gray-700 text-gray-300 hover:text-white hover:border-gray-600 transition flex items-center">
           <i class="fas fa-grid mr-2"></i>
           <span class="hidden md:inline">All Projects</span>
         </a>
-        <a
-          href="/api/v1/projects/edit"
-          class="px-4 py-2 rounded-xl border border-gray-700 text-gray-300 hover:text-white hover:border-gray-600 transition flex items-center"
-        >
-          <i class="fas fa-arrow-left mr-2"></i>
+        <a href="/api/v1/projects/<%= project._id %>/edit"
+          class="px-4 py-2 rounded-xl border border-gray-700 text-gray-300 hover:text-white hover:border-gray-600 transition flex items-center">
+          <!-- <i class="fas fa-arrow-left mr-2"></i> -->
           <span>edit</span>
         </a>
       </div>
@@ -48,14 +30,12 @@
     <main class="relative z-10">
       <!-- Project Header -->
       <header class="p-8 mb-8 animate-slide-up">
-        <div
-          class="flex flex-col md:flex-row justify-between items-start md:items-center gap-6"
-        >
+        <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
           <div>
             <h1 class="text-4xl md:text-5xl font-light text-white mb-2">
               <%= project.title %>
-              <!-- Nexus - -->
-              <!-- <span class="text-indigo-400">Social Media Dashboard</span> -->
+                <!-- Nexus - -->
+                <!-- <span class="text-indigo-400">Social Media Dashboard</span> -->
             </h1>
             <p class="text-xl text-gray-300 mb-6 max-w-3xl">
               <!-- Unified platform for managing multiple social media accounts with -->
@@ -65,29 +45,23 @@
 
             <div class="flex flex-wrap gap-3">
               <span
-                class="px-4 py-2 bg-green-900/30 text-green-300 rounded-full border border-green-800/50 flex items-center"
-              >
+                class="px-4 py-2 bg-green-900/30 text-green-300 rounded-full border border-green-800/50 flex items-center">
                 <i class="fas fa-check-circle mr-2"></i>
                 Completed
               </span>
               <span
-                class="px-4 py-2 bg-indigo-900/30 text-indigo-300 rounded-full border border-indigo-800/50 flex items-center"
-              >
+                class="px-4 py-2 bg-indigo-900/30 text-indigo-300 rounded-full border border-indigo-800/50 flex items-center">
                 <i class="fas fa-globe mr-2"></i>
                 Web Application
               </span>
-              <div
-                class="flex items-center px-4 py-2 bg-gray-800/30 text-gray-300 rounded-full border border-gray-700"
-              >
+              <div class="flex items-center px-4 py-2 bg-gray-800/30 text-gray-300 rounded-full border border-gray-700">
                 <i class="far fa-calendar mr-2"></i>
                 <span>Launched: Oct 12, 2023</span>
                 <!-- <span> -->
                 <!-- <%= project.createdAt %> -->
                 <!-- </span> -->
               </div>
-              <div
-                class="flex items-center px-4 py-2 bg-gray-800/30 text-gray-300 rounded-full border border-gray-700"
-              >
+              <div class="flex items-center px-4 py-2 bg-gray-800/30 text-gray-300 rounded-full border border-gray-700">
                 <i class="fas fa-users mr-2"></i>
                 <span>Team: 6 members</span>
               </div>
@@ -95,17 +69,13 @@
           </div>
 
           <div class="flex gap-3">
-            <a
-              href="#"
-              class="px-6 py-3 bg-indigo-600 hover:bg-indigo-700 text-white rounded-xl transition flex items-center"
-            >
+            <a href="#"
+              class="px-6 py-3 bg-indigo-600 hover:bg-indigo-700 text-white rounded-xl transition flex items-center">
               <i class="fas fa-external-link-alt mr-2"></i>
               Live Demo
             </a>
-            <a
-              href="<%= project.githubUrl %>"
-              class="px-6 py-3 border border-gray-600 hover:border-gray-500 text-white rounded-xl transition flex items-center"
-            >
+            <a href="<%= project.githubUrl %>"
+              class="px-6 py-3 border border-gray-600 hover:border-gray-500 text-white rounded-xl transition flex items-center">
               <i class="fab fa-github mr-2"></i>
               Source Code
             </a>
@@ -118,57 +88,33 @@
         <!-- Gallery Column -->
         <div class="lg:col-span-2 p-6 animate-slide-up delay-100">
           <div class="gallery-main rounded-xl overflow-hidden mb-6">
-            <img
-              src="https://placehold.co/1920x1080"
-              alt="Nexus Dashboard"
-              id="mainMedia"
-              class="w-full h-auto object-cover rounded-xl"
-            />
+            <img src="https://placehold.co/1920x1080" alt="Nexus Dashboard" id="mainMedia"
+              class="w-full h-auto object-cover rounded-xl" />
           </div>
 
           <div class="gallery-thumbs flex space-x-4 overflow-x-auto py-2">
-            <div
-              class="gallery-thumb flex-shrink-0 w-24 h-24 rounded-lg overflow-hidden cursor-pointer active"
-              data-src="https://placehold.co/1920x1080/FF0000/FFFFFF"
-            >
-              <img
-                src="https://placehold.co/1920x1080/FF0000/FFFFFF"
-                alt="Dashboard Overview"
-                class="w-full h-full object-cover"
-              />
+            <div class="gallery-thumb flex-shrink-0 w-24 h-24 rounded-lg overflow-hidden cursor-pointer active"
+              data-src="https://placehold.co/1920x1080/FF0000/FFFFFF">
+              <img src="https://placehold.co/1920x1080/FF0000/FFFFFF" alt="Dashboard Overview"
+                class="w-full h-full object-cover" />
             </div>
 
-            <div
-              class="gallery-thumb flex-shrink-0 w-24 h-24 rounded-lg overflow-hidden cursor-pointer"
-              data-src="https://placehold.co/1920x1080/00FF00/FFFFFF"
-            >
-              <img
-                src="https://placehold.co/1920x1080/00FF00/FFFFFF"
-                alt="Analytics View"
-                class="w-full h-full object-cover"
-              />
+            <div class="gallery-thumb flex-shrink-0 w-24 h-24 rounded-lg overflow-hidden cursor-pointer"
+              data-src="https://placehold.co/1920x1080/00FF00/FFFFFF">
+              <img src="https://placehold.co/1920x1080/00FF00/FFFFFF" alt="Analytics View"
+                class="w-full h-full object-cover" />
             </div>
 
-            <div
-              class="gallery-thumb flex-shrink-0 w-24 h-24 rounded-lg overflow-hidden cursor-pointer"
-              data-src="https://placehold.co/1920x1080/0000FF/FFFFFF"
-            >
-              <img
-                src="https://placehold.co/1920x1080/0000FF/FFFFFF"
-                alt="Content Management"
-                class="w-full h-full object-cover"
-              />
+            <div class="gallery-thumb flex-shrink-0 w-24 h-24 rounded-lg overflow-hidden cursor-pointer"
+              data-src="https://placehold.co/1920x1080/0000FF/FFFFFF">
+              <img src="https://placehold.co/1920x1080/0000FF/FFFFFF" alt="Content Management"
+                class="w-full h-full object-cover" />
             </div>
 
-            <div
-              class="gallery-thumb flex-shrink-0 w-24 h-24 rounded-lg overflow-hidden cursor-pointer"
-              data-src="https://placehold.co/1920x1080/FFFF00/000000"
-            >
-              <img
-                src="https://placehold.co/1920x1080/FFFF00/000000"
-                alt="Team Collaboration"
-                class="w-full h-full object-cover"
-              />
+            <div class="gallery-thumb flex-shrink-0 w-24 h-24 rounded-lg overflow-hidden cursor-pointer"
+              data-src="https://placehold.co/1920x1080/FFFF00/000000">
+              <img src="https://placehold.co/1920x1080/FFFF00/000000" alt="Team Collaboration"
+                class="w-full h-full object-cover" />
             </div>
           </div>
         </div>
@@ -205,35 +151,34 @@
               <div class="text-gray-400 mb-2">Technologies</div>
               <div class="flex flex-wrap gap-2">
                 <% project.technologies.map( tech=> { %>
-                <span
-                  class="tech-badge px-3 py-1.5 bg-indigo-900/30 text-indigo-300 text-sm rounded-full border border-indigo-800/50"
-                >
-                  <%= tech %>
-                </span>
-                <% }) %>
-                <!-- class="tech-badge px-3 py-1.5 bg-indigo-900/30 text-indigo-300 text-sm rounded-full border border-indigo-800/50">React -->
-                <!-- 18</span> -->
-                <!-- <span -->
-                <!--     class="tech-badge px-3 py-1.5 bg-indigo-900/30 text-indigo-300 text-sm rounded-full border border-indigo-800/50">Node.js</span> -->
-                <!-- <span -->
-                <!--     class="tech-badge px-3 py-1.5 bg-indigo-900/30 text-indigo-300 text-sm rounded-full border border-indigo-800/50">MongoDB</span> -->
-                <!-- <span -->
-                <!--     class="tech-badge px-3 py-1.5 bg-indigo-900/30 text-indigo-300 text-sm rounded-full border border-indigo-800/50">GraphQL</span> -->
-                <!-- <span -->
-                <!--     class="tech-badge px-3 py-1.5 bg-indigo-900/30 text-indigo-300 text-sm rounded-full border border-indigo-800/50">Tailwind -->
-                <!--     CSS</span> -->
-                <!-- <span -->
-                <!--     class="tech-badge px-3 py-1.5 bg-indigo-900/30 text-indigo-300 text-sm rounded-full border border-indigo-800/50">D3.js</span> -->
-                <!-- <span -->
-                <!--     class="tech-badge px-3 py-1.5 bg-indigo-900/30 text-indigo-300 text-sm rounded-full border border-indigo-800/50">OAuth -->
-                <!--     2.0</span> -->
-                <!-- <span -->
-                <!--     class="tech-badge px-3 py-1.5 bg-indigo-900/30 text-indigo-300 text-sm rounded-full border border-indigo-800/50">Redis</span> -->
-                <!-- <span -->
-                <!--     class="tech-badge px-3 py-1.5 bg-indigo-900/30 text-indigo-300 text-sm rounded-full border border-indigo-800/50">AWS -->
-                <!--     S3</span> -->
-                <!-- <span -->
-                <!--     class="tech-badge px-3 py-1.5 bg-indigo-900/30 text-indigo-300 text-sm rounded-full border border-indigo-800/50">Docker</span> -->
+                  <span
+                    class="tech-badge px-3 py-1.5 bg-indigo-900/30 text-indigo-300 text-sm rounded-full border border-indigo-800/50">
+                    <%= tech %>
+                  </span>
+                  <% }) %>
+                    <!-- class="tech-badge px-3 py-1.5 bg-indigo-900/30 text-indigo-300 text-sm rounded-full border border-indigo-800/50">React -->
+                    <!-- 18</span> -->
+                    <!-- <span -->
+                    <!--     class="tech-badge px-3 py-1.5 bg-indigo-900/30 text-indigo-300 text-sm rounded-full border border-indigo-800/50">Node.js</span> -->
+                    <!-- <span -->
+                    <!--     class="tech-badge px-3 py-1.5 bg-indigo-900/30 text-indigo-300 text-sm rounded-full border border-indigo-800/50">MongoDB</span> -->
+                    <!-- <span -->
+                    <!--     class="tech-badge px-3 py-1.5 bg-indigo-900/30 text-indigo-300 text-sm rounded-full border border-indigo-800/50">GraphQL</span> -->
+                    <!-- <span -->
+                    <!--     class="tech-badge px-3 py-1.5 bg-indigo-900/30 text-indigo-300 text-sm rounded-full border border-indigo-800/50">Tailwind -->
+                    <!--     CSS</span> -->
+                    <!-- <span -->
+                    <!--     class="tech-badge px-3 py-1.5 bg-indigo-900/30 text-indigo-300 text-sm rounded-full border border-indigo-800/50">D3.js</span> -->
+                    <!-- <span -->
+                    <!--     class="tech-badge px-3 py-1.5 bg-indigo-900/30 text-indigo-300 text-sm rounded-full border border-indigo-800/50">OAuth -->
+                    <!--     2.0</span> -->
+                    <!-- <span -->
+                    <!--     class="tech-badge px-3 py-1.5 bg-indigo-900/30 text-indigo-300 text-sm rounded-full border border-indigo-800/50">Redis</span> -->
+                    <!-- <span -->
+                    <!--     class="tech-badge px-3 py-1.5 bg-indigo-900/30 text-indigo-300 text-sm rounded-full border border-indigo-800/50">AWS -->
+                    <!--     S3</span> -->
+                    <!-- <span -->
+                    <!--     class="tech-badge px-3 py-1.5 bg-indigo-900/30 text-indigo-300 text-sm rounded-full border border-indigo-800/50">Docker</span> -->
               </div>
             </div>
 
@@ -241,9 +186,7 @@
               <div class="text-gray-400 mb-2">Key Metrics</div>
               <div class="space-y-3">
                 <div class="flex items-center">
-                  <div
-                    class="w-8 h-8 rounded-full bg-green-900/30 flex items-center justify-center mr-3"
-                  >
+                  <div class="w-8 h-8 rounded-full bg-green-900/30 flex items-center justify-center mr-3">
                     <i class="fas fa-chart-line text-green-400 text-xs"></i>
                   </div>
                   <div>
@@ -253,9 +196,7 @@
                   </div>
                 </div>
                 <div class="flex items-center">
-                  <div
-                    class="w-8 h-8 rounded-full bg-blue-900/30 flex items-center justify-center mr-3"
-                  >
+                  <div class="w-8 h-8 rounded-full bg-blue-900/30 flex items-center justify-center mr-3">
                     <i class="fas fa-clock text-blue-400 text-xs"></i>
                   </div>
                   <div>
@@ -263,9 +204,7 @@
                   </div>
                 </div>
                 <div class="flex items-center">
-                  <div
-                    class="w-8 h-8 rounded-full bg-purple-900/30 flex items-center justify-center mr-3"
-                  >
+                  <div class="w-8 h-8 rounded-full bg-purple-900/30 flex items-center justify-center mr-3">
                     <i class="fas fa-users text-purple-400 text-xs"></i>
                   </div>
                   <div>
@@ -327,9 +266,7 @@
           <!-- Feature 1 -->
           <div class="feature-card glass-container p-6 rounded-xl">
             <div class="flex items-start">
-              <div
-                class="w-12 h-12 rounded-xl bg-indigo-900/30 flex items-center justify-center mr-4 flex-shrink-0"
-              >
+              <div class="w-12 h-12 rounded-xl bg-indigo-900/30 flex items-center justify-center mr-4 flex-shrink-0">
                 <i class="fas fa-chart-line text-indigo-400 text-xl"></i>
               </div>
               <div>
@@ -343,18 +280,9 @@
                   performance with interactive charts.
                 </p>
                 <div class="flex flex-wrap gap-2">
-                  <span
-                    class="px-2 py-1 bg-gray-800 text-gray-300 text-xs rounded"
-                    >D3.js</span
-                  >
-                  <span
-                    class="px-2 py-1 bg-gray-800 text-gray-300 text-xs rounded"
-                    >Custom Metrics</span
-                  >
-                  <span
-                    class="px-2 py-1 bg-gray-800 text-gray-300 text-xs rounded"
-                    >Export to PDF/CSV</span
-                  >
+                  <span class="px-2 py-1 bg-gray-800 text-gray-300 text-xs rounded">D3.js</span>
+                  <span class="px-2 py-1 bg-gray-800 text-gray-300 text-xs rounded">Custom Metrics</span>
+                  <span class="px-2 py-1 bg-gray-800 text-gray-300 text-xs rounded">Export to PDF/CSV</span>
                 </div>
               </div>
             </div>
@@ -363,9 +291,7 @@
           <!-- Feature 2 -->
           <div class="feature-card glass-container p-6 rounded-xl">
             <div class="flex items-start">
-              <div
-                class="w-12 h-12 rounded-xl bg-green-900/30 flex items-center justify-center mr-4 flex-shrink-0"
-              >
+              <div class="w-12 h-12 rounded-xl bg-green-900/30 flex items-center justify-center mr-4 flex-shrink-0">
                 <i class="fas fa-calendar-alt text-green-400 text-xl"></i>
               </div>
               <div>
@@ -378,18 +304,9 @@
                   recommendations based on audience activity patterns.
                 </p>
                 <div class="flex flex-wrap gap-2">
-                  <span
-                    class="px-2 py-1 bg-gray-800 text-gray-300 text-xs rounded"
-                    >Calendar UI</span
-                  >
-                  <span
-                    class="px-2 py-1 bg-gray-800 text-gray-300 text-xs rounded"
-                    >Bulk Upload</span
-                  >
-                  <span
-                    class="px-2 py-1 bg-gray-800 text-gray-300 text-xs rounded"
-                    >Time Optimization</span
-                  >
+                  <span class="px-2 py-1 bg-gray-800 text-gray-300 text-xs rounded">Calendar UI</span>
+                  <span class="px-2 py-1 bg-gray-800 text-gray-300 text-xs rounded">Bulk Upload</span>
+                  <span class="px-2 py-1 bg-gray-800 text-gray-300 text-xs rounded">Time Optimization</span>
                 </div>
               </div>
             </div>
@@ -398,9 +315,7 @@
           <!-- Feature 3 -->
           <div class="feature-card glass-container p-6 rounded-xl">
             <div class="flex items-start">
-              <div
-                class="w-12 h-12 rounded-xl bg-purple-900/30 flex items-center justify-center mr-4 flex-shrink-0"
-              >
+              <div class="w-12 h-12 rounded-xl bg-purple-900/30 flex items-center justify-center mr-4 flex-shrink-0">
                 <i class="fas fa-users text-purple-400 text-xl"></i>
               </div>
               <div>
@@ -414,18 +329,9 @@
                   strategies.
                 </p>
                 <div class="flex flex-wrap gap-2">
-                  <span
-                    class="px-2 py-1 bg-gray-800 text-gray-300 text-xs rounded"
-                    >Demographic Analysis</span
-                  >
-                  <span
-                    class="px-2 py-1 bg-gray-800 text-gray-300 text-xs rounded"
-                    >Behavior Tracking</span
-                  >
-                  <span
-                    class="px-2 py-1 bg-gray-800 text-gray-300 text-xs rounded"
-                    >Segmentation</span
-                  >
+                  <span class="px-2 py-1 bg-gray-800 text-gray-300 text-xs rounded">Demographic Analysis</span>
+                  <span class="px-2 py-1 bg-gray-800 text-gray-300 text-xs rounded">Behavior Tracking</span>
+                  <span class="px-2 py-1 bg-gray-800 text-gray-300 text-xs rounded">Segmentation</span>
                 </div>
               </div>
             </div>
@@ -434,9 +340,7 @@
           <!-- Feature 4 -->
           <div class="feature-card glass-container p-6 rounded-xl">
             <div class="flex items-start">
-              <div
-                class="w-12 h-12 rounded-xl bg-pink-900/30 flex items-center justify-center mr-4 flex-shrink-0"
-              >
+              <div class="w-12 h-12 rounded-xl bg-pink-900/30 flex items-center justify-center mr-4 flex-shrink-0">
                 <i class="fas fa-bolt text-pink-400 text-xl"></i>
               </div>
               <div>
@@ -449,18 +353,9 @@
                   machine learning analysis of historical data.
                 </p>
                 <div class="flex flex-wrap gap-2">
-                  <span
-                    class="px-2 py-1 bg-gray-800 text-gray-300 text-xs rounded"
-                    >Machine Learning</span
-                  >
-                  <span
-                    class="px-2 py-1 bg-gray-800 text-gray-300 text-xs rounded"
-                    >Content Suggestions</span
-                  >
-                  <span
-                    class="px-2 py-1 bg-gray-800 text-gray-300 text-xs rounded"
-                    >Performance Prediction</span
-                  >
+                  <span class="px-2 py-1 bg-gray-800 text-gray-300 text-xs rounded">Machine Learning</span>
+                  <span class="px-2 py-1 bg-gray-800 text-gray-300 text-xs rounded">Content Suggestions</span>
+                  <span class="px-2 py-1 bg-gray-800 text-gray-300 text-xs rounded">Performance Prediction</span>
                 </div>
               </div>
             </div>
@@ -469,9 +364,7 @@
           <!-- Feature 5 -->
           <div class="feature-card glass-container p-6 rounded-xl">
             <div class="flex items-start">
-              <div
-                class="w-12 h-12 rounded-xl bg-blue-900/30 flex items-center justify-center mr-4 flex-shrink-0"
-              >
+              <div class="w-12 h-12 rounded-xl bg-blue-900/30 flex items-center justify-center mr-4 flex-shrink-0">
                 <i class="fas fa-comments text-blue-400 text-xl"></i>
               </div>
               <div>
@@ -484,18 +377,9 @@
                   assignment, canned responses, and sentiment analysis.
                 </p>
                 <div class="flex flex-wrap gap-2">
-                  <span
-                    class="px-2 py-1 bg-gray-800 text-gray-300 text-xs rounded"
-                    >Sentiment Analysis</span
-                  >
-                  <span
-                    class="px-2 py-1 bg-gray-800 text-gray-300 text-xs rounded"
-                    >Team Collaboration</span
-                  >
-                  <span
-                    class="px-2 py-1 bg-gray-800 text-gray-300 text-xs rounded"
-                    >Canned Responses</span
-                  >
+                  <span class="px-2 py-1 bg-gray-800 text-gray-300 text-xs rounded">Sentiment Analysis</span>
+                  <span class="px-2 py-1 bg-gray-800 text-gray-300 text-xs rounded">Team Collaboration</span>
+                  <span class="px-2 py-1 bg-gray-800 text-gray-300 text-xs rounded">Canned Responses</span>
                 </div>
               </div>
             </div>
@@ -504,9 +388,7 @@
           <!-- Feature 6 -->
           <div class="feature-card glass-container p-6 rounded-xl">
             <div class="flex items-start">
-              <div
-                class="w-12 h-12 rounded-xl bg-yellow-900/30 flex items-center justify-center mr-4 flex-shrink-0"
-              >
+              <div class="w-12 h-12 rounded-xl bg-yellow-900/30 flex items-center justify-center mr-4 flex-shrink-0">
                 <i class="fas fa-shield-alt text-yellow-400 text-xl"></i>
               </div>
               <div>
@@ -519,18 +401,9 @@
                   certification for enterprise security requirements.
                 </p>
                 <div class="flex flex-wrap gap-2">
-                  <span
-                    class="px-2 py-1 bg-gray-800 text-gray-300 text-xs rounded"
-                    >RBAC</span
-                  >
-                  <span
-                    class="px-2 py-1 bg-gray-800 text-gray-300 text-xs rounded"
-                    >GDPR Compliance</span
-                  >
-                  <span
-                    class="px-2 py-1 bg-gray-800 text-gray-300 text-xs rounded"
-                    >SOC 2</span
-                  >
+                  <span class="px-2 py-1 bg-gray-800 text-gray-300 text-xs rounded">RBAC</span>
+                  <span class="px-2 py-1 bg-gray-800 text-gray-300 text-xs rounded">GDPR Compliance</span>
+                  <span class="px-2 py-1 bg-gray-800 text-gray-300 text-xs rounded">SOC 2</span>
                 </div>
               </div>
             </div>
@@ -546,12 +419,9 @@
         </h2>
 
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          <div
-            class="flex items-center p-4 rounded-xl bg-gray-800/30 hover:bg-gray-800/50 transition"
-          >
+          <div class="flex items-center p-4 rounded-xl bg-gray-800/30 hover:bg-gray-800/50 transition">
             <div
-              class="team-avatar w-16 h-16 rounded-full bg-gradient-to-br from-indigo-500 to-purple-500 flex items-center justify-center text-white font-bold text-lg mr-4"
-            >
+              class="team-avatar w-16 h-16 rounded-full bg-gradient-to-br from-indigo-500 to-purple-500 flex items-center justify-center text-white font-bold text-lg mr-4">
               AJ
             </div>
             <div>
@@ -565,12 +435,9 @@
             </div>
           </div>
 
-          <div
-            class="flex items-center p-4 rounded-xl bg-gray-800/30 hover:bg-gray-800/50 transition"
-          >
+          <div class="flex items-center p-4 rounded-xl bg-gray-800/30 hover:bg-gray-800/50 transition">
             <div
-              class="team-avatar w-16 h-16 rounded-full bg-gradient-to-br from-green-500 to-teal-500 flex items-center justify-center text-white font-bold text-lg mr-4"
-            >
+              class="team-avatar w-16 h-16 rounded-full bg-gradient-to-br from-green-500 to-teal-500 flex items-center justify-center text-white font-bold text-lg mr-4">
               MS
             </div>
             <div>
@@ -582,12 +449,9 @@
             </div>
           </div>
 
-          <div
-            class="flex items-center p-4 rounded-xl bg-gray-800/30 hover:bg-gray-800/50 transition"
-          >
+          <div class="flex items-center p-4 rounded-xl bg-gray-800/30 hover:bg-gray-800/50 transition">
             <div
-              class="team-avatar w-16 h-16 rounded-full bg-gradient-to-br from-blue-500 to-cyan-500 flex items-center justify-center text-white font-bold text-lg mr-4"
-            >
+              class="team-avatar w-16 h-16 rounded-full bg-gradient-to-br from-blue-500 to-cyan-500 flex items-center justify-center text-white font-bold text-lg mr-4">
               DR
             </div>
             <div>
@@ -599,12 +463,9 @@
             </div>
           </div>
 
-          <div
-            class="flex items-center p-4 rounded-xl bg-gray-800/30 hover:bg-gray-800/50 transition"
-          >
+          <div class="flex items-center p-4 rounded-xl bg-gray-800/30 hover:bg-gray-800/50 transition">
             <div
-              class="team-avatar w-16 h-16 rounded-full bg-gradient-to-br from-yellow-500 to-amber-500 flex items-center justify-center text-white font-bold text-lg mr-4"
-            >
+              class="team-avatar w-16 h-16 rounded-full bg-gradient-to-br from-yellow-500 to-amber-500 flex items-center justify-center text-white font-bold text-lg mr-4">
               TP
             </div>
             <div>
@@ -616,12 +477,9 @@
             </div>
           </div>
 
-          <div
-            class="flex items-center p-4 rounded-xl bg-gray-800/30 hover:bg-gray-800/50 transition"
-          >
+          <div class="flex items-center p-4 rounded-xl bg-gray-800/30 hover:bg-gray-800/50 transition">
             <div
-              class="team-avatar w-16 h-16 rounded-full bg-gradient-to-br from-red-500 to-pink-500 flex items-center justify-center text-white font-bold text-lg mr-4"
-            >
+              class="team-avatar w-16 h-16 rounded-full bg-gradient-to-br from-red-500 to-pink-500 flex items-center justify-center text-white font-bold text-lg mr-4">
               KC
             </div>
             <div>
@@ -631,12 +489,9 @@
             </div>
           </div>
 
-          <div
-            class="flex items-center p-4 rounded-xl bg-gray-800/30 hover:bg-gray-800/50 transition"
-          >
+          <div class="flex items-center p-4 rounded-xl bg-gray-800/30 hover:bg-gray-800/50 transition">
             <div
-              class="team-avatar w-16 h-16 rounded-full bg-gradient-to-br from-purple-500 to-fuchsia-500 flex items-center justify-center text-white font-bold text-lg mr-4"
-            >
+              class="team-avatar w-16 h-16 rounded-full bg-gradient-to-br from-purple-500 to-fuchsia-500 flex items-center justify-center text-white font-bold text-lg mr-4">
               EJ
             </div>
             <div>

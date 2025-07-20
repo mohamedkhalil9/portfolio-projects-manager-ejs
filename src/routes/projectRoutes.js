@@ -1,12 +1,11 @@
 import { Router } from "express";
-
 import {
   createProject,
-  getProjects,
+  // getCurrentUserProjects,
   getProject,
-  deleteProject,
+  editProjectView,
   updateProject,
-  getCurrentUserProjects,
+  deleteProject,
 } from "../controllers/projectController.js";
 import { authenticate } from "../middlewares/authMiddleware.js";
 import { mongoId, updateProjectSchema } from "../validation/schemas.js";
@@ -18,32 +17,32 @@ import upload from "../middlewares/multer.js";
 
 const router = Router();
 
-router.route("/public").get(getProjects);
-router.use(authenticate);
-const project = {
-  name: "test project",
-  description: "a project to show case the edit view",
-  url: "https://github.com/mohamedkhalil9/portfolio-projects-manager-ejs.git",
-  tags: ["js", "node"],
-};
-// router.get("/view", (req, res) => res.render("projects/view-projects"));
-router.get("/add", (req, res) => res.render("projects/add-project"));
-router.get("/edit", (req, res) =>
-  res.render("projects/edit-project", { project }),
+router.get("/add", authenticate, (req, res) =>
+  res.render("projects/add-project"),
 );
-router.get("/single", (req, res) =>
-  res.render("projects/view-project", { project }),
-);
-router.route("/").get(getCurrentUserProjects).post(createProject);
+router.route("/:id").get(validateParams(mongoId), getProject);
 
-router
-  .route("/:id")
-  .get(validateParams(mongoId), getProject)
-  .patch(
-    validateParams(mongoId),
-    validateBody(updateProjectSchema),
-    updateProject,
-  )
-  .delete(validateParams(mongoId), deleteProject);
+router.use(authenticate);
+
+// TODO: 1. get projects on subdomain
+// 2. add new project view
+// --> create project request
+// 3. view single project
+// 4. on login edit project view
+// --> update post request
+// 5. delete request
+
+router.route("/").post(createProject);
+
+// router.route("/").get(getCurrentUserProjects);
+
+router.get("/:id/edit", editProjectView);
+router.route("/:id").post(
+  validateParams(mongoId),
+  // validateBody(updateProjectSchema),
+  updateProject,
+);
+
+router.route("/:id/delete").post(validateParams(mongoId), deleteProject);
 
 export default router;
