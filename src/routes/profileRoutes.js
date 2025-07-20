@@ -16,27 +16,30 @@ import upload from "../middlewares/multer.js";
 
 const router = Router();
 
-// get public profile
-// use subdomain
-// router.route("/:id").get(getUserProfile);
+router.get("/edit", authenticate, editProfileView);
+// TODO: 1. subdomain get profile
+router.route("/:id").get(getUserProfile);
 
 router.use(authenticate);
 
-// edit and delete view
-router.get("/edit", editProfileView);
-router
-  .route("/")
-  .get(getUserProfile)
-  .post(validateBody(updateUserSchema), updateUserProfile)
-  .delete(deleteUserProfile);
+router.route("/").get(getUserProfile);
 
-router.get("/verify-email", authenticate, sendEmailVerification);
-router.get("/verify-email/:token", verifyEmail);
+// 2. login or register redirect to user full data
 
+// 3. get edit view
+// and update post request
+router.route("/").post(validateBody(updateUserSchema), updateUserProfile);
+router.route("/upload").post(upload.single("image"), uploadProfileImage);
+
+// 4. delete request
+router.route("/").delete(deleteUserProfile);
+
+// 5. update password separate and verify email
 router
   .route("/update-password")
   .patch(validateBody(updatePassSchema), updatePassword);
 
-router.route("/upload").post(upload.single("image"), uploadProfileImage);
+router.get("/verify-email", authenticate, sendEmailVerification);
+router.get("/verify-email/:token", verifyEmail);
 
 export default router;
