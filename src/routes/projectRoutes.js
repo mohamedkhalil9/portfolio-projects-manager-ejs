@@ -20,6 +20,7 @@ const router = Router();
 router.get("/add", authenticate, (req, res) =>
   res.render("projects/add-project"),
 );
+
 router.route("/:id").get(validateParams(mongoId), getProject);
 
 router.use(authenticate);
@@ -33,8 +34,6 @@ router.use(authenticate);
 // 5. delete request
 
 router.route("/").post(createProject);
-
-// router.route("/").get(getCurrentUserProjects);
 
 router.get("/:id/edit", editProjectView);
 router.route("/:id").post(

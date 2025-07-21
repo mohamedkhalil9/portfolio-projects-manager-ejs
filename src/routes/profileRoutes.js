@@ -17,7 +17,7 @@ import upload from "../middlewares/multer.js";
 const router = Router();
 
 router.get("/edit", authenticate, editProfileView);
-// TODO: 1. subdomain get profile
+
 router.route("/:id").get(getUserProfile);
 
 router.use(authenticate);

@@ -51,7 +51,6 @@ export const updateProject = asyncHandler(async (req, res) => {
     { title, description, githubUrl },
     { new: true },
   );
-  console.log(project);
 
   res.status(200).redirect(`/api/v1/projects/${id}`);
 });
