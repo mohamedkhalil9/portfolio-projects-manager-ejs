@@ -8,7 +8,7 @@ passport.use(
     {
       clientID: process.env.GOOGLE_CLIENT_ID,
       clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-      callbackURL: "/api/v1/auth/google/callback",
+      callbackURL: "https://portfolio.koyeb.app/api/v1/auth/google/callback",
     },
     async (accessToken, refreshToken, profile, cb) => {
       try {
@@ -49,7 +49,7 @@ passport.use(
     {
       clientID: process.env.GITHUB_CLIENT_ID,
       clientSecret: process.env.GITHUB_CLIENT_SECRET,
-      callbackUrl: "http://localhost:4000/api/v1/auth/github/callback",
+      callbackUrl: "https://portfolio.koyeb.app/api/v1/auth/github/callback",
       scope: ["user:email"],
     },
     async (acessToken, refreshToken, profile, cb) => {
