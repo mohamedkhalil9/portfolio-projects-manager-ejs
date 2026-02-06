@@ -22,11 +22,12 @@ export const editProfileView = asyncHandler(async (req, res) => {
   const { id } = req.user;
   const user = await User.findById(id).select("-password");
   if (!user) throw new AppError("user not found", 404);
+  // res.render("profile/enhanced-edit-profile", { user });
   res.render("profile/edit-profile", { user });
 });
 
 export const updateUserProfile = asyncHandler(async (req, res) => {
-  // const { id } = req.user;
+  const { id } = req.user;
   const userData = req.body;
   //
   // if (userData.skillSet) {
@@ -45,20 +46,20 @@ export const updateUserProfile = asyncHandler(async (req, res) => {
   // if (userData.experience) {
   //   userData.experience = Object.values(userData.experience);
   // }
-  if (userData.skillSet) {
-    userData.skillSet = Object.values(userData.skillSet).map((skill) => ({
-      category: skill.category,
-      skills: skill.skills
-        .split(",")
-        .map((s) => s.trim())
-        .filter((s) => s.length > 0),
-    }));
-  }
-  // const user = await User.findByIdAndUpdate(id, userData, { new: true });
-  // if (!user) throw new AppError("user not found", 404);
-  res.status(200).json(userData);
+  // if (userData.skillSet) {
+  //   userData.skillSet = Object.values(userData.skillSet).map((skill) => ({
+  //     category: skill.category,
+  //     skills: skill.skills
+  //       .split(",")
+  //       .map((s) => s.trim())
+  //       .filter((s) => s.length > 0),
+  //   }));
+  // }
+  const user = await User.findByIdAndUpdate(id, userData, { new: true });
+  if (!user) throw new AppError("user not found", 404);
+  // res.status(200).json(userData);
   // .json({ status: "success", data: user });
-  // .redirect("/api/v1/profile/edit");
+  res.status(200).redirect(`/api/v1/profile/${id}`);
 });
 
 export const deleteUserProfile = asyncHandler(async (req, res) => {
